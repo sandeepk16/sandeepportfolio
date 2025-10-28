@@ -1,0 +1,326 @@
+<div class="modern-home">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-content" *ngIf="personalInfo$ | async as personalInfo">
+        
+        <!-- Main Hero Text -->
+        <div class="hero-text-wrapper">
+          <div class="hero-badge">
+            <span class="badge-text">UI/UX Designer & Creative Developer</span>
+          </div>
+          
+          <h1 class="hero-title font-display">
+            <span class="title-line">Generate</span>
+            <span class="title-line">Design</span>
+            <span class="title-line gradient-text">Imagine</span>
+            <span class="title-line">Creator</span>
+            <span class="title-line">Create</span>
+            <span class="title-line text-muted">Powered by AI</span>
+          </h1>
+          
+          <p class="hero-description">
+            Crafting digital experiences that bridge the gap between imagination and reality. 
+            Specializing in AI-powered design solutions and innovative user interfaces.
+          </p>
+          
+          <div class="hero-actions">
+            <button class="cta-btn primary-cta">
+              <span>Start Exploring</span>
+              <i class="pi pi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Hero Visual Elements -->
+        <div class="hero-visual">
+          <div class="floating-cards">
+            <!-- AI Design Card -->
+            <div class="floating-card card-1">
+              <div class="card-icon">
+                <i class="pi pi-palette"></i>
+              </div>
+              <div class="card-content">
+                <h4>AI-Powered Design</h4>
+                <p>Next-gen creative solutions</p>
+              </div>
+            </div>
+            
+            <!-- User Experience Card -->
+            <div class="floating-card card-2">
+              <div class="card-icon">
+                <i class="pi pi-users"></i>
+              </div>
+              <div class="card-content">
+                <h4>User Experience</h4>
+                <p>Human-centered approach</p>
+              </div>
+            </div>
+            
+            <!-- Innovation Card -->
+            <div class="floating-card card-3">
+              <div class="card-icon">
+                <i class="pi pi-lightbulb"></i>
+              </div>
+              <div class="card-content">
+                <h4>Innovation</h4>
+                <p>Cutting-edge solutions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product/Service Categories Section -->
+  <section class="products-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title font-display">Product Prototypes</h2>
+        <p class="section-subtitle">Innovative design concepts and AI-generated solutions</p>
+      </div>
+      
+      <div class="products-grid">
+        <!-- Prompt Engineering -->
+        <div class="product-card large-card">
+          <div class="product-header">
+            <div class="product-icon">
+              <i class="pi pi-bolt"></i>
+            </div>
+            <div class="product-meta">
+              <h3>Prompt Engineering</h3>
+              <div class="product-tags">
+                <span class="tag">AI OPTIMIZATION</span>
+                <span class="tag">PROMPT DESIGN</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-preview">
+            <div class="preview-placeholder">
+              <span>AI Prompt Solutions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Futuristic Interfaces -->
+        <div class="product-card">
+          <div class="product-header">
+            <div class="product-icon">
+              <i class="pi pi-desktop"></i>
+            </div>
+            <div class="product-meta">
+              <h3>Futuristic Interfaces</h3>
+              <div class="product-tags">
+                <span class="tag">UI/UX DESIGN</span>
+                <span class="tag">INNOVATION</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imagined Devices -->
+        <div class="product-card">
+          <div class="product-header">
+            <div class="product-icon">
+              <i class="pi pi-mobile"></i>
+            </div>
+            <div class="product-meta">
+              <h3>Imagined Devices</h3>
+              <div class="product-tags">
+                <span class="tag">INDUSTRIAL DESIGN</span>
+                <span class="tag">CONCEPTUAL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Synthetic Textures -->
+        <div class="product-card">
+          <div class="product-header">
+            <div class="product-icon">
+              <i class="pi pi-th-large"></i>
+            </div>
+            <div class="product-meta">
+              <h3>Synthetic Textures</h3>
+              <div class="product-tags">
+                <span class="tag">MATERIAL DESIGN</span>
+                <span class="tag">3D RENDERING</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-content">
+        <div class="stats-text">
+          <h2 class="stats-title font-display">
+            FOR THE VISIONARIES<br>
+            FUELING THE<br>
+            WAVE.
+          </h2>
+          <p class="stats-description">
+            Pushing boundaries in digital design and AI-powered creativity. 
+            Building the future of human-computer interaction.
+          </p>
+        </div>
+        
+        <div class="stats-numbers">
+          <div class="stat-block" *ngIf="portfolioStats$ | async as stats">
+            <div class="stat-number">{{ stats.totalProjects }}K+</div>
+            <div class="stat-label">Creative Launch</div>
+          </div>
+          
+          <div class="stat-block">
+            <div class="stat-number">120M+</div>
+            <div class="stat-label">Routines Explored</div>
+          </div>
+          
+          <div class="stats-visual">
+            <div class="visual-element">
+              <div class="glowing-orb"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Preview Section -->
+  <section class="experience-preview-section">
+    <div class="container">
+      <div class="experience-preview-content">
+        <div class="experience-text">
+          <div class="section-header">
+            <span class="section-badge">PROFESSIONAL JOURNEY</span>
+            <h2 class="section-title font-display">
+              <span class="title-line">15+ Years</span>
+              <span class="title-line gradient-text">Experience</span>
+            </h2>
+            <p class="section-subtitle">
+              From innovative startups to enterprise solutions, I've crafted digital experiences 
+              across diverse industries and cutting-edge technologies.
+            </p>
+          </div>
+          
+          <div class="experience-highlights">
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <i class="pi pi-building"></i>
+              </div>
+              <div class="highlight-content">
+                <h4>6+ Companies</h4>
+                <p>Led design teams across startups and enterprises</p>
+              </div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <i class="pi pi-users"></i>
+              </div>
+              <div class="highlight-content">
+                <h4>50+ Projects</h4>
+                <p>Delivered exceptional user experiences</p>
+              </div>
+            </div>
+            
+            <div class="highlight-item">
+              <div class="highlight-icon">
+                <i class="pi pi-trophy"></i>
+              </div>
+              <div class="highlight-content">
+                <h4>Multiple Awards</h4>
+                <p>Recognition for innovative design solutions</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="experience-cta">
+            <button class="cta-btn secondary-cta" routerLink="/experience">
+              <span>View Full Experience</span>
+              <i class="pi pi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="experience-visual">
+          <div class="career-timeline">
+            <div class="timeline-item current" *ngFor="let job of recentExperience">
+              <div class="timeline-marker">
+                <div class="marker-dot">
+                  <i class="pi pi-briefcase"></i>
+                </div>
+              </div>
+              <div class="timeline-content">
+                <div class="job-period">{{ job.startDate }} - {{ job.current ? 'Present' : job.endDate }}</div>
+                <h4 class="job-title">{{ job.title }}</h4>
+                <p class="company-name">{{ job.company }}</p>
+                <div class="job-technologies">
+                  <span class="tech-tag" *ngFor="let tech of job.technologies.slice(0, 3)">{{ tech }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview Section -->
+  <section class="services-preview-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title font-display">Ready to Generate Your Next Big Idea?</h2>
+        <p class="section-subtitle">Let's collaborate and bring your vision to life</p>
+      </div>
+      
+      <div class="services-preview-grid">
+        <div class="service-preview-card" *ngFor="let service of servicesPreviews">
+          <div class="service-icon">
+            <i [class]="service.icon"></i>
+          </div>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <div class="service-link">
+            <span>Learn More</span>
+            <i class="pi pi-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="cta-section">
+        <button class="cta-btn secondary-cta" routerLink="/services">
+          <span>Explore All Services</span>
+        </button>
+        <button class="cta-btn primary-cta" routerLink="/contact">
+          <span>Start Your Project</span>
+          <i class="pi pi-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer CTA -->
+  <section class="footer-cta">
+    <div class="container">
+      <div class="footer-cta-content">
+        <h2 class="font-display">GENERATED FOR THE NEXT WAVE OF CREATORS</h2>
+        <p>Join the AI-powered design revolution</p>
+        
+        <div class="footer-actions">
+          <button class="footer-btn">
+            <span>Get Started</span>
+          </button>
+          <button class="footer-btn">
+            <span>Learn More</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

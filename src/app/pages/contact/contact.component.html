@@ -1,0 +1,338 @@
+<div class="contact-container">
+  <!-- Contact Hero Section -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="pi pi-send"></i>
+          <span>Let's Connect</span>
+        </div>
+        <h1 class="hero-title">
+          Start Your <span class="gradient-text">Project Today</span>
+        </h1>
+        <p class="hero-subtitle">
+          Ready to transform your ideas into exceptional digital experiences? 
+          Let's collaborate and create something extraordinary together.
+        </p>
+        
+        <div class="contact-stats">
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="pi pi-clock"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-number">24hrs</span>
+              <span class="stat-label">Response Time</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="pi pi-users"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-number">100+</span>
+              <span class="stat-label">Happy Clients</span>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon">
+              <i class="pi pi-star"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-number">5.0</span>
+              <span class="stat-label">Average Rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Content Section -->
+  <section class="contact-content">
+    <div class="container">
+      <div class="contact-layout">
+        
+        <!-- Contact Form -->
+        <div class="contact-form-section">
+          <div class="form-card">
+            <div class="form-header">
+              <h2 class="form-title">Send Me a Message</h2>
+              <p class="form-subtitle">
+                Tell me about your project and I'll get back to you within 24 hours with a detailed proposal.
+              </p>
+            </div>
+
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+              <!-- Name & Email Row -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name" class="form-label">
+                    Name <span class="required">*</span>
+                  </label>
+                  <input 
+                    id="name" 
+                    formControlName="name"
+                    placeholder="Your full name"
+                    class="form-input"
+                    [class.error]="isFieldInvalid('name')" />
+                  <span class="error-message" *ngIf="isFieldInvalid('name')">
+                    {{ getFieldErrorMessage('name') }}
+                  </span>
+                </div>
+
+                <div class="form-group">
+                  <label for="email" class="form-label">
+                    Email <span class="required">*</span>
+                  </label>
+                  <input 
+                    id="email" 
+                    type="email"
+                    formControlName="email"
+                    placeholder="your.email@example.com"
+                    class="form-input"
+                    [class.error]="isFieldInvalid('email')" />
+                  <span class="error-message" *ngIf="isFieldInvalid('email')">
+                    {{ getFieldErrorMessage('email') }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Subject Field -->
+              <div class="form-group">
+                <label for="subject" class="form-label">
+                  Subject <span class="required">*</span>
+                </label>
+                <input 
+                  id="subject" 
+                  formControlName="subject"
+                  placeholder="What's this about?"
+                  class="form-input"
+                  [class.error]="isFieldInvalid('subject')" />
+                <span class="error-message" *ngIf="isFieldInvalid('subject')">
+                  {{ getFieldErrorMessage('subject') }}
+                </span>
+              </div>
+
+              <!-- Project Budget -->
+              <div class="form-group">
+                <label for="budget" class="form-label">Project Budget</label>
+                <select id="budget" formControlName="budget" class="form-input">
+                  <option value="">Select budget range</option>
+                  <option value="under-5k">Under $5,000</option>
+                  <option value="5k-10k">$5,000 - $10,000</option>
+                  <option value="10k-25k">$10,000 - $25,000</option>
+                  <option value="25k-plus">$25,000+</option>
+                  <option value="discuss">Let's Discuss</option>
+                </select>
+              </div>
+
+              <!-- Message Field -->
+              <div class="form-group">
+                <label for="message" class="form-label">
+                  Message <span class="required">*</span>
+                </label>
+                <textarea 
+                  id="message" 
+                  formControlName="message"
+                  placeholder="Tell me about your project, goals, timeline, and any specific requirements..."
+                  rows="6"
+                  class="form-input"
+                  [class.error]="isFieldInvalid('message')">
+                </textarea>
+                <span class="error-message" *ngIf="isFieldInvalid('message')">
+                  {{ getFieldErrorMessage('message') }}
+                </span>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="form-actions">
+                <button 
+                  type="submit"
+                  class="btn btn-primary btn-large"
+                  [disabled]="contactForm.invalid || isSubmitting()">
+                  <i class="pi pi-send"></i>
+                  <span *ngIf="!isSubmitting()">Send Message</span>
+                  <span *ngIf="isSubmitting()">Sending...</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Contact Info Sidebar -->
+        <div class="contact-info-section">
+          <div class="info-cards">
+            
+            <!-- Contact Details Card -->
+            <div class="contact-info-card" *ngIf="personalInfo() && !isLoading()">
+              <div class="info-header">
+                <div class="profile-section">
+                  <div class="profile-image">
+                    <img 
+                      [src]="personalInfo()?.profileImage" 
+                      [alt]="personalInfo()?.name"
+                      class="profile-img" />
+                  </div>
+                  <div class="profile-info">
+                    <h3 class="contact-name">{{ personalInfo()?.name }}</h3>
+                    <p class="contact-role">{{ personalInfo()?.title }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-methods">
+                <!-- Email -->
+                <div class="contact-item" (click)="openExternalLink(getEmailLink())">
+                  <div class="contact-icon">
+                    <i class="pi pi-envelope"></i>
+                  </div>
+                  <div class="contact-content">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">{{ getEmail() }}</div>
+                  </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="contact-item" (click)="openExternalLink(getPhoneLink())">
+                  <div class="contact-icon">
+                    <i class="pi pi-phone"></i>
+                  </div>
+                  <div class="contact-content">
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">{{ getPhone() }}</div>
+                  </div>
+                </div>
+
+                <!-- Location -->
+                <div class="contact-item">
+                  <div class="contact-icon">
+                    <i class="pi pi-map-marker"></i>
+                  </div>
+                  <div class="contact-content">
+                    <div class="contact-label">Location</div>
+                    <div class="contact-value">{{ getLocation() }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links Card -->
+            <div class="social-links-card" *ngIf="personalInfo() && !isLoading()">
+              <div class="social-header">
+                <h4 class="social-title">Connect With Me</h4>
+                <p class="social-subtitle">
+                  Follow my work and connect on social media
+                </p>
+              </div>
+
+              <div class="social-links">
+                <!-- LinkedIn -->
+                <div class="social-item" (click)="openExternalLink(personalInfo()?.linkedin || '')">
+                  <div class="social-icon">
+                    <i class="pi pi-linkedin"></i>
+                  </div>
+                  <div class="social-content">
+                    <div class="social-label">LinkedIn</div>
+                    <div class="social-description">Professional network</div>
+                  </div>
+                </div>
+
+                <!-- Behance -->
+                <div class="social-item" (click)="openExternalLink(personalInfo()?.behance || '')">
+                  <div class="social-icon behance">
+                    <i class="pi pi-palette"></i>
+                  </div>
+                  <div class="social-content">
+                    <div class="social-label">Behance</div>
+                    <div class="social-description">Design portfolio</div>
+                  </div>
+                </div>
+
+                <!-- Dribbble -->
+                <div class="social-item" (click)="openExternalLink(personalInfo()?.dribbble || '')">
+                  <div class="social-icon dribbble">
+                    <i class="pi pi-circle"></i>
+                  </div>
+                  <div class="social-content">
+                    <div class="social-label">Dribbble</div>
+                    <div class="social-description">Design inspiration</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="contact-faq-section py-6 surface-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-6">
+          <h2 class="section-title text-3xl font-bold mb-3">Quick Questions?</h2>
+          <p class="section-description text-color-secondary">
+            Here are answers to some common questions about working with me.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <div class="grid">
+            <div class="col-12 md:col-6">
+              <div class="faq-item mb-4">
+                <h4 class="faq-question font-semibold mb-2">
+                  <i class="pi pi-question-circle mr-2 text-primary"></i>
+                  What's your typical response time?
+                </h4>
+                <p class="faq-answer text-color-secondary text-sm line-height-3">
+                  I typically respond to all inquiries within 24 hours, often much sooner during business hours.
+                </p>
+              </div>
+            </div>
+            
+            <div class="col-12 md:col-6">
+              <div class="faq-item mb-4">
+                <h4 class="faq-question font-semibold mb-2">
+                  <i class="pi pi-question-circle mr-2 text-primary"></i>
+                  Do you work with international clients?
+                </h4>
+                <p class="faq-answer text-color-secondary text-sm line-height-3">
+                  Yes! I work with clients worldwide and am flexible with time zones for meetings and communication.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-12 md:col-6">
+              <div class="faq-item mb-4">
+                <h4 class="faq-question font-semibold mb-2">
+                  <i class="pi pi-question-circle mr-2 text-primary"></i>
+                  What information should I include?
+                </h4>
+                <p class="faq-answer text-color-secondary text-sm line-height-3">
+                  Please include your project goals, timeline, budget range, and any specific requirements you have.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-12 md:col-6">
+              <div class="faq-item mb-4">
+                <h4 class="faq-question font-semibold mb-2">
+                  <i class="pi pi-question-circle mr-2 text-primary"></i>
+                  Do you offer free consultations?
+                </h4>
+                <p class="faq-answer text-color-secondary text-sm line-height-3">
+                  Yes, I offer a free 30-minute consultation to discuss your project and see if we're a good fit.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toast for notifications -->
+  <p-toast position="top-right"></p-toast>
+</div>

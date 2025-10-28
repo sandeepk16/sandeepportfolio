@@ -1,0 +1,348 @@
+<div class="about-container">
+  <!-- About Hero Section -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text" *ngIf="personalInfo$ | async as personalInfo">
+          <div class="hero-badge">
+            <span class="badge-text">About Me</span>
+          </div>
+          
+          <h1 class="hero-title font-display">
+            <span class="title-line">Passionate</span>
+            <span class="title-line gradient-text">Designer</span>
+            <span class="title-line">& Developer</span>
+          </h1>
+          
+          <p class="hero-description">
+            {{ personalInfo.bio }}
+          </p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">15+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100+</span>
+              <span class="stat-label">Projects Completed</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Happy Clients</span>
+            </div>
+          </div>
+          
+          <div class="hero-actions">
+            <button class="cta-btn primary-cta" (click)="downloadResume()">
+              <span>Download Resume</span>
+              <i class="pi pi-download"></i>
+            </button>
+            <button class="cta-btn secondary-cta" routerLink="/contact">
+              <span>Get In Touch</span>
+              <i class="pi pi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="hero-visual">
+          <div class="profile-card">
+            <div class="profile-image-container" *ngIf="personalInfo$ | async as personalInfo">
+              <img 
+                [src]="personalInfo.profileImage" 
+                [alt]="personalInfo.name"
+                class="profile-image">
+            </div>
+            <div class="profile-info">
+              <h3>Sandeep K</h3>
+              <p>UI/UX Designer & Creative Developer</p>
+            </div>
+          </div>
+          
+          <div class="contact-cards">
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="pi pi-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">{{ getEmail() }}</span>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="pi pi-phone"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">{{ getPhone() }}</span>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="pi pi-map-marker"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label">Location</span>
+                <span class="contact-value">{{ getLocation() }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="section-badge">Expertise </span>
+        <small class="section-subtitle">My Skills & Technologies</small>
+      </h2>
+      <div class="skills-grid m-2">
+        <div class="skill-category">
+          <div class="skill-card">
+            <h3 class="skill-title">
+              <i class="pi pi-palette"></i>
+              Design
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <span>UI/UX Design</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 95%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>Figma</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>Adobe XD</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>Prototyping</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 88%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <div class="skill-card">
+            <h3 class="skill-title">
+              <i class="pi pi-code"></i>
+              Frontend
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <span>Angular</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>React</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>TypeScript</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 88%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>CSS/SCSS</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 92%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <div class="skill-card">
+            <h3 class="skill-title">
+              <i class="pi pi-mobile"></i>
+              Mobile
+            </h3>
+            <div class="skill-list">
+              <div class="skill-item">
+                <span>Mobile Design</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 92%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>Responsive Web</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>Progressive Web Apps</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span>App Store Optimization</span>
+                <div class="skill-progress">
+                  <div class="skill-bar" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="education-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="section-badge">Learning</span>
+        Education & Certifications
+      </h2>
+      
+      <div class="education-grid">
+        <div class="education-card">
+          <div class="education-header">
+            <div class="education-icon">
+              <i class="pi pi-building"></i>
+            </div>
+            <div class="education-meta">
+              <h3 class="education-degree">Bachelor of Computer Applications</h3>
+              <p class="education-institution">University of Technology</p>
+              <span class="education-duration">2018 - 2021</span>
+            </div>
+          </div>
+          <div class="education-content">
+            <p class="education-description">
+              Specialized in Computer Science with focus on Software Development and User Interface Design. 
+              Graduated with First Class Honors.
+            </p>
+            <div class="education-achievements">
+              <h4>Key Achievements:</h4>
+              <ul>
+                <li>President of Computer Science Society</li>
+                <li>Winner of National UI/UX Design Competition 2020</li>
+                <li>Research paper on "Modern Web Design Patterns"</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="education-card">
+          <div class="education-header">
+            <div class="education-icon">
+              <i class="pi pi-verified"></i>
+            </div>
+            <div class="education-meta">
+              <h3 class="education-degree">Google UX Design Certificate</h3>
+              <p class="education-institution">Google Career Certificates</p>
+              <span class="education-duration">2021</span>
+            </div>
+          </div>
+          <div class="education-content">
+            <p class="education-description">
+              Comprehensive program covering user experience research, wireframing, prototyping, 
+              and usability testing methodologies.
+            </p>
+          </div>
+        </div>
+        
+        <div class="education-card">
+          <div class="education-header">
+            <div class="education-icon">
+              <i class="pi pi-star"></i>
+            </div>
+            <div class="education-meta">
+              <h3 class="education-degree">Angular Expert Certification</h3>
+              <p class="education-institution">Angular Team</p>
+              <span class="education-duration">2022</span>
+            </div>
+          </div>
+          <div class="education-content">
+            <p class="education-description">
+              Advanced certification demonstrating expertise in Angular framework, 
+              including modern patterns and best practices.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section class="achievements-section">
+    <div class="container">
+      <h2 class="section-title">
+        <span class="section-badge">Recognition</span>
+        Awards & Recognition
+      </h2>
+      
+      <div class="achievements-grid">
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="pi pi-trophy"></i>
+          </div>
+          <h4 class="achievement-title">Best UI Designer 2023</h4>
+          <p class="achievement-description">Recognized as the best UI designer for innovative mobile app interfaces</p>
+          <div class="achievement-meta">
+            <span class="achievement-date">December 2023</span>
+            <span class="achievement-issuer">Design Awards India</span>
+          </div>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="pi pi-star"></i>
+          </div>
+          <h4 class="achievement-title">Top 1% Designer</h4>
+          <p class="achievement-description">Ranked in top 1% of designers globally on design platforms</p>
+          <div class="achievement-meta">
+            <span class="achievement-date">2023</span>
+            <span class="achievement-issuer">Dribbble & Behance</span>
+          </div>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="pi pi-heart"></i>
+          </div>
+          <h4 class="achievement-title">Client Choice Award</h4>
+          <p class="achievement-description">Consistently rated 5-star by clients for exceptional design delivery</p>
+          <div class="achievement-meta">
+            <span class="achievement-date">2022-2023</span>
+            <span class="achievement-issuer">Freelance Platforms</span>
+          </div>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="pi pi-lightbulb"></i>
+          </div>
+          <h4 class="achievement-title">Innovation Award</h4>
+          <p class="achievement-description">Awarded for breakthrough design solutions in healthcare app UX</p>
+          <div class="achievement-meta">
+            <span class="achievement-date">March 2023</span>
+            <span class="achievement-issuer">UX Awards</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

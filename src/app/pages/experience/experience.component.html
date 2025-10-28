@@ -1,0 +1,198 @@
+<div class="experience-container">
+  <!-- Experience Hero Section -->
+  <section class="experience-hero">
+    <div class="hero-background">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-text">Professional Journey</span>
+          </div>
+          
+          <h1 class="hero-title">
+            <span class="title-line">Professional</span>
+            <span class="title-line gradient-text">Experience</span>
+          </h1>
+          
+          <p class="hero-description">
+            Over {{ totalExperience }} of experience in UI/UX design and development, 
+            working with leading companies to create exceptional digital experiences.
+          </p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">{{ totalExperience }}</span>
+              <span class="stat-label">Experience</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">{{ companiesWorked }}+</span>
+              <span class="stat-label">Companies</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">{{ projectsCompleted }}+</span>
+              <span class="stat-label">Projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Timeline Section -->
+  <section class="experience-timeline">
+    <div class="container">
+      <div class="timeline-header">
+        <h2 class="section-title">Career Timeline</h2>
+        <p class="section-subtitle">
+          A journey through my professional growth and achievements
+        </p>
+      </div>
+      
+      <div class="timeline-wrapper">
+        <div class="timeline-line"></div>
+        
+        <div class="timeline-content">
+          <div 
+            class="timeline-item"
+            *ngFor="let experience of workExperience; trackBy: trackByExperienceId; let i = index"
+            [class.current]="experience.type === 'current'"
+            [class.even]="i % 2 === 1">
+            
+            <div class="timeline-marker">
+              <div class="marker-dot">
+                <i class="pi" [class]="experience.type === 'current' ? 'pi-star-fill' : 'pi-circle-fill'"></i>
+              </div>
+              <div class="marker-line"></div>
+            </div>
+            
+            <div class="timeline-card glass">
+              <div class="card-header">
+                <div class="company-info">
+                  <h3 class="job-title">{{ experience.title }}</h3>
+                  <h4 class="company-name">{{ experience.company }}</h4>
+                  <div class="duration-info">
+                    <span class="duration">{{ experience.duration }}</span>
+                    <span class="period-badge" [class.current-badge]="experience.type === 'current'">
+                      {{ experience.period }}
+                    </span>
+                  </div>
+                </div>
+                
+                <div class="status-indicator" *ngIf="experience.type === 'current'">
+                  <span class="current-label">Current Position</span>
+                </div>
+              </div>
+              
+              <div class="card-content">
+                <p class="job-description">{{ experience.description }}</p>
+                
+                <div class="achievements-section">
+                  <h5 class="achievements-title">Key Achievements</h5>
+                  <ul class="achievements-list">
+                    <li *ngFor="let achievement of experience.achievements" class="achievement-item">
+                      <i class="pi pi-check-circle achievement-icon"></i>
+                      <span>{{ achievement }}</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div class="technologies-section">
+                  <h5 class="tech-title">Technologies & Tools</h5>
+                  <div class="tech-tags">
+                    <span 
+                      class="tech-tag"
+                      *ngFor="let tech of experience.technologies">
+                      {{ tech }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Evolution Section -->
+  <section class="skills-evolution">
+    <div class="container">
+      <div class="evolution-content">
+        <div class="evolution-text">
+          <h2 class="evolution-title">
+            <span class="title-line">Skills</span>
+            <span class="title-line gradient-text">Evolution</span>
+          </h2>
+          
+          <p class="evolution-description">
+            Throughout my career, I've continuously evolved my skills to stay at the 
+            forefront of design and technology. From traditional web design to modern 
+            AI-powered interfaces, my journey reflects the evolution of digital design.
+          </p>
+          
+          <div class="evolution-highlights">
+            <div class="highlight-item">
+              <i class="pi pi-palette highlight-icon"></i>
+              <div class="highlight-content">
+                <h4>Design Evolution</h4>
+                <p>From Photoshop to Figma, AI-assisted design</p>
+              </div>
+            </div>
+            
+            <div class="highlight-item">
+              <i class="pi pi-code highlight-icon"></i>
+              <div class="highlight-content">
+                <h4>Technical Growth</h4>
+                <p>HTML/CSS to React, Angular, and modern frameworks</p>
+              </div>
+            </div>
+            
+            <div class="highlight-item">
+              <i class="pi pi-users highlight-icon"></i>
+              <div class="highlight-content">
+                <h4>Leadership</h4>
+                <p>Individual contributor to team leader and mentor</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="evolution-visual">
+          <div class="skill-progression">
+            <div class="skill-era" *ngFor="let era of skillEras">
+              <div class="era-years">{{ era.years }}</div>
+              <div class="era-focus">{{ era.focus }}</div>
+              <div class="era-tools">
+                <span *ngFor="let tool of era.tools" class="tool-name">{{ tool }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="experience-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title">Ready to Work Together?</h2>
+        <p class="cta-description">
+          Let's bring your vision to life with my {{ totalExperience }} of experience 
+          in creating exceptional digital experiences.
+        </p>
+        
+        <div class="cta-actions">
+          <a routerLink="/contact" class="cta-btn primary-cta">
+            <i class="pi pi-send"></i>
+            <span>Start a Project</span>
+          </a>
+          
+          <a routerLink="/portfolio" class="cta-btn secondary-cta">
+            <i class="pi pi-eye"></i>
+            <span>View My Work</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

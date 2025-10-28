@@ -1,0 +1,113 @@
+<div class="skills-section">
+  <div class="section-header mb-4">
+    <h2 class="section-title">Skills & Expertise</h2>
+    <p class="section-subtitle">Technologies and tools I work with</p>
+  </div>
+
+  <div class="skills-container">
+    <!-- Design Skills -->
+    <div class="skill-category mb-5">
+      <h3 class="category-title mb-3">
+        <i class="pi pi-palette mr-2"></i>
+        Design Skills
+      </h3>
+      <div class="skills-grid">
+        <div 
+          *ngFor="let skill of designSkills" 
+          class="skill-item fade-in-up">
+          <p-card class="skill-card">
+            <div class="skill-header flex justify-content-between align-items-center mb-2">
+              <div class="flex align-items-center">
+                <i *ngIf="skill.icon" [class]="skill.icon + ' mr-2'"></i>
+                <span class="skill-name">{{ skill.name }}</span>
+              </div>
+              <div class="skill-level-badge" [style.background-color]="getSkillColor(skill.level)">
+                {{ getSkillLevel(skill.level) }}
+              </div>
+            </div>
+            
+            <p-progressBar 
+              [value]="skill.level" 
+              [style]="{'height': '8px'}"
+              [color]="getSkillColor(skill.level)">
+            </p-progressBar>
+            
+            <div class="skill-percentage mt-2 text-right">
+              <small class="text-secondary">{{ skill.level }}%</small>
+            </div>
+          </p-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools & Software -->
+    <div class="skill-category mb-5">
+      <h3 class="category-title mb-3">
+        <i class="pi pi-desktop mr-2"></i>
+        Tools & Software
+      </h3>
+      <div class="skills-grid">
+        <div 
+          *ngFor="let skill of toolSkills" 
+          class="skill-item fade-in-up">
+          <p-card class="skill-card">
+            <div class="skill-header flex justify-content-between align-items-center mb-2">
+              <div class="flex align-items-center">
+                <i *ngIf="skill.icon" [class]="skill.icon + ' mr-2'"></i>
+                <span class="skill-name">{{ skill.name }}</span>
+              </div>
+              <div class="skill-level-badge" [style.background-color]="getSkillColor(skill.level)">
+                {{ getSkillLevel(skill.level) }}
+              </div>
+            </div>
+            
+            <p-progressBar 
+              [value]="skill.level" 
+              [style]="{'height': '8px'}"
+              [color]="getSkillColor(skill.level)">
+            </p-progressBar>
+            
+            <div class="skill-percentage mt-2 text-right">
+              <small class="text-secondary">{{ skill.level }}%</small>
+            </div>
+          </p-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- Soft Skills -->
+    <div class="skill-category">
+      <h3 class="category-title mb-3">
+        <i class="pi pi-users mr-2"></i>
+        Soft Skills
+      </h3>
+      <div class="skills-grid">
+        <div 
+          *ngFor="let skill of softSkills" 
+          class="skill-item fade-in-up">
+          <p-card class="skill-card">
+            <div class="skill-header flex justify-content-between align-items-center mb-2">
+              <div class="flex align-items-center">
+                <i *ngIf="skill.icon" [class]="skill.icon + ' mr-2'"></i>
+                <span class="skill-name">{{ skill.name }}</span>
+              </div>
+              <div class="skill-level-badge" [style.background-color]="getSkillColor(skill.level)">
+                {{ getSkillLevel(skill.level) }}
+              </div>
+            </div>
+            
+            <p-progressBar 
+              [value]="skill.level" 
+              [style]="{'height': '8px'}"
+              [color]="getSkillColor(skill.level)">
+            </p-progressBar>
+            
+            <div class="skill-percentage mt-2 text-right">
+              <small class="text-secondary">{{ skill.level }}%</small>
+            </div>
+          </p-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

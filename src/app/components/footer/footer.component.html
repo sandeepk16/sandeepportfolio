@@ -1,0 +1,150 @@
+<footer class="modern-footer">
+  <!-- Main Footer Content -->
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <!-- Brand Section -->
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="logo-icon">
+              <span class="logo-text font-display">SK</span>
+            </div>
+            <div class="brand-info">
+              <h3 class="brand-name font-display">SANDEEP</h3>
+              <p class="brand-title">UI/UX Designer & Creative Developer</p>
+            </div>
+          </div>
+          
+          <p class="brand-description">
+            Crafting digital experiences that bridge the gap between imagination and reality. 
+            Specializing in AI-powered design solutions and innovative user interfaces.
+          </p>
+          
+          <div class="brand-tagline">
+            <span class="tagline-text">Powered by Sundeep.</span>
+          </div>
+          
+          <!-- Social Links -->
+          <div class="social-links">
+            <h4 class="social-title">Connect</h4>
+            <div class="social-grid">
+              <button 
+                *ngFor="let social of socialLinks" 
+                class="social-btn"
+                (click)="openSocialLink(social.url)"
+                [title]="social.platform">
+                <i [class]="social.icon"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="footer-nav">
+          <h4 class="nav-title">Navigation</h4>
+          <ul class="nav-list">
+            <li *ngFor="let link of navigationLinks">
+              <a [routerLink]="link.routerLink" class="nav-link" routerLinkActive="active">
+                {{ link.label }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Quick Links -->
+        <div class="footer-services">
+          <h4 class="nav-title">Services</h4>
+          <ul class="nav-list">
+            <li *ngFor="let link of quickLinks">
+              <a [routerLink]="link.routerLink" class="nav-link">
+                {{ link.label }}
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Contact Info -->
+        <div class="footer-contact">
+          <h4 class="nav-title">Let's Create</h4>
+          <div class="contact-info">
+            <a [href]="getEmailLink()" class="contact-item contact-link">
+              <i class="pi pi-envelope"></i>
+              <span>{{ getEmail() }}</span>
+            </a>
+            <a [href]="getPhoneLink()" class="contact-item contact-link">
+              <i class="pi pi-phone"></i>
+              <span>{{ getPhone() }}</span>
+            </a>
+            <a [href]="getLocationMapLink()" target="_blank" class="contact-item contact-link">
+              <i class="pi pi-map-marker"></i>
+              <span>{{ getLocation() }}</span>
+            </a>
+          </div>
+          
+          <div class="cta-section">
+            <button class="footer-cta-btn" routerLink="/contact">
+              <span>Start Your Project</span>
+              <i class="pi pi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Newsletter Section -->
+  <div class="footer-newsletter">
+    <div class="container">
+      <div class="newsletter-content">
+        <div class="newsletter-info">
+          <h3 class="newsletter-title font-display">Stay Updated</h3>
+          <p class="newsletter-description">
+            Get the latest insights on AI-powered design and creative innovation
+          </p>
+        </div>
+        
+        <div class="newsletter-form">
+          <div class="input-group">
+            <input 
+              type="email" 
+              placeholder="Enter your email address"
+              class="newsletter-input">
+            <button class="newsletter-btn">
+              <span>Subscribe</span>
+              <i class="pi pi-send"></i>
+            </button>
+          </div>
+          <p class="newsletter-note">
+            Join 500+ creatives already subscribed. No spam, ever.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-content">
+        <div class="copyright">
+          <p>&copy; {{ currentYear }} Sandeep K. All rights reserved.</p>
+        </div>
+        
+        <div class="footer-tagline">
+          <span class="tagline-highlight">GENERATED FOR THE NEXT WAVE OF CREATORS</span>
+        </div>
+        
+        <div class="legal-links">
+          <a *ngFor="let link of legalLinks" [routerLink]="link.routerLink" class="legal-link">
+            {{ link.label }}
+          </a>
+        </div>
+        
+        <button class="back-to-top" (click)="scrollToTop()" title="Back to top">
+          <i class="pi pi-chevron-up"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,91 @@
+<header class="modern-header">
+  <nav class="header-nav">
+    <div class="nav-container">
+      <!-- Logo/Brand -->
+      <div class="brand-section">
+        <div class="brand-logo">
+          <div class="logo-icon">
+            <span class="logo-text font-display">SK</span>
+          </div>
+          <div class="brand-info">
+            <h1 class="brand-name font-display">SANDEEP</h1>
+            <p class="brand-title text-muted">UI/UX Designer</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <div class="nav-menu">
+        <ul class="menu-list">
+          <li class="menu-item" *ngFor="let item of menuItems">
+            <a 
+              [routerLink]="item.routerLink" 
+              class="menu-link"
+              routerLinkActive="active">
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <button class="action-btn secondary-btn">
+          <i class="pi pi-download"></i>
+          <span>Download CV</span>
+        </button>
+        
+        <button class="action-btn primary-btn" routerLink="/contact">
+          <i class="pi pi-send"></i>
+          <span>Start Project</span>
+        </button>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" (click)="toggleMobileMenu()">
+          <span class="toggle-line"></span>
+          <span class="toggle-line"></span>
+          <span class="toggle-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" [class.active]="isMobileMenuOpen()" (click)="closeMobileMenu()">
+      <div class="mobile-menu">
+        <div class="mobile-menu-header">
+          <div class="brand-logo-mobile">
+            <span class="logo-text font-display">SK</span>
+          </div>
+          <button class="close-btn" (click)="closeMobileMenu()">
+            <i class="pi pi-times"></i>
+          </button>
+        </div>
+        
+        <nav class="mobile-nav">
+          <ul class="mobile-menu-list">
+            <li class="mobile-menu-item" *ngFor="let item of menuItems">
+              <a 
+                [routerLink]="item.routerLink" 
+                class="mobile-menu-link"
+                routerLinkActive="active"
+                (click)="closeMobileMenu()">
+                {{ item.label }}
+              </a>
+            </li>
+          </ul>
+          
+          <div class="mobile-actions">
+            <button class="mobile-action-btn">
+              <i class="pi pi-download"></i>
+              Download CV
+            </button>
+            <button class="mobile-action-btn primary" routerLink="/contact" (click)="closeMobileMenu()">
+              <i class="pi pi-send"></i>
+              Start Project
+            </button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </nav>
+</header>

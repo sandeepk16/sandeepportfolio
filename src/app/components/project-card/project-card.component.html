@@ -1,0 +1,106 @@
+<p-card class="project-card fade-in-up" [ngClass]="{'featured-card': project.featured}">
+  <!-- Project Thumbnail -->
+  <ng-template pTemplate="header">
+    <div class="project-thumbnail-container">
+      <img 
+        [src]="project.thumbnail" 
+        [alt]="project.title"
+        class="project-thumbnail"
+        loading="lazy">
+      
+      <!-- Featured Badge -->
+      <div *ngIf="project.featured" class="featured-badge">
+        <i class="pi pi-star"></i>
+        <span>Featured</span>
+      </div>
+      
+      <!-- Category Tag -->
+      <div class="category-tag">
+        <p-tag 
+          [value]="getCategoryLabel(project.category)" 
+          [severity]="getCategorySeverity(project.category)">
+        </p-tag>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- Project Content -->
+  <div class="project-content">
+    <div class="project-meta mb-2">
+      <small class="text-secondary">{{ project.duration }} • {{ project.client || 'Personal Project' }}</small>
+    </div>
+    
+    <h3 class="project-title mb-2">{{ project.title }}</h3>
+    <p class="project-subtitle mb-3 text-secondary">{{ project.subtitle }}</p>
+    
+    <p class="project-description mb-3">
+      {{ showDetails ? project.longDescription : project.description }}
+    </p>
+    
+    <!-- Project Tags -->
+    <div class="project-tags mb-4">
+      <p-chip 
+        *ngFor="let tag of project.tags.slice(0, showDetails ? project.tags.length : 3)" 
+        [label]="tag" 
+        styleClass="mr-2 mb-2">
+      </p-chip>
+      <span *ngIf="!showDetails && project.tags.length > 3" class="text-secondary">
+        +{{ project.tags.length - 3 }} more
+      </span>
+    </div>
+    
+    <!-- Tools Used (if showing details) -->
+    <div *ngIf="showDetails && project.tools.length > 0" class="tools-section mb-4">
+      <h5 class="mb-2 text-primary">Tools Used</h5>
+      <div class="flex flex-wrap gap-2">
+        <span 
+          *ngFor="let tool of project.tools" 
+          class="tool-badge">
+          {{ tool }}
+        </span>
+      </div>
+    </div>
+    
+    <!-- Results (if showing details) -->
+    <div *ngIf="showDetails && project.results.length > 0" class="results-section mb-4">
+      <h5 class="mb-2 text-primary">Key Results</h5>
+      <ul class="results-list">
+        <li *ngFor="let result of project.results" class="mb-1">
+          <i class="pi pi-check text-green-500 mr-2"></i>
+          {{ result }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Project Actions -->
+  <ng-template pTemplate="footer">
+    <div class="project-actions flex justify-content-between align-items-center">
+      <div class="project-links">
+        <p-button 
+          *ngIf="project.liveUrl"
+          label="Live Demo" 
+          icon="pi pi-external-link" 
+          styleClass="p-button-outlined p-button-sm mr-2"
+          (click)="$event.stopPropagation()">
+        </p-button>
+        
+        <p-button 
+          *ngIf="project.caseStudyUrl"
+          label="Case Study" 
+          icon="pi pi-file" 
+          styleClass="p-button-outlined p-button-sm"
+          (click)="$event.stopPropagation()">
+        </p-button>
+      </div>
+      
+      <p-button 
+        *ngIf="!showDetails"
+        label="View Details" 
+        icon="pi pi-arrow-right" 
+        styleClass="p-button-primary p-button-sm"
+        [routerLink]="['/project', project.id]">
+      </p-button>
+    </div>
+  </ng-template>
+</p-card>

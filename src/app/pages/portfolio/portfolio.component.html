@@ -1,0 +1,212 @@
+<div class="portfolio-container">
+  <!-- Portfolio Hero Section -->
+  <section class="portfolio-hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="pi pi-briefcase"></i>
+          <span>My Work</span>
+        </div>
+        <h1 class="hero-title">
+          Creative <span class="gradient-text">Portfolio</span>
+        </h1>
+        <p class="hero-subtitle">
+          Explore my collection of innovative design projects showcasing expertise in 
+          UI/UX design, web applications, and digital experiences
+        </p>
+        
+        <!-- Portfolio Statistics -->
+        <div class="portfolio-stats">
+          <div class="stat-item">
+            <div class="stat-number">{{ portfolioStats().totalProjects }}+</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">{{ portfolioStats().featuredProjects }}+</div>
+            <div class="stat-label">Featured Works</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">{{ portfolioStats().uniqueCategories }}+</div>
+            <div class="stat-label">Design Categories</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">{{ portfolioStats().uniqueTechnologies }}+</div>
+            <div class="stat-label">Tools & Technologies</div>
+          </div>
+        </div>
+        
+        <div class="hero-actions">
+          <button class="btn btn-primary">
+            <i class="pi pi-eye"></i>
+            View All Projects
+          </button>
+          <button class="btn btn-secondary">
+            <i class="pi pi-download"></i>
+            Download Portfolio
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters Section -->
+  <section class="filters-section">
+    <div class="container">
+      <div class="filters-card">
+        <h3 class="filters-title">
+          <i class="pi pi-filter"></i>
+          Filter Projects
+        </h3>
+        
+        <div class="filters-content">
+          <!-- Search Input -->
+          <div class="search-input">
+            <div class="input-group">
+              <i class="pi pi-search"></i>
+              <input 
+                type="text" 
+                placeholder="Search projects by name or description..." 
+                [value]="searchTerm()"
+                (input)="onSearchChange($event)" 
+                class="search-field" />
+            </div>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="category-filters">
+            <h4 class="filter-group-title">Categories</h4>
+            <div class="filter-chips">
+              <div 
+                *ngFor="let category of categories()" 
+                class="filter-chip" 
+                [class.active]="selectedCategory() === category.value"
+                (click)="onCategoryChange({value: category.value === selectedCategory() ? '' : category.value})">
+                <span>{{ category.label }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clear Filters -->
+          <div class="filter-actions" *ngIf="searchTerm() || selectedCategory() || selectedTechnology()">
+            <button class="btn btn-outline" (click)="clearAllFilters()">
+              <i class="pi pi-times"></i>
+              Clear All Filters
+            </button>
+          </div>
+        </div>
+
+        <!-- Active Filters Display -->
+        <div class="active-filters" *ngIf="searchTerm() || selectedCategory() || selectedTechnology()">
+          <h4 class="active-filters-title">Active Filters:</h4>
+          <div class="active-filter-tags">
+            <div class="filter-tag" *ngIf="searchTerm()">
+              <span>Search: {{ searchTerm() }}</span>
+              <i class="pi pi-times" (click)="searchTerm.set(''); applyFilters()"></i>
+            </div>
+            
+            <div class="filter-tag" *ngIf="selectedCategory()">
+              <span>Category: {{ selectedCategory() }}</span>
+              <i class="pi pi-times" (click)="selectedCategory.set(''); applyFilters()"></i>
+            </div>
+            
+            <div class="filter-tag" *ngIf="selectedTechnology()">
+              <span>Tool: {{ selectedTechnology() }}</span>
+              <i class="pi pi-times" (click)="selectedTechnology.set(''); applyFilters()"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid Section -->
+  <section class="projects-section">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header">
+        <h2 class="section-title">
+          <span class="section-badge">Featured Work</span>
+          Project Showcase
+        </h2>
+        <div class="results-count">
+          <span>Showing {{ filteredProjects().length }} of {{ projects().length }} projects</span>
+        </div>
+      </div>
+
+      <!-- Loading State -->
+      <div *ngIf="isLoading()" class="loading-grid">
+        <div class="projects-grid">
+          <div class="project-skeleton" *ngFor="let i of [1,2,3,4,5,6]">
+            <div class="skeleton-image"></div>
+            <div class="skeleton-content">
+              <div class="skeleton-title"></div>
+              <div class="skeleton-text"></div>
+              <div class="skeleton-text short"></div>
+              <div class="skeleton-tags">
+                <div class="skeleton-tag"></div>
+                <div class="skeleton-tag"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div *ngIf="!isLoading()" class="projects-grid">
+        <div class="projects-grid" *ngIf="filteredProjects().length > 0">
+          <div *ngFor="let project of filteredProjects(); trackBy: trackByProjectId" class="project-item">
+            <app-project-card [project]="project"></app-project-card>
+          </div>
+        </div>
+
+        <!-- No Results State -->
+        <div *ngIf="filteredProjects().length === 0" class="no-results">
+          <div class="no-results-content">
+            <div class="no-results-icon">
+              <i class="pi pi-search"></i>
+            </div>
+            <h3 class="no-results-title">No projects found</h3>
+            <p class="no-results-description">
+              Try adjusting your search criteria or clearing the filters to see more projects.
+            </p>
+            <button class="btn btn-primary" (click)="clearAllFilters()">
+              <i class="pi pi-filter-slash"></i>
+              Clear All Filters
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+    <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to Start Your Next Project?</h2>
+          <p class="cta-description">
+            Let's collaborate to bring your vision to life with innovative design solutions 
+            that drive results and create exceptional user experiences.
+          </p>
+          <div class="cta-actions">
+            <button class="btn btn-primary" routerLink="/contact">
+              <i class="pi pi-send"></i>
+              Start a Project
+            </button>
+            <button class="btn btn-secondary" routerLink="/about">
+              <i class="pi pi-user"></i>
+              Learn About Me
+            </button>
+          </div>
+        </div>
+        <div class="cta-decoration">
+          <div class="decoration-circle"></div>
+          <div class="decoration-dots"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,194 @@
+{
+  "personalInfo": {
+    "name": "Sandeep K",
+    "title": "UI/UX Designer",
+    "location": "Bangalore, India",
+    "email": "sandeepk.designer@example.com",
+    "phone": "+91 9876543210",
+    "linkedin": "https://linkedin.com/in/sandeepk-designer",
+    "behance": "https://behance.net/sandeepk",
+    "dribbble": "https://dribbble.com/sandeepk",
+    "instagram": "https://instagram.com/sandeepk_design",
+    "profileImage": "https://ui-avatars.com/api/?name=Sandeep+K&size=400&background=2563eb&color=ffffff&bold=true",
+    "bio": "Passionate UI/UX Designer with 5+ years of experience creating intuitive and visually appealing digital experiences. I specialize in transforming complex problems into simple, elegant solutions that delight users and drive business results.",
+    "resumeUrl": "/assets/files/sandeep-k-resume.pdf"
+  },
+  "skills": [
+    {
+      "name": "UI/UX Design",
+      "level": 95,
+      "category": "design",
+      "icon": "pi pi-palette"
+    },
+    {
+      "name": "User Research",
+      "level": 88,
+      "category": "design",
+      "icon": "pi pi-search"
+    },
+    {
+      "name": "Prototyping",
+      "level": 92,
+      "category": "design",
+      "icon": "pi pi-clone"
+    },
+    {
+      "name": "Wireframing",
+      "level": 90,
+      "category": "design",
+      "icon": "pi pi-sitemap"
+    },
+    {
+      "name": "Figma",
+      "level": 95,
+      "category": "tools",
+      "icon": "pi pi-desktop"
+    },
+    {
+      "name": "Adobe XD",
+      "level": 85,
+      "category": "tools",
+      "icon": "pi pi-desktop"
+    },
+    {
+      "name": "Sketch",
+      "level": 80,
+      "category": "tools",
+      "icon": "pi pi-desktop"
+    },
+    {
+      "name": "Adobe Creative Suite",
+      "level": 88,
+      "category": "tools",
+      "icon": "pi pi-image"
+    },
+    {
+      "name": "Principle",
+      "level": 75,
+      "category": "tools",
+      "icon": "pi pi-play"
+    },
+    {
+      "name": "InVision",
+      "level": 82,
+      "category": "tools",
+      "icon": "pi pi-eye"
+    },
+    {
+      "name": "Problem Solving",
+      "level": 90,
+      "category": "soft-skills",
+      "icon": "pi pi-cog"
+    },
+    {
+      "name": "Team Collaboration",
+      "level": 92,
+      "category": "soft-skills",
+      "icon": "pi pi-users"
+    },
+    {
+      "name": "Communication",
+      "level": 88,
+      "category": "soft-skills",
+      "icon": "pi pi-comments"
+    },
+    {
+      "name": "Creative Thinking",
+      "level": 94,
+      "category": "soft-skills",
+      "icon": "pi pi-star"
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp1",
+      "title": "Senior UI/UX Designer",
+      "company": "TechFlow Solutions",
+      "location": "Bangalore, India",
+      "duration": "2 years 3 months",
+      "startDate": "2022-01",
+      "endDate": "2024-04",
+      "description": "Led design initiatives for multiple web and mobile applications, focusing on user-centered design principles and conversion optimization.",
+      "responsibilities": [
+        "Lead design team of 4 designers across multiple projects",
+        "Conduct user research and usability testing sessions",
+        "Create wireframes, prototypes, and high-fidelity designs",
+        "Collaborate with product managers and developers",
+        "Establish and maintain design system consistency"
+      ],
+      "achievements": [
+        "Increased user engagement by 45% through redesign of main product",
+        "Reduced user onboarding time by 60% with improved UX flow",
+        "Successfully launched 8 major product features",
+        "Mentored 2 junior designers"
+      ],
+      "technologies": ["Figma", "Adobe XD", "Principle", "Zeplin", "Miro"]
+    },
+    {
+      "id": "exp2",
+      "title": "UI/UX Designer",
+      "company": "Digital Craft Studio",
+      "location": "Bangalore, India",
+      "duration": "1 year 8 months",
+      "startDate": "2020-05",
+      "endDate": "2021-12",
+      "description": "Designed user interfaces for e-commerce platforms and mobile applications with focus on conversion optimization and user satisfaction.",
+      "responsibilities": [
+        "Design user interfaces for web and mobile applications",
+        "Create user personas and journey maps",
+        "Conduct competitive analysis and market research",
+        "Collaborate with development team for implementation",
+        "Present design concepts to stakeholders"
+      ],
+      "achievements": [
+        "Improved conversion rate by 35% for e-commerce platform",
+        "Designed award-winning mobile app interface",
+        "Reduced bounce rate by 40% through UX improvements",
+        "Completed 15+ successful projects"
+      ],
+      "technologies": ["Sketch", "InVision", "Adobe Creative Suite", "Figma"]
+    },
+    {
+      "id": "exp3",
+      "title": "Junior UI Designer",
+      "company": "Creative Minds Agency",
+      "location": "Bangalore, India",
+      "duration": "1 year 6 months",
+      "startDate": "2019-01",
+      "endDate": "2020-04",
+      "description": "Started career focusing on visual design and brand identity, developing skills in user interface design and design thinking methodologies.",
+      "responsibilities": [
+        "Create visual designs for websites and mobile apps",
+        "Develop brand identity and marketing materials",
+        "Support senior designers in project execution",
+        "Learn design tools and methodologies",
+        "Participate in client presentations"
+      ],
+      "achievements": [
+        "Contributed to 20+ successful project deliveries",
+        "Received 'Rising Star' award for outstanding performance",
+        "Mastered multiple design tools and software",
+        "Built strong foundation in design principles"
+      ],
+      "technologies": ["Adobe Photoshop", "Adobe Illustrator", "Sketch", "InVision"]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu1",
+      "degree": "Bachelor of Design (B.Des) in Visual Communication",
+      "institution": "National Institute of Design",
+      "location": "Ahmedabad, India",
+      "duration": "4 years",
+      "startDate": "2015-07",
+      "endDate": "2019-06",
+      "description": "Comprehensive design education covering visual communication, user experience design, design thinking, and creative problem-solving methodologies.",
+      "achievements": [
+        "Graduated with First Class Honors",
+        "Winner of Annual Design Competition 2018",
+        "President of Design Students Association",
+        "Completed internship at leading design agency"
+      ]
+    }
+  ]
+}

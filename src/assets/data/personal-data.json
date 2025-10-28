@@ -1,0 +1,118 @@
+{
+  "personalInfo": {
+    "name": "Sandeep K",
+    "title": "UI/UX Designer",
+    "location": "Hyderabad, India",
+    "email": "sandeepkandula16@gmail.com",
+    "phone": "+91 9908763418",
+    "linkedin": "https://linkedin.com/in/sandeepk-designer",
+    "instagram": "https://instagram.com/sandeepk_design",
+    "profileImage": "/assets/images/sandeep-profile.jpg",
+    "bio": "Passionate UI/UX Designer with 15+ years of experience creating intuitive and visually appealing digital experiences. I specialize in transforming complex problems into simple, elegant solutions that delight users and drive business results.",
+    "resumeUrl": "/assets/files/sandeep-k-resume.pdf"
+  },
+  "skills": [
+    {
+      "name": "UI/UX Design",
+      "level": 95,
+      "category": "design",
+      "icon": "pi pi-palette"
+    },
+    {
+      "name": "User Research",
+      "level": 88,
+      "category": "design",
+      "icon": "pi pi-search"
+    },
+    {
+      "name": "Prototyping",
+      "level": 92,
+      "category": "design",
+      "icon": "pi pi-clone"
+    },
+    {
+      "name": "Wireframing",
+      "level": 90,
+      "category": "design",
+      "icon": "pi pi-sitemap"
+    },
+    {
+      "name": "Figma",
+      "level": 95,
+      "category": "tools",
+      "icon": "pi pi-desktop"
+    },
+    {
+      "name": "Adobe XD",
+      "level": 85,
+      "category": "tools",
+      "icon": "pi pi-desktop"
+    },
+    {
+      "name": "Sketch",
+      "level": 80,
+      "category": "tools",
+      "icon": "pi pi-desktop"
+    },
+    {
+      "name": "Adobe Creative Suite",
+      "level": 88,
+      "category": "tools",
+      "icon": "pi pi-image"
+    },
+    {
+      "name": "Principle",
+      "level": 75,
+      "category": "tools",
+      "icon": "pi pi-play"
+    },
+    {
+      "name": "InVision",
+      "level": 82,
+      "category": "tools",
+      "icon": "pi pi-eye"
+    },
+    {
+      "name": "Problem Solving",
+      "level": 90,
+      "category": "soft-skills",
+      "icon": "pi pi-cog"
+    },
+    {
+      "name": "Team Collaboration",
+      "level": 92,
+      "category": "soft-skills",
+      "icon": "pi pi-users"
+    },
+    {
+      "name": "Communication",
+      "level": 88,
+      "category": "soft-skills",
+      "icon": "pi pi-comments"
+    },
+    {
+      "name": "Creative Thinking",
+      "level": 94,
+      "category": "soft-skills",
+      "icon": "pi pi-star"
+    }
+  ],
+  "education": [
+    {
+      "id": "edu1",
+      "degree": "Bachelor of Design (B.Des) in Visual Communication",
+      "institution": "National Institute of Design",
+      "location": "Warangal, Telangana, India",
+      "duration": "4 years",
+      "startDate": "2015-07",
+      "endDate": "2019-06",
+      "description": "Comprehensive design education covering visual communication, user experience design, design thinking, and creative problem-solving methodologies.",
+      "achievements": [
+        "Graduated with First Class Honors",
+        "Winner of Annual Design Competition 2018",
+        "President of Design Students Association",
+        "Completed internship at leading design agency"
+      ]
+    }
+  ]
+}
