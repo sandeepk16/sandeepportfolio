@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, combineLatest, map } from 'rxjs';
+import { Observable, combineLatest, map, of } from 'rxjs';
 import { 
   PersonalInfo, 
   Skill, 
   Education, 
+  Experience,
   Project, 
   Testimonial, 
   Service, 
-  Achievement 
+  Achievement,
+  SkillEvolution 
 } from '../models/portfolio.model';
 
 @Injectable({
@@ -43,6 +45,12 @@ export class PortfolioService {
   getEducation(): Observable<Education[]> {
     return this.http.get<{education: Education[]}>('/assets/data/personal-data.json')
       .pipe(map(data => data.education));
+  }
+
+  // Get experience data
+  getExperience(): Observable<Experience[]> {
+    return this.http.get<{experience: Experience[]}>('/assets/data/personal-data.json')
+      .pipe(map(data => data.experience));
   }
 
   // Get all projects
@@ -90,6 +98,12 @@ export class PortfolioService {
       .pipe(map(data => data.achievements));
   }
 
+  // Get skill evolution data
+  getSkillEvolution(): Observable<SkillEvolution[]> {
+    return this.http.get<{skillEvolution: SkillEvolution[]}>('/assets/data/personal-data.json')
+      .pipe(map(data => data.skillEvolution));
+  }
+
   // Get complete portfolio data
   getCompletePortfolioData(): Observable<{
     personalInfo: PersonalInfo;
@@ -127,24 +141,80 @@ export class PortfolioService {
     yearsOfExperience: number;
     totalSkills: number;
     clientsSatisfied: number;
+    totalCompanies: number;
   }> {
     return combineLatest([
+      this.getPersonalInfo(),
       this.getProjects(),
       this.getSkills(),
-      this.getTestimonials()
+      this.getTestimonials(),
+      this.getExperience()
     ]).pipe(
-      map(([projects, skills, testimonials]) => {
-        // Static years of experience since we removed experience data
-        const yearsOfExperience = 15; // Based on the bio mention of "15+ years"
+      map(([personalInfo, projects, skills, testimonials, experience]) => {
+        // Calculate dynamic years of experience using direct calculation
+        const startDate = new Date('2009-05-01');
+        const currentDate = new Date();
+        
+        const yearsDiff = currentDate.getFullYear() - startDate.getFullYear();
+        const monthsDiff = currentDate.getMonth() - startDate.getMonth();
+        
+        let yearsOfExperience = yearsDiff;
+        if (monthsDiff < 0) {
+          yearsOfExperience--;
+        }
+        
+        // Get unique companies count
+        const uniqueCompanies = new Set(experience.map(exp => exp.company)).size;
 
         return {
           totalProjects: projects.length,
           yearsOfExperience: yearsOfExperience,
           totalSkills: skills.length,
-          clientsSatisfied: testimonials.length
+          clientsSatisfied: testimonials.length,
+          totalCompanies: uniqueCompanies
         };
       })
     );
+  }
+
+  // Calculate experience duration
+  calculateExperienceDuration(startDate: string, endDate?: string | null): string {
+    const start = new Date(startDate);
+    const end = endDate ? new Date(endDate) : new Date();
+    
+    const diffTime = Math.abs(end.getTime() - start.getTime());
+    const diffYears = Math.floor(diffTime / (1000 * 60 * 60 * 24 * 365.25));
+    const diffMonths = Math.floor((diffTime % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+    
+    if (diffYears > 0) {
+      return diffMonths > 0 ? `${diffYears}.${Math.floor(diffMonths/3)} Years` : `${diffYears} Years`;
+    } else {
+      return `${diffMonths} Months`;
+    }
+  }
+
+  // Get total experience duration
+  getTotalExperience(): Observable<string> {
+    // Direct calculation without depending on personal info
+    const startDate = new Date('2009-05-01');
+    const currentDate = new Date();
+    
+    const yearsDiff = currentDate.getFullYear() - startDate.getFullYear();
+    const monthsDiff = currentDate.getMonth() - startDate.getMonth();
+    
+    let totalYears = yearsDiff;
+    if (monthsDiff < 0) {
+      totalYears--;
+    }
+    
+    // Ensure we have a valid result
+    if (isNaN(totalYears) || totalYears <= 0) {
+      totalYears = 16; // Fallback value
+    }
+    
+    const result = `${totalYears}+ Years`;
+    
+    return of(result);
   }
 
   // Search projects by keyword

@@ -7,9 +7,10 @@
     "phone": "+91 9908763418",
     "linkedin": "https://linkedin.com/in/sandeepk-designer",
     "instagram": "https://instagram.com/sandeepk_design",
-    "profileImage": "/assets/images/sandeep-profile.jpg",
+    "profileImage": "/assets/images/sandeep-profile.svg",
     "bio": "Passionate UI/UX Designer with 15+ years of experience creating intuitive and visually appealing digital experiences. I specialize in transforming complex problems into simple, elegant solutions that delight users and drive business results.",
-    "resumeUrl": "/assets/files/sandeep-k-resume.pdf"
+    "resumeUrl": "/assets/files/sandeep-k-resume.pdf",
+    "experienceStartDate": "2009-05-01"
   },
   "skills": [
     {
@@ -113,6 +114,204 @@
         "President of Design Students Association",
         "Completed internship at leading design agency"
       ]
+    }
+  ],
+  "experience": [
+    {
+      "id": "medicover",
+      "title": "Sr. UI/UX Designer & Developer",
+      "company": "Medicover Tech India",
+      "location": "Hyderabad, India",
+      "duration": "Feb 2021 – Present",
+      "startDate": "2021-02-03",
+      "endDate": null,
+      "current": true,
+      "description": "Leading UI/UX design and development initiatives for enterprise-level applications, focusing on user-centered design principles and modern development practices.",
+      "responsibilities": [
+        "Lead design system implementation across multiple product lines",
+        "Collaborate with cross-functional teams to deliver user-centered solutions",
+        "Mentor junior designers and developers",
+        "Conduct user research and usability testing"
+      ],
+      "achievements": [
+        "Led design system implementation across 5+ product lines",
+        "Improved user engagement by 40% through UX optimization",
+        "Mentored junior designers and developers",
+        "Established design-to-development workflow processes"
+      ],
+      "technologies": ["Adobe XD", "Figma", "Angular", "TypeScript"]
+    },
+    {
+      "id": "hitachi",
+      "title": "Sr. UI/UX Designer",
+      "company": "Hitachi",
+      "location": "Hyderabad, India",
+      "duration": "Sep 2019 – Feb 2020",
+      "startDate": "2019-09-02",
+      "endDate": "2020-01-31",
+      "current": true,
+      "description": "Leading UI/UX design and development initiatives for enterprise-level applications, focusing on user-centered design principles and modern development practices.",
+      "responsibilities": [
+        "Lead design system implementation across multiple product lines",
+        "Collaborate with cross-functional teams to deliver user-centered solutions",
+        "Mentor junior designers and developers",
+        "Conduct user research and usability testing"
+      ],
+      "achievements": [
+        "Mentored designers and developers",
+        "Established design-to-development workflow processes"
+      ],
+      "technologies": ["React", "Angular", "Figma", "Adobe Creative Suite", "TypeScript", "SASS"]
+    },
+    {
+      "id": "healthipass",
+      "title": "Sr. UI/UX Designer & Front-End Developer",
+      "company": "HealthiPASS",
+      "location": "Hyderabad, India",
+      "duration": "Sep 2018 – Sep 2019",
+      "startDate": "2018-09-01",
+      "endDate": "2019-08-30",
+      "current": false,
+      "description": "Designed and developed healthcare technology interfaces, focusing on accessibility and user experience for medical professionals and patients.",
+      "responsibilities": [
+        "Design HIPAA-compliant user interfaces",
+        "Develop responsive healthcare applications",
+        "Conduct user research with medical professionals",
+        "Implement accessibility standards"
+      ],
+      "achievements": [
+        "Designed HIPAA-compliant user interfaces",
+        "Reduced user onboarding time by 60%",
+        "Implemented responsive design across all platforms",
+        "Collaborated with medical professionals for UX research"
+      ],
+      "technologies": ["Vue.js", "Sketch", "InVision", "HTML5", "CSS3", "JavaScript"]
+    },
+    {
+      "id": "arkhya-tech",
+      "title": "Sr. UI/UX Designer Specialist",
+      "company": "Arkhya Tech",
+      "location": "Hyderabad, India",
+      "duration": "Aug 2016 – Aug 2018",
+      "startDate": "2016-08-01",
+      "endDate": "2018-08-01",
+      "current": false,
+      "description": "Specialized in creating innovative digital experiences for tech startups and established companies, with focus on mobile-first design approaches.",
+      "responsibilities": [
+        "Design mobile-first user interfaces",
+        "Create interactive prototypes",
+        "Conduct design workshops",
+        "Develop UI component libraries"
+      ],
+      "achievements": [
+        "Designed 15+ successful mobile applications",
+        "Increased client satisfaction scores by 35%",
+        "Developed reusable UI component libraries",
+        "Led workshops on design thinking methodologies"
+      ],
+      "technologies": ["Photoshop", "Illustrator", "Sketch", "Principle", "jQuery", "Bootstrap"]
+    },
+    {
+      "id": "bimarian",
+      "title": "Sr. UI/UX Designer Engineer",
+      "company": "Bimarian Information Technologies Pvt. Ltd",
+      "location": "Hyderabad, India",
+      "duration": "Mar 2014 – Aug 2016",
+      "startDate": "2014-03-01",
+      "endDate": "2016-08-01",
+      "current": false,
+      "description": "Engineered user interface solutions for enterprise software, combining design expertise with technical development skills.",
+      "responsibilities": [
+        "Design enterprise software interfaces",
+        "Develop UI components using web technologies",
+        "Train development teams on UI/UX practices",
+        "Establish quality assurance processes"
+      ],
+      "achievements": [
+        "Delivered 20+ enterprise software interfaces",
+        "Reduced development time by 25% through design systems",
+        "Trained development teams on UI/UX best practices",
+        "Established quality assurance processes for UI development"
+      ],
+      "technologies": ["Adobe Creative Suite", "HTML", "CSS", "JavaScript", "PHP", "MySQL"]
+    },
+    {
+      "id": "vipit",
+      "title": "UI/UX Designer",
+      "company": "VIPIT Service Pvt. Ltd",
+      "location": "Hyderabad, India",
+      "duration": "Oct 2012 – Feb 2014",
+      "startDate": "2012-10-01",
+      "endDate": "2014-02-01",
+      "current": false,
+      "description": "Focused on web and mobile interface design for various client projects, developing strong foundation in user experience principles.",
+      "responsibilities": [
+        "Design responsive web interfaces",
+        "Create mobile app UI designs",
+        "Collaborate with clients on design requirements",
+        "Implement feedback integration processes"
+      ],
+      "achievements": [
+        "Completed 30+ client projects successfully",
+        "Improved website conversion rates by 20%",
+        "Established client feedback integration processes",
+        "Developed cross-browser compatible interfaces"
+      ],
+      "technologies": ["Photoshop", "Illustrator", "HTML", "CSS", "JavaScript"]
+    },
+    {
+      "id": "pegasys",
+      "title": "Web Designer",
+      "company": "Pegasys Information Technologies",
+      "location": "Hyderabad, India",
+      "duration": "May 2009 – Oct 2012",
+      "startDate": "2009-05-01",
+      "endDate": "2012-10-01",
+      "current": false,
+      "description": "Started career in web design, focusing on creating visually appealing and functional websites for diverse industry clients.",
+      "responsibilities": [
+        "Design and develop websites from concept to completion",
+        "Create visual designs using Adobe Creative Suite",
+        "Implement web standards and best practices",
+        "Manage client relationships and project timelines"
+      ],
+      "achievements": [
+        "Designed and developed 50+ websites",
+        "Established design workflow and quality standards",
+        "Built strong foundation in web technologies",
+        "Developed client communication and project management skills"
+      ],
+      "technologies": ["Photoshop", "Dreamweaver", "HTML", "CSS", "Flash", "ActionScript"]
+    }
+  ],
+  "skillEvolution": [
+    {
+      "id": "era1",
+      "years": "2009-2012",
+      "focus": "Foundation",
+      "description": "Building core design and web development skills",
+      "tools": ["Photoshop", "Illustrator", "HTML/CSS", "jQuery"]
+    },
+    {
+      "id": "era2", 
+      "years": "2013-2016",
+      "focus": "Growth",
+      "description": "Expanding into user experience and responsive design",
+      "tools": ["Sketch", "InVision", "Bootstrap", "Responsive Design"]
+    },
+    {
+      "id": "era3",
+      "years": "2017-2020", 
+      "focus": "Specialization",
+      "description": "Mastering modern frameworks and design systems",
+      "tools": ["Figma", "React", "Angular", "Design Systems"]
+    },
+    {
+      "id": "era4",
+      "years": "2021-Present",
+      "focus": "Leadership",
+      "description": "Leading teams and implementing cutting-edge design solutions",
+      "tools": ["Advanced Prototyping", "AI Integration", "Team Management"]
     }
   ]
 }

@@ -18,17 +18,17 @@
             {{ personalInfo.bio }}
           </p>
           
-          <div class="hero-stats">
+          <div class="hero-stats" *ngIf="portfolioStats$ | async as stats">
             <div class="stat-item">
-              <span class="stat-number">15+</span>
+              <span class="stat-number">{{ stats.yearsOfExperience }}+</span>
               <span class="stat-label">Years Experience</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">100+</span>
+              <span class="stat-number">{{ stats.totalProjects }}+</span>
               <span class="stat-label">Projects Completed</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">50+</span>
+              <span class="stat-number">{{ stats.clientsSatisfied }}+</span>
               <span class="stat-label">Happy Clients</span>
             </div>
           </div>

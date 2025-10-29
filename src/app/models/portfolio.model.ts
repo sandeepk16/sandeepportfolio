@@ -5,12 +5,13 @@ export interface PersonalInfo {
   email: string;
   phone: string;
   linkedin: string;
-  behance: string;
-  dribbble: string;
+  behance?: string;
+  dribbble?: string;
   instagram: string;
   profileImage: string;
   bio: string;
   resumeUrl: string;
+  experienceStartDate: string;
 }
 
 export interface Skill {
@@ -27,7 +28,8 @@ export interface Experience {
   location: string;
   duration: string;
   startDate: string;
-  endDate?: string;
+  endDate?: string | null;
+  current: boolean;
   description: string;
   responsibilities: string[];
   achievements: string[];
@@ -133,4 +135,12 @@ export interface Achievement {
   type: 'award' | 'certification' | 'recognition';
   issuer?: string;
   icon?: string;
+}
+
+export interface SkillEvolution {
+  id: string;
+  years: string;
+  focus: string;
+  description: string;
+  tools: string[];
 }

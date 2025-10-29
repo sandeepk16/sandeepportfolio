@@ -199,7 +199,7 @@
           <div class="section-header">
             <span class="section-badge">PROFESSIONAL JOURNEY</span>
             <h2 class="section-title font-display">
-              <span class="title-line">15+ Years</span>
+              <span class="title-line">{{ totalExperience$ | async }}</span>
               <span class="title-line gradient-text">Experience</span>
             </h2>
             <p class="section-subtitle">
@@ -213,8 +213,8 @@
               <div class="highlight-icon">
                 <i class="pi pi-building"></i>
               </div>
-              <div class="highlight-content">
-                <h4>6+ Companies</h4>
+              <div class="highlight-content" *ngIf="portfolioStats$ | async as stats">
+                <h4>{{ stats.totalCompanies }}+ Companies</h4>
                 <p>Led design teams across startups and enterprises</p>
               </div>
             </div>
@@ -223,8 +223,8 @@
               <div class="highlight-icon">
                 <i class="pi pi-users"></i>
               </div>
-              <div class="highlight-content">
-                <h4>50+ Projects</h4>
+              <div class="highlight-content" *ngIf="portfolioStats$ | async as stats">
+                <h4>{{ stats.totalProjects }}+ Projects</h4>
                 <p>Delivered exceptional user experiences</p>
               </div>
             </div>
@@ -250,14 +250,14 @@
         
         <div class="experience-visual">
           <div class="career-timeline">
-            <div class="timeline-item current" *ngFor="let job of recentExperience">
+            <div class="timeline-item current" *ngFor="let job of recentExperience$ | async">
               <div class="timeline-marker">
                 <div class="marker-dot">
                   <i class="pi pi-briefcase"></i>
                 </div>
               </div>
               <div class="timeline-content">
-                <div class="job-period">{{ job.startDate }} - {{ job.current ? 'Present' : job.endDate }}</div>
+                <div class="job-period">{{ formatExperiencePeriod(job.startDate, job.endDate, job.current) }}</div>
                 <h4 class="job-title">{{ job.title }}</h4>
                 <p class="company-name">{{ job.company }}</p>
                 <div class="job-technologies">
@@ -280,7 +280,7 @@
       </div>
       
       <div class="services-preview-grid">
-        <div class="service-preview-card" *ngFor="let service of servicesPreviews">
+        <div class="service-preview-card" *ngFor="let service of servicesPreviews$ | async">
           <div class="service-icon">
             <i [class]="service.icon"></i>
           </div>

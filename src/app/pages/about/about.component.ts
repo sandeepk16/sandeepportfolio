@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { ChipModule } from 'primeng/chip';
@@ -17,6 +18,7 @@ import { PersonalInfo, Education, Achievement } from '../../models/portfolio.mod
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     CardModule,
     ButtonModule,
     ChipModule,
@@ -30,6 +32,13 @@ export class AboutComponent implements OnInit {
   personalInfo$: Observable<PersonalInfo>;
   education$: Observable<Education[]>;
   achievements$: Observable<Achievement[]>;
+  portfolioStats$: Observable<{
+    totalProjects: number;
+    yearsOfExperience: number;
+    totalSkills: number;
+    clientsSatisfied: number;
+    totalCompanies: number;
+  }>;
   contactInfo: ContactInfo | null = null;
 
   constructor(
@@ -39,6 +48,7 @@ export class AboutComponent implements OnInit {
     this.personalInfo$ = this.portfolioService.getPersonalInfo();
     this.education$ = this.portfolioService.getEducation();
     this.achievements$ = this.portfolioService.getAchievements();
+    this.portfolioStats$ = this.portfolioService.getPortfolioStats();
   }
 
   ngOnInit() {
@@ -58,8 +68,19 @@ export class AboutComponent implements OnInit {
   }
 
   downloadResume(): void {
-    // Implementation for resume download
-    console.log('Downloading resume...');
+    this.personalInfo$.subscribe(personalInfo => {
+      if (personalInfo.resumeUrl) {
+        // Create a temporary anchor element to trigger download
+        const link = document.createElement('a');
+        link.href = personalInfo.resumeUrl;
+        link.download = 'Sandeep-K-Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } else {
+        console.warn('Resume URL not found');
+      }
+    });
   }
 
   // Helper methods for contact information

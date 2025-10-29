@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, map } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { PersonalInfo } from '../models/portfolio.model';
 
 export interface ContactInfo {
   email: string;
@@ -31,69 +33,76 @@ export interface ContactInfo {
   providedIn: 'root'
 })
 export class ContactInfoService {
-  private contactInfo: ContactInfo = {
-    email: 'sandeepkandula16@gmail.com',
-    phone: '+91 9908763418',
-    location: 'Hyderabad, India',
-    address: {
-      city: 'Hyderabad',
-      state: 'Telangana',
-      country: 'India'
-    },
-    socialMedia: {
-      linkedin: 'https://linkedin.com/in/sandeepk-designer',
-      github: 'https://github.com/sandeepk',
-      twitter: 'https://twitter.com/sandeepk_design',
-      instagram: 'https://instagram.com/sandeepk_design',
-      dribbble: 'https://dribbble.com/sandeepk',
-      behance: 'https://behance.net/sandeepk'
-    },
-    businessHours: {
-      timezone: 'IST (UTC+5:30)',
-      workingDays: 'Monday - Friday',
-      workingHours: '9:00 AM - 6:00 PM'
-    }
-  };
+  private personalInfo$: Observable<PersonalInfo>;
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+    this.personalInfo$ = this.http.get<{personalInfo: PersonalInfo}>('/assets/data/personal-data.json')
+      .pipe(map(data => data.personalInfo));
+  }
 
   // Get complete contact information
   getContactInfo(): Observable<ContactInfo> {
-    return of(this.contactInfo);
+    return this.personalInfo$.pipe(
+      map(personalInfo => ({
+        email: personalInfo.email,
+        phone: personalInfo.phone,
+        location: personalInfo.location,
+        address: {
+          city: 'Hyderabad',
+          state: 'Telangana',
+          country: 'India'
+        },
+        socialMedia: {
+          linkedin: personalInfo.linkedin,
+          github: 'https://github.com/sandeepk',
+          twitter: 'https://twitter.com/sandeepk_design',
+          instagram: personalInfo.instagram,
+          dribbble: personalInfo.dribbble || 'https://dribbble.com/sandeepk',
+          behance: personalInfo.behance || 'https://behance.net/sandeepk'
+        },
+        businessHours: {
+          timezone: 'IST (UTC+5:30)',
+          workingDays: 'Monday - Friday',
+          workingHours: '9:00 AM - 6:00 PM'
+        }
+      }))
+    );
   }
 
-  // Get specific contact details
+  // Get specific contact details (fallback values for backward compatibility)
   getEmail(): string {
-    return this.contactInfo.email;
+    return 'sandeepkandula16@gmail.com';
   }
 
   getPhone(): string {
-    return this.contactInfo.phone;
+    return '+91 9908763418';
   }
 
   getLocation(): string {
-    return this.contactInfo.location;
+    return 'Hyderabad, India';
   }
 
   getFullAddress(): string {
-    const addr = this.contactInfo.address;
-    return `${addr.city}, ${addr.state}, ${addr.country}`;
+    return 'Hyderabad, Telangana, India';
   }
 
   // Get social media links
   getSocialMediaLinks(): Observable<ContactInfo['socialMedia']> {
-    return of(this.contactInfo.socialMedia);
+    return this.getContactInfo().pipe(
+      map(contactInfo => contactInfo.socialMedia)
+    );
   }
 
   // Get business information
   getBusinessHours(): Observable<ContactInfo['businessHours']> {
-    return of(this.contactInfo.businessHours);
+    return this.getContactInfo().pipe(
+      map(contactInfo => contactInfo.businessHours)
+    );
   }
 
   // Helper methods for formatted display
   getFormattedPhone(): string {
-    // Format: +91 99087 63418
-    const phone = this.contactInfo.phone;
+    const phone = '+91 9908763418';
     if (phone.startsWith('+91')) {
       return phone.replace('+91', '+91 ').replace(/(\d{5})(\d{5})/, '$1 $2');
     }
@@ -101,19 +110,19 @@ export class ContactInfoService {
   }
 
   getEmailLink(): string {
-    return `mailto:${this.contactInfo.email}`;
+    return 'mailto:sandeepkandula16@gmail.com';
   }
 
   getPhoneLink(): string {
-    return `tel:${this.contactInfo.phone}`;
+    return 'tel:+919908763418';
   }
 
   getLocationMapLink(): string {
-    return `https://maps.google.com/?q=${encodeURIComponent(this.getFullAddress())}`;
+    return 'https://maps.google.com/?q=Hyderabad%2C%20Telangana%2C%20India';
   }
 
-  // Update contact information (for admin purposes)
-  updateContactInfo(newContactInfo: Partial<ContactInfo>): void {
-    this.contactInfo = { ...this.contactInfo, ...newContactInfo };
+  // Get personal info observable for components to use
+  getPersonalInfo(): Observable<PersonalInfo> {
+    return this.personalInfo$;
   }
 }
