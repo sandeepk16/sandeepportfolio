@@ -93,36 +93,6 @@
     </div>
   </div>
   
-  <!-- Newsletter Section -->
-  <div class="footer-newsletter">
-    <div class="container">
-      <div class="newsletter-content">
-        <div class="newsletter-info">
-          <h3 class="newsletter-title font-display">Stay Updated</h3>
-          <p class="newsletter-description">
-            Get the latest insights on AI-powered design and creative innovation
-          </p>
-        </div>
-        
-        <div class="newsletter-form">
-          <div class="input-group">
-            <input 
-              type="email" 
-              placeholder="Enter your email address"
-              class="newsletter-input">
-            <button class="newsletter-btn">
-              <span>Subscribe</span>
-              <i class="pi pi-send"></i>
-            </button>
-          </div>
-          <p class="newsletter-note">
-            Join 500+ creatives already subscribed. No spam, ever.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  
   <!-- Footer Bottom -->
   <div class="footer-bottom">
     <div class="container">
@@ -131,15 +101,15 @@
           <p>&copy; {{ currentYear }} Sandeep K. All rights reserved.</p>
         </div>
         
-        <div class="footer-tagline">
+        <!-- <div class="footer-tagline" [hidden]="true">
           <span class="tagline-highlight">GENERATED FOR THE NEXT WAVE OF CREATORS</span>
-        </div>
+        </div> -->
         
-        <div class="legal-links">
+        <!-- <div class="legal-links" [hidden]="true">
           <a *ngFor="let link of legalLinks" [routerLink]="link.routerLink" class="legal-link">
             {{ link.label }}
           </a>
-        </div>
+        </div> -->
         
         <button class="back-to-top" (click)="scrollToTop()" title="Back to top">
           <i class="pi pi-chevron-up"></i>
