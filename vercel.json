@@ -1,26 +1,19 @@
 {
   "version": 2,
-  "name": "sandeep-portfolio",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/sandeep-portfolio"
-      }
-    }
-  ],
+  "buildCommand": "ng build --configuration production",
+  "outputDirectory": "dist/sandeep-portfolio/browser",
   "routes": [
     {
-      "handle": "filesystem"
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|svg|gif|webp|json))",
+      "dest": "/$1"
     },
     {
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "buildCommand": "ng build --configuration production",
-  "outputDirectory": "dist/sandeep-portfolio",
-  "installCommand": "npm install",
-  "framework": "angular"
+  ]
 }
