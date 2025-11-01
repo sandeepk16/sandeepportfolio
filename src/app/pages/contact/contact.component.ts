@@ -47,11 +47,12 @@ export class ContactComponent implements OnInit {
   isLoading = signal<boolean>(true);
 
   constructor() {
-    // Initialize form with proper SSR handling
+    // Initialize form with proper SSR handling - avoid null validators during SSR
     this.contactForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(2)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       subject: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      budget: new FormControl(''), // Optional field
       message: new FormControl('', [Validators.required, Validators.minLength(10)])
     });
   }
