@@ -146,9 +146,9 @@
       "title": "Sr. UI/UX Designer",
       "company": "Hitachi",
       "location": "Hyderabad, India",
-      "duration": "Sep 2019 – Feb 2020",
-      "startDate": "2019-09-02",
-      "endDate": "2020-01-31",
+      "duration": "Dec 2019 – Feb 2020",
+      "startDate": "2019-12-01",
+      "endDate": "2020-02-29",
       "current": true,
       "description": "Leading UI/UX design and development initiatives for enterprise-level applications, focusing on user-centered design principles and modern development practices.",
       "responsibilities": [
@@ -313,5 +313,126 @@
       "description": "Leading teams and implementing cutting-edge design solutions",
       "tools": ["Advanced Prototyping", "AI Integration", "Team Management"]
     }
-  ]
+  ],
+  "skillsCategories": [
+    {
+      "id": "ui-design",
+      "title": "🎨 UI Design",
+      "icon": "pi pi-palette",
+      "description": "Creating visually appealing and user-friendly interfaces with modern design principles",
+      "skills": [
+        "Figma",
+        "Adobe XD",
+        "Sketch",
+        "Design Systems",
+        "Typography",
+        "Color Theory"
+      ]
+    },
+    {
+      "id": "ux-design",
+      "title": "💡 UX Design",
+      "icon": "pi pi-lightbulb",
+      "description": "Designing user-centered experiences through research, testing, and strategic thinking",
+      "skills": [
+        "Wireframing",
+        "User Flows",
+        "Usability Testing",
+        "Information Architecture",
+        "User Research",
+        "Prototyping"
+      ]
+    },
+    {
+      "id": "frontend-dev",
+      "title": "💻 Frontend Dev",
+      "icon": "pi pi-code",
+      "description": "Building responsive, performant web applications with modern technologies",
+      "skills": [
+        "HTML5",
+        "CSS3 (Flexbox, Grid)",
+        "TypeScript",
+        "Angular",
+        "React",
+        "Vue"
+      ]
+    },
+    {
+      "id": "performance-ssr",
+      "title": "⚙️ Performance & SSR",
+      "icon": "pi pi-cog",
+      "description": "Optimizing applications for speed, SEO, and superior user experiences",
+      "skills": [
+        "Lazy Loading",
+        "Angular Universal (SSR)",
+        "Lighthouse Audits",
+        "Web Vitals",
+        "Bundle Optimization",
+        "PWA"
+      ]
+    },
+    {
+      "id": "responsive-design",
+      "title": "📱 Responsive Design",
+      "icon": "pi pi-mobile",
+      "description": "Creating seamless experiences across all devices and ensuring accessibility",
+      "skills": [
+        "Mobile-First",
+        "Adaptive Layouts",
+        "Accessibility (WCAG)",
+        "Cross-browser Testing",
+        "Progressive Enhancement",
+        "Touch Optimization"
+      ]
+    },
+    {
+      "id": "soft-skills",
+      "title": "🧠 Soft Skills",
+      "icon": "pi pi-users",
+      "description": "Essential interpersonal and professional skills for effective teamwork and leadership",
+      "skills": [
+        "Empathy",
+        "Communication",
+        "Problem-Solving",
+        "Collaboration",
+        "Leadership",
+        "Mentoring"
+      ]
+    }
+  ],
+  "faqSection": {
+    "isActive": false,
+    "title": "Quick Questions?",
+    "subtitle": "Here are answers to some common questions about working with me.",
+    "faqs": [
+      {
+        "id": 1,
+        "question": "What's your typical response time?",
+        "answer": "I typically respond to all inquiries within 24 hours, often much sooner during business hours.",
+        "icon": "pi pi-question-circle",
+        "category": "general"
+      },
+      {
+        "id": 2,
+        "question": "Do you work with international clients?",
+        "answer": "Yes! I work with clients worldwide and am flexible with time zones for meetings and communication.",
+        "icon": "pi pi-question-circle",
+        "category": "general"
+      },
+      {
+        "id": 3,
+        "question": "What information should I include?",
+        "answer": "Please include your project goals, timeline, budget range, and any specific requirements you have.",
+        "icon": "pi pi-question-circle",
+        "category": "project"
+      },
+      {
+        "id": 4,
+        "question": "Do you offer free consultations?",
+        "answer": "Yes, I offer a free 30-minute consultation to discuss your project and see if we're a good fit.",
+        "icon": "pi pi-question-circle",
+        "category": "consultation"
+      }
+    ]
+  }
 }

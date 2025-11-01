@@ -184,27 +184,155 @@
   }
   
   .social-links-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-top: 1.5rem;
+    
     .social-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      
       .social-title {
         color: var(--text-color);
-        font-size: 1.1rem;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        font-family: var(--font-display);
+      }
+      
+      .social-subtitle {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        line-height: 1.5;
       }
     }
     
     .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      
       .social-item {
-        transition: all 0.3s ease;
-        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.25rem;
+        background: var(--surface-card);
+        border: 1px solid var(--surface-border);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.05) 100%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
         
         &:hover {
-          background-color: var(--surface-100);
-          transform: translateX(4px);
+          transform: translateY(-3px);
+          border-color: transparent;
+          
+          &::before {
+            opacity: 1;
+          }
+        }
+        
+        // LinkedIn specific styling
+        &:nth-child(1) {
+          &:hover {
+            background: linear-gradient(135deg, #0077B5 0%, #005885 100%);
+            box-shadow: 0 10px 30px rgba(0, 119, 181, 0.3);
+            
+            .social-icon {
+              background: rgba(255, 255, 255, 0.2);
+              
+              i {
+                color: white;
+              }
+            }
+            
+            .social-content {
+              .social-label,
+              .social-description {
+                color: white;
+              }
+            }
+          }
+        }
+        
+        // Behance specific styling
+        &:nth-child(2) {
+          &:hover {
+            background: linear-gradient(135deg, #1769FF 0%, #0B4FCC 100%);
+            box-shadow: 0 10px 30px rgba(23, 105, 255, 0.3);
+            
+            .social-icon {
+              background: rgba(255, 255, 255, 0.2);
+              
+              i {
+                color: white;
+              }
+            }
+            
+            .social-content {
+              .social-label,
+              .social-description {
+                color: white;
+              }
+            }
+          }
+        }
+        
+        // Dribbble specific styling
+        &:nth-child(3) {
+          &:hover {
+            background: linear-gradient(135deg, #EA4C89 0%, #C73669 100%);
+            box-shadow: 0 10px 30px rgba(234, 76, 137, 0.3);
+            
+            .social-icon {
+              background: rgba(255, 255, 255, 0.2);
+              
+              i {
+                color: white;
+              }
+            }
+            
+            .social-content {
+              .social-label,
+              .social-description {
+                color: white;
+              }
+            }
+          }
         }
         
         .social-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 48px;
+          height: 48px;
+          border-radius: 12px;
+          background: var(--glass-bg);
+          border: 1px solid var(--glass-border);
+          margin-right: 1rem;
+          transition: all 0.3s ease;
+          
           i {
-            width: 24px;
-            text-align: center;
+            font-size: 1.25rem;
+            color: var(--text-color);
+            transition: color 0.3s ease;
           }
         }
         
@@ -213,12 +341,36 @@
           
           .social-label {
             color: var(--text-color);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            transition: color 0.3s ease;
           }
           
           .social-description {
+            color: var(--text-light);
             font-size: 0.85rem;
+            line-height: 1.4;
+            transition: color 0.3s ease;
           }
+        }
+        
+        // Add arrow indicator
+        &::after {
+          content: '';
+          width: 16px;
+          height: 16px;
+          border: 2px solid var(--text-light);
+          border-left: none;
+          border-bottom: none;
+          transform: rotate(45deg);
+          transition: all 0.3s ease;
+          opacity: 0.6;
+        }
+        
+        &:hover::after {
+          border-color: white;
+          opacity: 1;
         }
       }
     }
@@ -248,6 +400,146 @@
         font-size: 0.95rem;
         line-height: 1.6;
         margin-left: 1.75rem;
+      }
+    }
+  }
+}
+
+// WhatsApp specific styling
+.whatsapp-item {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+  color: white !important;
+  border: none !important;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    background: linear-gradient(135deg, #128C7E 0%, #25D366 100%) !important;
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+  
+  .whatsapp-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    
+    i {
+      color: white;
+      font-size: 1.2rem;
+    }
+  }
+  
+  .contact-content {
+    .contact-label,
+    .contact-value {
+      color: white !important;
+    }
+    
+    .contact-label {
+      font-weight: 600;
+    }
+    
+    .contact-value {
+      opacity: 0.9;
+    }
+  }
+}
+
+// Mobile Responsive Styles for Social Links
+@media (max-width: 768px) {
+  .social-links-card {
+    padding: 1.5rem !important;
+    margin-top: 1rem !important;
+    
+    .social-header {
+      margin-bottom: 1.5rem !important;
+      
+      .social-title {
+        font-size: 1.1rem !important;
+      }
+      
+      .social-subtitle {
+        font-size: 0.85rem !important;
+      }
+    }
+    
+    .social-links {
+      gap: 0.75rem !important;
+      
+      .social-item {
+        padding: 0.875rem 1rem !important;
+        
+        .social-icon {
+          width: 40px !important;
+          height: 40px !important;
+          margin-right: 0.75rem !important;
+          
+          i {
+            font-size: 1.1rem !important;
+          }
+        }
+        
+        .social-content {
+          .social-label {
+            font-size: 0.9rem !important;
+          }
+          
+          .social-description {
+            font-size: 0.8rem !important;
+          }
+        }
+        
+        &::after {
+          width: 14px !important;
+          height: 14px !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .social-links-card {
+    .social-links {
+      .social-item {
+        padding: 0.75rem !important;
+        
+        .social-icon {
+          width: 36px !important;
+          height: 36px !important;
+          margin-right: 0.625rem !important;
+          
+          i {
+            font-size: 1rem !important;
+          }
+        }
+        
+        .social-content {
+          .social-label {
+            font-size: 0.85rem !important;
+            margin-bottom: 0.125rem !important;
+          }
+          
+          .social-description {
+            font-size: 0.75rem !important;
+          }
+        }
       }
     }
   }

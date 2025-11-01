@@ -1,6 +1,6 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit, inject, signal, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -10,6 +10,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { PortfolioService } from '../../services/portfolio.service';
 import { ContactInfoService, ContactInfo } from '../../services/contact-info.service';
+import { GoogleAnalyticsService } from '../../services/google-analytics.service';
 import { PersonalInfo } from '../../models/portfolio.model';
 
 @Component({
@@ -34,25 +35,31 @@ export class ContactComponent implements OnInit {
   private messageService = inject(MessageService);
   private portfolioService = inject(PortfolioService);
   private contactInfoService = inject(ContactInfoService);
+  private googleAnalytics = inject(GoogleAnalyticsService);
+  private platformId = inject(PLATFORM_ID);
   
   personalInfo = signal<PersonalInfo | null>(null);
   contactInfo = signal<ContactInfo | null>(null);
+  faqData = signal<any>(null);
+  isFaqActive = signal<boolean>(false);
   contactForm: FormGroup;
   isSubmitting = signal<boolean>(false);
   isLoading = signal<boolean>(true);
 
   constructor() {
-    this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      subject: ['', [Validators.required, Validators.minLength(5)]],
-      message: ['', [Validators.required, Validators.minLength(10)]]
+    // Initialize form with proper SSR handling
+    this.contactForm = new FormGroup({
+      name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      subject: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      message: new FormControl('', [Validators.required, Validators.minLength(10)])
     });
   }
 
   ngOnInit() {
     this.loadPersonalInfo();
     this.loadContactInfo();
+    this.loadFaqData();
   }
 
   private loadPersonalInfo() {
@@ -79,9 +86,24 @@ export class ContactComponent implements OnInit {
     });
   }
 
+  private loadFaqData() {
+    this.portfolioService.getFaqData().subscribe({
+      next: (faqData) => {
+        this.faqData.set(faqData);
+        this.isFaqActive.set(faqData.isActive);
+      },
+      error: (error) => {
+        console.error('Error loading FAQ data:', error);
+      }
+    });
+  }
+
   onSubmit() {
     if (this.contactForm.valid) {
       this.isSubmitting.set(true);
+      
+      // Track form submission
+      this.googleAnalytics.trackContactForm('contact_form');
       
       // Simulate form submission
       setTimeout(() => {
@@ -164,5 +186,31 @@ export class ContactComponent implements OnInit {
 
   getPhoneLink(): string {
     return this.contactInfoService.getPhoneLink();
+  }
+
+  // Open WhatsApp with custom message
+  openWhatsApp(): void {
+    const phoneNumber = '+919908763418'; // Remove any formatting for WhatsApp API
+    const message = encodeURIComponent('Hi Sandeep, let\'s connect to discuss on');
+    const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${message}`;
+    
+    // Track WhatsApp click
+    this.googleAnalytics.trackExternalClick(whatsappUrl, 'whatsapp_contact');
+    
+    this.openExternalLink(whatsappUrl);
+  }
+
+  // Open social media links with tracking
+  openSocialLink(platform: string, url: string): void {
+    if (url) {
+      // Track social media click
+      this.googleAnalytics.trackExternalClick(url, `social_${platform}`);
+      this.openExternalLink(url);
+    }
+  }
+
+  // Track by function for FAQ list performance
+  trackByFaqId(index: number, faq: any): number {
+    return faq.id;
   }
 }

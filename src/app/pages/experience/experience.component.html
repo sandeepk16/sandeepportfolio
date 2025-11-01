@@ -171,6 +171,82 @@
     </div>
   </section>
 
+  <!-- Skills Categories Section -->
+  <section class="skills-categories">
+    <div class="container">
+      <div class="skills-header">
+        <h2 class="section-title">
+          <span class="title-line">Core</span>
+          <span class="title-line gradient-text">Competencies</span>
+        </h2>
+        <p class="section-subtitle">
+          A comprehensive overview of my technical and creative expertise across different domains
+        </p>
+      </div>
+      
+      <div class="skills-grid">
+        <!-- Dynamic Skills Categories from JSON -->
+        <div 
+          class="skill-category glass"
+          *ngFor="let category of skillsCategories$ | async; trackBy: trackByCategoryId">
+          <div class="category-header">
+            <div class="category-icon">
+              <i class="{{ category.icon }}"></i>
+            </div>
+            <h3 class="category-title">{{ category.title }}</h3>
+          </div>
+          <div class="category-content">
+            <p class="category-description">
+              {{ category.description }}
+            </p>
+            <div class="skills-list">
+              <span 
+                class="skill-tag"
+                *ngFor="let skill of category.skills; trackBy: trackBySkillName">
+                {{ skill }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Summary Stats -->
+      <div class="skills-summary">
+        <div class="summary-stats">
+          <div class="stat-card glass">
+            <div class="stat-icon">
+              <i class="pi pi-star-fill"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-number">{{ (skillsCategories$ | async)?.length || 0 }}</span>
+              <span class="stat-label">Core Categories</span>
+            </div>
+          </div>
+          
+          <div class="stat-card glass">
+            <div class="stat-icon">
+              <i class="pi pi-wrench"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-number">{{ totalSkillsCount$ | async }}+</span>
+              <span class="stat-label">Technologies</span>
+            </div>
+          </div>
+          
+          <div class="stat-card glass">
+            <div class="stat-icon">
+              <i class="pi pi-trophy"></i>
+            </div>
+            <div class="stat-content">
+              <span class="stat-number">{{ totalExperience$ | async }}</span>
+              <span class="stat-label">Mastery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Call to Action -->
   <section class="experience-cta">
     <div class="container">

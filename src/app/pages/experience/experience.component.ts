@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { PortfolioService } from '../../services/portfolio.service';
-import { Experience, SkillEvolution } from '../../models/portfolio.model';
+import { Experience, SkillEvolution, SkillCategory } from '../../models/portfolio.model';
 
 @Component({
   selector: 'app-experience',
@@ -21,6 +21,8 @@ export class ExperienceComponent implements OnInit {
   workExperience$: Observable<Experience[]>;
   projectsCompleted$: Observable<number>;
   skillEvolution$: Observable<SkillEvolution[]>;
+  skillsCategories$: Observable<SkillCategory[]>;
+  totalSkillsCount$: Observable<number>;
 
   constructor(private portfolioService: PortfolioService) {
     this.totalExperience$ = this.portfolioService.getTotalExperience();
@@ -32,6 +34,8 @@ export class ExperienceComponent implements OnInit {
       map(stats => stats.totalProjects)
     );
     this.skillEvolution$ = this.portfolioService.getSkillEvolution();
+    this.skillsCategories$ = this.portfolioService.getSkillsCategories();
+    this.totalSkillsCount$ = this.portfolioService.getTotalSkillsCount();
   }
 
   ngOnInit(): void {
@@ -41,6 +45,16 @@ export class ExperienceComponent implements OnInit {
   // Track by function for performance
   trackByExperienceId(index: number, experience: Experience): string {
     return experience.id;
+  }
+
+  // Track by function for skills categories
+  trackByCategoryId(index: number, category: SkillCategory): string {
+    return category.id;
+  }
+
+  // Track by function for skills within a category
+  trackBySkillName(index: number, skill: string): string {
+    return skill;
   }
 
   // Calculate duration between dates

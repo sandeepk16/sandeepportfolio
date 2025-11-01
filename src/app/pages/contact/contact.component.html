@@ -119,10 +119,10 @@
                 <label for="budget" class="form-label">Project Budget</label>
                 <select id="budget" formControlName="budget" class="form-input">
                   <option value="">Select budget range</option>
-                  <option value="under-5k">Under $5,000</option>
-                  <option value="5k-10k">$5,000 - $10,000</option>
-                  <option value="10k-25k">$10,000 - $25,000</option>
-                  <option value="25k-plus">$25,000+</option>
+                  <option value="under-5k">Under $500</option>
+                  <option value="5k-10k">$500 - $1000</option>
+                  <option value="10k-25k">$1000 - $2500</option>
+                  <option value="25k-plus">$2500+</option>
                   <option value="discuss">Let's Discuss</option>
                 </select>
               </div>
@@ -204,6 +204,17 @@
                   </div>
                 </div>
 
+                <!-- WhatsApp -->
+                <div class="contact-item whatsapp-item" (click)="openWhatsApp()">
+                  <div class="contact-icon whatsapp-icon">
+                    <i class="pi pi-whatsapp"></i>
+                  </div>
+                  <div class="contact-content">
+                    <div class="contact-label">WhatsApp</div>
+                    <div class="contact-value">Let's connect instantly</div>
+                  </div>
+                </div>
+
                 <!-- Location -->
                 <div class="contact-item">
                   <div class="contact-icon">
@@ -228,7 +239,7 @@
 
               <div class="social-links">
                 <!-- LinkedIn -->
-                <div class="social-item" (click)="openExternalLink(personalInfo()?.linkedin || '')">
+                <div class="social-item" (click)="openSocialLink('linkedin', personalInfo()?.linkedin || '')">
                   <div class="social-icon">
                     <i class="pi pi-linkedin"></i>
                   </div>
@@ -239,7 +250,7 @@
                 </div>
 
                 <!-- Behance -->
-                <div class="social-item" (click)="openExternalLink(personalInfo()?.behance || '')">
+                <div class="social-item" (click)="openSocialLink('behance', personalInfo()?.behance || '')">
                   <div class="social-icon behance">
                     <i class="pi pi-palette"></i>
                   </div>
@@ -250,7 +261,7 @@
                 </div>
 
                 <!-- Dribbble -->
-                <div class="social-item" (click)="openExternalLink(personalInfo()?.dribbble || '')">
+                <div class="social-item" (click)="openSocialLink('dribbble', personalInfo()?.dribbble || '')">
                   <div class="social-icon dribbble">
                     <i class="pi pi-circle"></i>
                   </div>
@@ -267,63 +278,27 @@
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="contact-faq-section py-6 surface-100">
+  <!-- FAQ Section (Dynamic) -->
+  <section class="contact-faq-section py-6 surface-100" *ngIf="isFaqActive() && faqData()">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-6">
-          <h2 class="section-title text-3xl font-bold mb-3">Quick Questions?</h2>
+          <h2 class="section-title text-3xl font-bold mb-3">{{ faqData()?.title }}</h2>
           <p class="section-description text-color-secondary">
-            Here are answers to some common questions about working with me.
+            {{ faqData()?.subtitle }}
           </p>
         </div>
 
         <div class="faq-grid">
           <div class="grid">
-            <div class="col-12 md:col-6">
+            <div class="col-12 md:col-6" *ngFor="let faq of faqData()?.faqs; trackBy: trackByFaqId">
               <div class="faq-item mb-4">
                 <h4 class="faq-question font-semibold mb-2">
-                  <i class="pi pi-question-circle mr-2 text-primary"></i>
-                  What's your typical response time?
+                  <i [class]="faq.icon + ' mr-2 text-primary'"></i>
+                  {{ faq.question }}
                 </h4>
                 <p class="faq-answer text-color-secondary text-sm line-height-3">
-                  I typically respond to all inquiries within 24 hours, often much sooner during business hours.
-                </p>
-              </div>
-            </div>
-            
-            <div class="col-12 md:col-6">
-              <div class="faq-item mb-4">
-                <h4 class="faq-question font-semibold mb-2">
-                  <i class="pi pi-question-circle mr-2 text-primary"></i>
-                  Do you work with international clients?
-                </h4>
-                <p class="faq-answer text-color-secondary text-sm line-height-3">
-                  Yes! I work with clients worldwide and am flexible with time zones for meetings and communication.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-12 md:col-6">
-              <div class="faq-item mb-4">
-                <h4 class="faq-question font-semibold mb-2">
-                  <i class="pi pi-question-circle mr-2 text-primary"></i>
-                  What information should I include?
-                </h4>
-                <p class="faq-answer text-color-secondary text-sm line-height-3">
-                  Please include your project goals, timeline, budget range, and any specific requirements you have.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-12 md:col-6">
-              <div class="faq-item mb-4">
-                <h4 class="faq-question font-semibold mb-2">
-                  <i class="pi pi-question-circle mr-2 text-primary"></i>
-                  Do you offer free consultations?
-                </h4>
-                <p class="faq-answer text-color-secondary text-sm line-height-3">
-                  Yes, I offer a free 30-minute consultation to discuss your project and see if we're a good fit.
+                  {{ faq.answer }}
                 </p>
               </div>
             </div>

@@ -144,3 +144,11 @@ export interface SkillEvolution {
   description: string;
   tools: string[];
 }
+
+export interface SkillCategory {
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  skills: string[];
+}

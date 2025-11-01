@@ -10,7 +10,8 @@ import {
   Testimonial, 
   Service, 
   Achievement,
-  SkillEvolution 
+  SkillEvolution,
+  SkillCategory 
 } from '../models/portfolio.model';
 
 @Injectable({
@@ -102,6 +103,19 @@ export class PortfolioService {
   getSkillEvolution(): Observable<SkillEvolution[]> {
     return this.http.get<{skillEvolution: SkillEvolution[]}>('/assets/data/personal-data.json')
       .pipe(map(data => data.skillEvolution));
+  }
+
+  // Get skills categories data
+  getSkillsCategories(): Observable<SkillCategory[]> {
+    return this.http.get<{skillsCategories: SkillCategory[]}>('/assets/data/personal-data.json')
+      .pipe(map(data => data.skillsCategories));
+  }
+
+  // Get total skills count across all categories
+  getTotalSkillsCount(): Observable<number> {
+    return this.getSkillsCategories().pipe(
+      map(categories => categories.reduce((total, category) => total + category.skills.length, 0))
+    );
   }
 
   // Get complete portfolio data
@@ -252,6 +266,30 @@ export class PortfolioService {
       map(projects => {
         const allTags = projects.flatMap(project => project.tags);
         return [...new Set(allTags)];
+      })
+    );
+  }
+
+  // Get FAQ data
+  getFaqData(): Observable<any> {
+    return this.http.get<{faqSection: any}>('/assets/data/personal-data.json')
+      .pipe(map(data => data.faqSection));
+  }
+
+  // Check if FAQ section is active
+  isFaqActive(): Observable<boolean> {
+    return this.getFaqData().pipe(
+      map(faqData => faqData.isActive)
+    );
+  }
+
+  // Get FAQs by category
+  getFaqsByCategory(category?: string): Observable<any[]> {
+    return this.getFaqData().pipe(
+      map(faqData => {
+        if (!faqData.isActive) return [];
+        if (!category) return faqData.faqs;
+        return faqData.faqs.filter((faq: any) => faq.category === category);
       })
     );
   }
