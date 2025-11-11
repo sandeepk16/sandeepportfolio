@@ -10,7 +10,7 @@
     "profileImage": "/assets/images/sandeep-profile.jpg",
     "bio": "Passionate UI/UX Designer with 15+ years of experience creating intuitive and visually appealing digital experiences. I specialize in transforming complex problems into simple, elegant solutions that delight users and drive business results.",
     "resumeUrl": "/assets/files/sandeep-k-resume.pdf",
-    "experienceStartDate": "2009-05-14"
+    "experienceStartDate": "2009-05-01"
   },
   "skills": [
     {
@@ -146,9 +146,9 @@
       "title": "Sr. UI/UX Designer",
       "company": "Hitachi",
       "location": "Hyderabad, India",
-      "duration": "Dec 2019 – Jan 2021",
+      "duration": "Dec 2019 – Feb 2020",
       "startDate": "2019-12-01",
-      "endDate": "2021-01-31",
+      "endDate": "2020-02-29",
       "current": true,
       "description": "Leading UI/UX design and development initiatives for enterprise-level applications, focusing on user-centered design principles and modern development practices.",
       "responsibilities": [
@@ -185,7 +185,7 @@
         "Implemented responsive design across all platforms",
         "Collaborated with medical professionals for UX research"
       ],
-      "technologies": ["Sketch", "InVision", "HTML5", "CSS3", "JavaScript"]
+      "technologies": ["Vue.js", "Sketch", "InVision", "HTML5", "CSS3", "JavaScript"]
     },
     {
       "id": "arkhya-tech",
@@ -209,7 +209,7 @@
         "Developed reusable UI component libraries",
         "Led workshops on design thinking methodologies"
       ],
-      "technologies": ["Photoshop", "Illustrator", "Sketch", "Principle", "HTML", "CSS", "Bootstrap"]
+      "technologies": ["Photoshop", "Illustrator", "Sketch", "Principle", "jQuery", "Bootstrap"]
     },
     {
       "id": "bimarian",

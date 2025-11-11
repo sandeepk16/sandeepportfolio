@@ -27,35 +27,6 @@ export class PortfolioService {
       .pipe(map(data => data.personalInfo));
   }
 
-  // Get personal information with dynamic bio
-  getPersonalInfoWithDynamicBio(): Observable<PersonalInfo> {
-    return this.getPersonalInfo().pipe(
-      map(personalInfo => {
-        const yearsOfExperience = this.calculateYearsOfExperience(personalInfo.experienceStartDate);
-        return {
-          ...personalInfo,
-          bio: `Passionate UI/UX Designer with ${yearsOfExperience}+ years of experience creating intuitive and visually appealing digital experiences. I specialize in transforming complex problems into simple, elegant solutions that delight users and drive business results.`
-        };
-      })
-    );
-  }
-
-  // Calculate years of experience from start date
-  private calculateYearsOfExperience(startDate: string): number {
-    const start = new Date(startDate);
-    const current = new Date();
-    
-    const yearsDiff = current.getFullYear() - start.getFullYear();
-    const monthsDiff = current.getMonth() - start.getMonth();
-    
-    let yearsOfExperience = yearsDiff;
-    if (monthsDiff < 0) {
-      yearsOfExperience--;
-    }
-    
-    return yearsOfExperience;
-  }
-
   // Get skills data
   getSkills(): Observable<Skill[]> {
     return this.http.get<{skills: Skill[]}>('/assets/data/personal-data.json')
@@ -194,8 +165,17 @@ export class PortfolioService {
       this.getExperience()
     ]).pipe(
       map(([personalInfo, projects, skills, testimonials, experience]) => {
-        // Calculate dynamic years of experience using centralized method
-        const yearsOfExperience = this.calculateYearsOfExperience(personalInfo.experienceStartDate);
+        // Calculate dynamic years of experience using direct calculation
+        const startDate = new Date('2009-05-01');
+        const currentDate = new Date();
+        
+        const yearsDiff = currentDate.getFullYear() - startDate.getFullYear();
+        const monthsDiff = currentDate.getMonth() - startDate.getMonth();
+        
+        let yearsOfExperience = yearsDiff;
+        if (monthsDiff < 0) {
+          yearsOfExperience--;
+        }
         
         // Get unique companies count
         const uniqueCompanies = new Set(experience.map(exp => exp.company)).size;

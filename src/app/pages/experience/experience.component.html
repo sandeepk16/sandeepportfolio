@@ -1,35 +1,35 @@
-<div class="experience-container p-d-flex p-flex-column min-h-screen" style="background: var(--background-color); color: var(--text-color);">
+<div class="experience-container">
   <!-- Experience Hero Section -->
-  <section class="experience-hero p-py-6 p-mb-4" style="background: var(--background-color);">
+  <section class="experience-hero">
     <div class="hero-background">
       <div class="container">
-        <div class="hero-content p-d-flex p-flex-column p-ai-center p-gap-4" style="max-width: 800px;">
-          <div class="hero-badge badge-text glass mb-3">
+        <div class="hero-content">
+          <div class="hero-badge">
             <span class="badge-text">Professional Journey</span>
           </div>
           
-          <h1 class="hero-title section-title">
+          <h1 class="hero-title">
             <span class="title-line">Professional</span>
             <span class="title-line gradient-text">Experience</span>
           </h1>
           
-          <p class="hero-description" style="color: var(--text-light);">
+          <p class="hero-description">
             Over {{ totalExperience$ | async }} of experience in UI/UX design and development, 
             working with leading companies to create exceptional digital experiences.
           </p>
           
-          <div class="hero-stats p-d-flex p-jc-center p-gap-3">
-            <div class="stat-item p-text-center">
-              <span class="stat-number p-text-bold" style="font-size:2rem; color:var(--primary-color);">{{ totalExperience$ | async }}</span>
-              <span class="stat-label p-text-uppercase" style="color:var(--text-muted);">Experience</span>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number">{{ totalExperience$ | async }}</span>
+              <span class="stat-label">Experience</span>
             </div>
-            <div class="stat-item p-text-center">
-              <span class="stat-number p-text-bold" style="font-size:2rem; color:var(--primary-color);">{{ companiesWorked$ | async }}+</span>
-              <span class="stat-label p-text-uppercase" style="color:var(--text-muted);">Companies</span>
+            <div class="stat-item">
+              <span class="stat-number">{{ companiesWorked$ | async }}+</span>
+              <span class="stat-label">Companies</span>
             </div>
-            <div class="stat-item p-text-center">
-              <span class="stat-number p-text-bold" style="font-size:2rem; color:var(--primary-color);">{{ projectsCompleted$ | async }}+</span>
-              <span class="stat-label p-text-uppercase" style="color:var(--text-muted);">Projects</span>
+            <div class="stat-item">
+              <span class="stat-number">{{ projectsCompleted$ | async }}+</span>
+              <span class="stat-label">Projects</span>
             </div>
           </div>
         </div>
@@ -38,68 +38,68 @@
   </section>
 
   <!-- Experience Timeline Section -->
-  <section class="experience-timeline p-py-6" style="background: var(--surface-color);">
+  <section class="experience-timeline">
     <div class="container">
-  <div class="timeline-header p-text-center p-mb-4">
+      <div class="timeline-header">
         <h2 class="section-title">Career Timeline</h2>
         <p class="section-subtitle">
           A journey through my professional growth and achievements
         </p>
       </div>
       
-  <div class="timeline-wrapper" style="position:relative; max-width:1000px; margin:0 auto;">
+      <div class="timeline-wrapper">
         <div class="timeline-line"></div>
         
-  <div class="timeline-content" style="position:relative; z-index:2;">
+        <div class="timeline-content">
           <div 
-            class="timeline-item p-d-flex p-ai-start p-mb-6"
+            class="timeline-item"
             *ngFor="let experience of workExperience$ | async; trackBy: trackByExperienceId; let i = index"
             [class.current]="experience.current"
             [class.even]="i % 2 === 1">
             
-            <div class="timeline-marker" style="position:relative; flex-shrink:0;">
-              <div class="marker-dot" style="width:60px; height:60px; background:var(--glass-bg); border:3px solid var(--primary-color); border-radius:50%; display:flex; align-items:center; justify-content:center; position:relative; z-index:3;">
+            <div class="timeline-marker">
+              <div class="marker-dot">
                 <i class="pi" [class]="experience.current ? 'pi-star-fill' : 'pi-circle-fill'"></i>
               </div>
               <div class="marker-line"></div>
             </div>
             
-            <div class="timeline-card glass" style="flex:1; max-width:450px; background:var(--glass-bg); border:1px solid var(--glass-border); border-radius:20px; padding:2rem; transition:all 0.3s ease;">
-              <div class="card-header p-mb-4">
+            <div class="timeline-card glass">
+              <div class="card-header">
                 <div class="company-info">
-                  <h3 class="job-title" style="font-size:1.5rem; font-weight:700; color:var(--text-color); margin-bottom:0.5rem; font-family:var(--font-display);">{{ experience.title }}</h3>
-                  <h4 class="company-name" style="font-size:1.2rem; font-weight:600; color:var(--primary-color); margin-bottom:1rem;">{{ experience.company }}</h4>
-                  <div class="duration-info p-d-flex p-ai-center p-gap-2">
-                    <span class="duration" style="font-size:0.95rem; color:var(--text-light);">{{ experience.duration }}</span>
-                    <span class="period-badge" [class.current-badge]="experience.current" style="padding:0.25rem 0.75rem; background:var(--surface-hover); color:var(--text-light); border-radius:20px; font-size:0.8rem; font-weight:600; text-transform:uppercase;" [ngStyle]="experience.current ? {'background': 'var(--primary-color)', 'color': 'white'} : {}">
+                  <h3 class="job-title">{{ experience.title }}</h3>
+                  <h4 class="company-name">{{ experience.company }}</h4>
+                  <div class="duration-info">
+                    <span class="duration">{{ experience.duration }}</span>
+                    <span class="period-badge" [class.current-badge]="experience.current">
                       {{ calculateDuration(experience.startDate, experience.endDate) }}
                     </span>
                   </div>
                 </div>
                 
-                <div class="status-indicator p-mt-3" *ngIf="experience.current">
-                  <span class="current-label p-d-inline-flex p-ai-center p-px-3 p-py-2" style="background:linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color:white; border-radius:25px; font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Current Position</span>
+                <div class="status-indicator" *ngIf="experience.current">
+                  <span class="current-label">Current Position</span>
                 </div>
               </div>
               
               <div class="card-content">
-                <p class="job-description" style="font-size:1rem; line-height:1.6; color:var(--text-light); margin-bottom:1.5rem;">{{ experience.description }}</p>
+                <p class="job-description">{{ experience.description }}</p>
                 
-                <div class="achievements-section p-mb-3">
-                  <h5 class="achievements-title" style="font-size:1rem; font-weight:600; color:var(--text-color); margin-bottom:0.75rem;">Key Achievements</h5>
-                  <ul class="achievements-list" style="list-style:none; padding:0; margin:0;">
-                    <li *ngFor="let achievement of experience.achievements" class="achievement-item p-d-flex p-ai-start p-gap-2" style="margin-bottom:0.5rem; font-size:0.9rem; line-height:1.5; color:var(--text-light);">
-                      <i class="pi pi-check-circle achievement-icon" style="color:var(--accent-color); margin-top:0.1rem; flex-shrink:0;"></i>
+                <div class="achievements-section">
+                  <h5 class="achievements-title">Key Achievements</h5>
+                  <ul class="achievements-list">
+                    <li *ngFor="let achievement of experience.achievements" class="achievement-item">
+                      <i class="pi pi-check-circle achievement-icon"></i>
                       <span>{{ achievement }}</span>
                     </li>
                   </ul>
                 </div>
                 
                 <div class="technologies-section">
-                  <h5 class="tech-title" style="font-size:1rem; font-weight:600; color:var(--text-color); margin-bottom:0.75rem;">Technologies & Tools</h5>
-                  <div class="tech-tags p-d-flex p-flex-wrap p-gap-2">
+                  <h5 class="tech-title">Technologies & Tools</h5>
+                  <div class="tech-tags">
                     <span 
-                      class="tech-tag" style="padding:0.25rem 0.75rem; background:var(--surface-hover); color:var(--text-light); border-radius:15px; font-size:0.8rem; font-weight:500; border:1px solid var(--border-light); transition:all 0.3s ease;"
+                      class="tech-tag"
                       *ngFor="let tech of experience.technologies">
                       {{ tech }}
                     </span>
@@ -158,36 +158,14 @@
         
         <div class="evolution-visual">
           <div class="skill-progression">
-            <div class="progression-timeline">
-              <div class="timeline-line"></div>
-              <div 
-                class="skill-era glass" 
-                *ngFor="let era of (skillEvolution$ | async)?.slice()?.reverse() || []; let i = index"
-                [class.active]="era.focus === 'Leadership'">
-                
-                <div class="era-marker">
-                  <div class="marker-dot">
-                    <i class="pi" [class]="era.focus === 'Leadership' ? 'pi-star-fill' : 'pi-circle-fill'"></i>
-                  </div>
-                </div>
-                
-                <div class="era-card">
-                  <div class="era-header">
-                    <div class="era-years">{{ era.years }}</div>
-                    <div class="era-focus">{{ era.focus }}</div>
-                  </div>
-                  
-                  <div class="era-content">
-                    <p class="era-description">{{ era.description }}</p>
-                    <div class="era-tools">
-                      <span *ngFor="let tool of era.tools" class="tool-tag">{{ tool }}</span>
-                    </div>
-                  </div>
-                </div>
+            <div class="skill-era" *ngFor="let era of skillEvolution$ | async">
+              <div class="era-years">{{ era.years }}</div>
+              <div class="era-focus">{{ era.focus }}</div>
+              <div class="era-tools">
+                <span *ngFor="let tool of era.tools" class="tool-name">{{ tool }}</span>
               </div>
             </div>
           </div>
-          
         </div>
       </div>
     </div>

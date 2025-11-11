@@ -8,8 +8,8 @@
             <span class="logo-text font-display">SK</span>
           </div>
           <div class="brand-info">
-            <h1 class="brand-name font-display">{{ personalInfo?.name?.toUpperCase() || 'SUNDEEP' }}</h1>
-            <p class="brand-title text-muted">{{ personalInfo?.title || 'UI/UX Designer' }}</p>
+            <h1 class="brand-name font-display">SANDEEP</h1>
+            <p class="brand-title text-muted">UI/UX Designer</p>
           </div>
         </div>
       </div>
@@ -21,8 +21,7 @@
             <a 
               [routerLink]="item.routerLink" 
               class="menu-link"
-              routerLinkActive="active"
-              [routerLinkActiveOptions]="item.label === 'Home' ? { exact: true } : { exact: false }">
+              routerLinkActive="active">
               {{ item.label }}
             </a>
           </li>
@@ -31,12 +30,10 @@
 
       <!-- Action Buttons -->
       <div class="nav-actions">
-        <app-contact-actions 
-          [actions]="['cv']"
-          displayMode="buttons"
-          size="medium"
-          className="cv-action">
-        </app-contact-actions>
+        <button class="action-btn secondary-btn">
+          <i class="pi pi-download"></i>
+          <span>Download CV</span>
+        </button>
         
         <button class="action-btn primary-btn" routerLink="/contact">
           <i class="pi pi-send"></i>
@@ -71,7 +68,6 @@
                 [routerLink]="item.routerLink" 
                 class="mobile-menu-link"
                 routerLinkActive="active"
-                [routerLinkActiveOptions]="item.label === 'Home' ? { exact: true } : { exact: false }"
                 (click)="closeMobileMenu()">
                 {{ item.label }}
               </a>
@@ -79,13 +75,10 @@
           </ul>
           
           <div class="mobile-actions">
-            <app-contact-actions 
-              [actions]="['phone', 'email', 'whatsapp', 'cv']"
-              displayMode="buttons"
-              orientation="vertical"
-              size="large"
-              className="mobile-contact-actions">
-            </app-contact-actions>
+            <button class="mobile-action-btn">
+              <i class="pi pi-download"></i>
+              Download CV
+            </button>
             <button class="mobile-action-btn primary" routerLink="/contact" (click)="closeMobileMenu()">
               <i class="pi pi-send"></i>
               Start Project

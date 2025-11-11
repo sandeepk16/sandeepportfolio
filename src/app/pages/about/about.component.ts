@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SeoService } from '../../services/seo.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
@@ -44,10 +43,9 @@ export class AboutComponent implements OnInit {
 
   constructor(
     private portfolioService: PortfolioService,
-    private contactInfoService: ContactInfoService,
-    private seo: SeoService
+    private contactInfoService: ContactInfoService
   ) {
-    this.personalInfo$ = this.portfolioService.getPersonalInfoWithDynamicBio();
+    this.personalInfo$ = this.portfolioService.getPersonalInfo();
     this.education$ = this.portfolioService.getEducation();
     this.achievements$ = this.portfolioService.getAchievements();
     this.portfolioStats$ = this.portfolioService.getPortfolioStats();
@@ -57,17 +55,6 @@ export class AboutComponent implements OnInit {
     // Load contact information
     this.contactInfoService.getContactInfo().subscribe(info => {
       this.contactInfo = info;
-    });
-    // Set SEO meta tags dynamically
-    this.personalInfo$.subscribe(personalInfo => {
-      const title = `${personalInfo.name} | About`;
-      const description = personalInfo.bio || `${personalInfo.name} — ${personalInfo.title} about page.`;
-      const keywords = `${personalInfo.name}, ${personalInfo.title}, About, Portfolio, UI Developer, Hyderabad`;
-      this.seo.setSeoData(title, description, keywords);
-      this.seo.addTags([
-        { name: 'description', content: description },
-        { name: 'keywords', content: keywords }
-      ]);
     });
   }
 

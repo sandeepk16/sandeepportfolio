@@ -1,5 +1,4 @@
-import { Component, OnInit, inject, signal, PLATFORM_ID, effect } from '@angular/core';
-import { SeoService } from '../../services/seo.service';
+import { Component, OnInit, inject, signal, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -13,7 +12,6 @@ import { PortfolioService } from '../../services/portfolio.service';
 import { ContactInfoService, ContactInfo } from '../../services/contact-info.service';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
 import { PersonalInfo } from '../../models/portfolio.model';
-import { ContactActionsComponent } from '../../components/contact-actions/contact-actions.component';
 
 @Component({
   selector: 'app-contact',
@@ -26,8 +24,7 @@ import { ContactActionsComponent } from '../../components/contact-actions/contac
     ButtonModule,
     InputTextModule,
     MessageModule,
-    ToastModule,
-    ContactActionsComponent
+    ToastModule
   ],
   providers: [MessageService],
   templateUrl: './contact.component.html',
@@ -49,8 +46,6 @@ export class ContactComponent implements OnInit {
   isSubmitting = signal<boolean>(false);
   isLoading = signal<boolean>(true);
 
-  private seo = inject(SeoService);
-
   constructor() {
     // Initialize form with proper SSR handling - avoid null validators during SSR
     this.contactForm = new FormGroup({
@@ -66,20 +61,6 @@ export class ContactComponent implements OnInit {
     this.loadPersonalInfo();
     this.loadContactInfo();
     this.loadFaqData();
-    // Set SEO meta tags dynamically
-    effect(() => {
-      const personalInfo = this.personalInfo();
-      if (personalInfo) {
-        const title = `${personalInfo.name} | Contact`;
-        const description = `Contact ${personalInfo.name} — ${personalInfo.title}. Get in touch for UI/UX design, front-end development, and consulting.`;
-        const keywords = `${personalInfo.name}, ${personalInfo.title}, Contact, Portfolio, UI Developer, Hyderabad`;
-        this.seo.setSeoData(title, description, keywords);
-        this.seo.addTags([
-          { name: 'description', content: description },
-          { name: 'keywords', content: keywords }
-        ]);
-      }
-    });
   }
 
   private loadPersonalInfo() {

@@ -1,5 +1,4 @@
-import { Component, OnInit, inject, signal, computed, effect } from '@angular/core';
-import { SeoService } from '../../services/seo.service';
+import { Component, OnInit, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
@@ -31,11 +30,8 @@ import { ProjectCardComponent } from '../../components/project-card/project-card
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss']
 })
-  // ...existing code...
-
 export class PortfolioComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
-  private seo = inject(SeoService);
   
   // Signals for reactive state
   projects = signal<Project[]>([]);
@@ -69,6 +65,7 @@ export class PortfolioComponent implements OnInit {
     const featuredProjects = filtered.filter(p => p.featured).length;
     const uniqueCategories = [...new Set(filtered.map(p => p.category))].length;
     const uniqueTechnologies = [...new Set(filtered.flatMap(p => p.tools))].length;
+    
     return {
       totalProjects,
       featuredProjects,
@@ -76,22 +73,9 @@ export class PortfolioComponent implements OnInit {
       uniqueTechnologies
     };
   });
-  
+
   ngOnInit() {
     this.loadProjects();
-    // Set SEO meta tags dynamically based on projects
-    effect(() => {
-      const projects = this.projects();
-      const total = projects.length;
-      const title = `Portfolio | Sandeep K | ${total} Projects`;
-      const description = `Explore the portfolio of Sandeep K — UI/UX Designer. ${total} creative projects in web, mobile, and AI design.`;
-      const keywords = `Sandeep K, Portfolio, UI/UX Designer, Projects, Web Design, Mobile App, Hyderabad`;
-      this.seo.setSeoData(title, description, keywords);
-      this.seo.addTags([
-        { name: 'description', content: description },
-        { name: 'keywords', content: keywords }
-      ]);
-    });
   }
 
   private loadProjects() {
