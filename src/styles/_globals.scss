@@ -1,0 +1,84 @@
+// Shared global styles for the application
+// Use PrimeFlex and PrimeNG classes for layout, spacing, and components
+
+// Glass effect utility
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.5rem;
+}
+
+// Gradient text utility
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Section title utility
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1.5rem;
+}
+
+// Section subtitle utility
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+// Badge utility
+.badge-text {
+  @extend .p-text-uppercase;
+  @extend .p-text-bold;
+  color: var(--text-light);
+}
+
+// Card utility
+.card {
+  @extend .p-card;
+  @extend .glass;
+}
+
+// Button utility
+.primary-cta {
+  @extend .p-button;
+  @extend .p-button-primary;
+}
+.secondary-cta {
+  @extend .p-button;
+  @extend .p-button-secondary;
+}
+
+// Flex utilities
+.flex-center {
+  @extend .p-d-flex;
+  @extend .p-jc-center;
+  @extend .p-ai-center;
+}
+
+// Margin utilities
+.mb-3 {
+  @extend .p-mb-3;
+}
+.mb-4 {
+  @extend .p-mb-4;
+}
+
+// Padding utilities
+.py-6 {
+  @extend .p-py-6;
+}
+
+// Responsive container
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}

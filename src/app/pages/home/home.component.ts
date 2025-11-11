@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeoService } from '../../services/seo.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Observable, map } from 'rxjs';
@@ -46,16 +47,13 @@ export class HomeComponent implements OnInit {
   recentExperience$: Observable<Experience[]>;
   servicesPreviews$: Observable<ServicePreview[]>;
 
-  constructor(private portfolioService: PortfolioService) {
+  constructor(private portfolioService: PortfolioService, private seo: SeoService) {
     this.personalInfo$ = this.portfolioService.getPersonalInfo();
     this.featuredProjects$ = this.portfolioService.getFeaturedProjects();
     this.skills$ = this.portfolioService.getSkills();
     this.portfolioStats$ = this.portfolioService.getPortfolioStats();
-    
-    // Create a more robust total experience observable with fallback
     this.totalExperience$ = this.portfolioService.getTotalExperience().pipe(
       map(experience => {
-        // If the result contains NaN or is empty, provide fallback
         if (!experience || experience.includes('NaN') || experience.includes('undefined')) {
           const currentYear = new Date().getFullYear();
           const startYear = 2009;
@@ -65,11 +63,9 @@ export class HomeComponent implements OnInit {
         return experience;
       })
     );
-    
     this.recentExperience$ = this.portfolioService.getExperience().pipe(
-      map(experiences => experiences.slice(0, 3)) // Get the first 3 most recent experiences
+      map(experiences => experiences.slice(0, 3))
     );
-    
     this.servicesPreviews$ = this.portfolioService.getServices().pipe(
       map(services => services.slice(0, 4).map(service => ({
         title: service.title,
@@ -80,7 +76,16 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Component initialization
+    this.personalInfo$.subscribe(personalInfo => {
+      const title = `${personalInfo.name} | ${personalInfo.title}`;
+      const description = personalInfo.bio || `${personalInfo.name} — ${personalInfo.title} portfolio.`;
+      const keywords = `${personalInfo.name}, ${personalInfo.title}, Portfolio, UI Developer, Hyderabad`;
+      this.seo.setSeoData(title, description, keywords);
+      this.seo.addTags([
+        { name: 'description', content: description },
+        { name: 'keywords', content: keywords }
+      ]);
+    });
   }
 
   formatExperiencePeriod(startDate: string, endDate?: string | null, current?: boolean): string {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ContactInfoService, ContactInfo } from '../../services/contact-info.service';
+import { PortfolioService } from '../../services/portfolio.service';
+import { PersonalInfo } from '../../models/portfolio.model';
 
 interface FooterLink {
   label: string;
@@ -27,6 +29,7 @@ interface SocialLink {
 export class FooterComponent implements OnInit {
   currentYear: number = new Date().getFullYear();
   contactInfo: ContactInfo | null = null;
+  personalInfo: PersonalInfo | null = null;
   
   navigationLinks: FooterLink[] = [
     { label: 'Home', routerLink: ['/'] },
@@ -52,9 +55,17 @@ export class FooterComponent implements OnInit {
 
   socialLinks: SocialLink[] = [];
 
-  constructor(private contactInfoService: ContactInfoService) {}
+  constructor(
+    private contactInfoService: ContactInfoService,
+    private portfolioService: PortfolioService
+  ) {}
 
   ngOnInit(): void {
+    // Load personal information
+    this.portfolioService.getPersonalInfo().subscribe(info => {
+      this.personalInfo = info;
+    });
+
     // Load contact information
     this.contactInfoService.getContactInfo().subscribe(info => {
       this.contactInfo = info;

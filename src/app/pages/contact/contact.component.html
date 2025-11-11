@@ -182,49 +182,13 @@
               </div>
 
               <div class="contact-methods">
-                <!-- Email -->
-                <div class="contact-item" (click)="openExternalLink(getEmailLink())">
-                  <div class="contact-icon">
-                    <i class="pi pi-envelope"></i>
-                  </div>
-                  <div class="contact-content">
-                    <div class="contact-label">Email</div>
-                    <div class="contact-value">{{ getEmail() }}</div>
-                  </div>
-                </div>
-
-                <!-- Phone -->
-                <div class="contact-item" (click)="openExternalLink(getPhoneLink())">
-                  <div class="contact-icon">
-                    <i class="pi pi-phone"></i>
-                  </div>
-                  <div class="contact-content">
-                    <div class="contact-label">Phone</div>
-                    <div class="contact-value">{{ getPhone() }}</div>
-                  </div>
-                </div>
-
-                <!-- WhatsApp -->
-                <div class="contact-item whatsapp-item" (click)="openWhatsApp()">
-                  <div class="contact-icon whatsapp-icon">
-                    <i class="pi pi-whatsapp"></i>
-                  </div>
-                  <div class="contact-content">
-                    <div class="contact-label">WhatsApp</div>
-                    <div class="contact-value">Let's connect instantly</div>
-                  </div>
-                </div>
-
-                <!-- Location -->
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="pi pi-map-marker"></i>
-                  </div>
-                  <div class="contact-content">
-                    <div class="contact-label">Location</div>
-                    <div class="contact-value">{{ getLocation() }}</div>
-                  </div>
-                </div>
+                <!-- Contact Actions using Card UI -->
+                <app-contact-actions 
+                  [actions]="['email', 'phone', 'whatsapp', 'location']"
+                  displayMode="cards"
+                  orientation="vertical"
+                  className="contact-methods-cards">
+                </app-contact-actions>
               </div>
             </div>
 

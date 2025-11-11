@@ -1,0 +1,120 @@
+<div [class]="getActionClasses()">
+  <!-- Card Display Mode -->
+  <ng-container *ngIf="displayMode === 'cards'">
+    <!-- Phone Card -->
+    <div *ngIf="shouldShowAction('phone')" class="contact-item" (click)="openPhone()">
+      <div class="contact-icon">
+        <i class="pi pi-phone"></i>
+      </div>
+      <div class="contact-content">
+        <div class="contact-label">PHONE</div>
+        <div class="contact-value">{{ getPhone() }}</div>
+      </div>
+    </div>
+
+    <!-- Email Card -->
+    <div *ngIf="shouldShowAction('email')" class="contact-item" (click)="openEmail()">
+      <div class="contact-icon">
+        <i class="pi pi-envelope"></i>
+      </div>
+      <div class="contact-content">
+        <div class="contact-label">EMAIL</div>
+        <div class="contact-value">{{ getEmail() }}</div>
+      </div>
+    </div>
+
+    <!-- WhatsApp Card -->
+    <div *ngIf="shouldShowAction('whatsapp')" class="contact-item whatsapp-item" (click)="openWhatsApp()">
+      <div class="contact-icon whatsapp-icon">
+        <i class="pi pi-whatsapp"></i>
+      </div>
+      <div class="contact-content">
+        <div class="contact-label">WHATSAPP</div>
+        <div class="contact-value">Let's connect instantly</div>
+      </div>
+    </div>
+
+    <!-- Location Card -->
+    <div *ngIf="shouldShowAction('location')" class="contact-item" (click)="openLocation()">
+      <div class="contact-icon">
+        <i class="pi pi-map-marker"></i>
+      </div>
+      <div class="contact-content">
+        <div class="contact-label">LOCATION</div>
+        <div class="contact-value">{{ getLocation() }}</div>
+      </div>
+    </div>
+
+    <!-- CV Download Card -->
+    <div *ngIf="shouldShowAction('cv')" class="contact-item cv-item" (click)="downloadCV()">
+      <div class="contact-icon">
+        <i class="pi pi-download"></i>
+      </div>
+      <div class="contact-content">
+        <div class="contact-label">DOWNLOAD</div>
+        <div class="contact-value">Resume / CV</div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Other Display Modes -->
+  <ng-container *ngIf="displayMode !== 'cards'">
+    <!-- Phone Action -->
+    <button 
+      *ngIf="shouldShowAction('phone')"
+      [class]="getButtonClasses('phone')"
+      (click)="openPhone()"
+      [pTooltip]="'Call ' + getPhone()"
+      tooltipPosition="bottom">
+      <i class="pi pi-phone"></i>
+      <span *ngIf="showLabels && displayMode !== 'icons'">Call</span>
+      <span *ngIf="showLabels && displayMode === 'links'">{{ getPhone() }}</span>
+    </button>
+
+    <!-- Email Action -->
+    <button 
+      *ngIf="shouldShowAction('email')"
+      [class]="getButtonClasses('email')"
+      (click)="openEmail()"
+      [pTooltip]="'Email ' + getEmail()"
+      tooltipPosition="bottom">
+      <i class="pi pi-envelope"></i>
+      <span *ngIf="showLabels && displayMode !== 'icons'">Email</span>
+      <span *ngIf="showLabels && displayMode === 'links'">{{ getEmail() }}</span>
+    </button>
+
+    <!-- WhatsApp Action -->
+    <button 
+      *ngIf="shouldShowAction('whatsapp')"
+      [class]="getButtonClasses('whatsapp')"
+      (click)="openWhatsApp()"
+      pTooltip="WhatsApp Message"
+      tooltipPosition="bottom">
+      <i class="pi pi-whatsapp"></i>
+      <span *ngIf="showLabels && displayMode !== 'icons'">WhatsApp</span>
+    </button>
+
+    <!-- Download CV Action -->
+    <button 
+      *ngIf="shouldShowAction('cv')"
+      [class]="getButtonClasses('cv')"
+      (click)="downloadCV()"
+      pTooltip="Download Resume/CV"
+      tooltipPosition="bottom">
+      <i class="pi pi-download"></i>
+      <span *ngIf="showLabels && displayMode !== 'icons'">Download CV</span>
+    </button>
+
+    <!-- Location Action -->
+    <button 
+      *ngIf="shouldShowAction('location')"
+      [class]="getButtonClasses('location')"
+      (click)="openLocation()"
+      [pTooltip]="'View location: ' + getLocation()"
+      tooltipPosition="bottom">
+      <i class="pi pi-map-marker"></i>
+      <span *ngIf="showLabels && displayMode !== 'icons'">Location</span>
+      <span *ngIf="showLabels && displayMode === 'links'">{{ getLocation() }}</span>
+    </button>
+  </ng-container>
+</div>

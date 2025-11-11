@@ -1,123 +1,12 @@
+// Use PrimeFlex and global utilities
 .modern-home {
   min-height: 100vh;
   background: var(--background-color);
   color: var(--text-color);
   overflow-x: hidden;
-}
-
-// Hero Section
-.hero-section {
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 6rem 0 4rem;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-    var(--background-color);
-
-  .hero-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    width: 100%;
-  }
-
-  .hero-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
-    min-height: 80vh;
-  }
-
-  .hero-text-wrapper {
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.75rem 1.5rem;
-      background: var(--glass-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--glass-border);
-      border-radius: 50px;
-      margin-bottom: 2rem;
-      
-      .badge-text {
-        font-size: 0.9rem;
-        font-weight: 500;
-        color: var(--text-light);
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-      }
-    }
-
-    .hero-title {
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 800;
-      line-height: 0.9;
-      margin-bottom: 2rem;
-      
-      .title-line {
-        display: block;
-        margin-bottom: 0.2rem;
-        
-        &:nth-child(1) { animation: slideInLeft 0.8s ease-out 0.1s both; }
-        &:nth-child(2) { animation: slideInLeft 0.8s ease-out 0.2s both; }
-        &:nth-child(3) { animation: slideInLeft 0.8s ease-out 0.3s both; }
-        &:nth-child(4) { animation: slideInLeft 0.8s ease-out 0.4s both; }
-        &:nth-child(5) { animation: slideInLeft 0.8s ease-out 0.5s both; }
-        &:nth-child(6) { 
-          animation: slideInLeft 0.8s ease-out 0.6s both; 
-          font-size: 0.4em;
-          margin-top: 1rem;
-        }
-      }
-    }
-
-    .hero-description {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      color: var(--text-light);
-      margin-bottom: 3rem;
-      max-width: 500px;
-      animation: fadeInUp 0.8s ease-out 0.7s both;
-    }
-
-    .hero-actions {
-      animation: fadeInUp 0.8s ease-out 0.8s both;
-      
-      .cta-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 1rem 2rem;
-        background: linear-gradient(135deg, var(--primary-color), #ff8a65);
-        color: white;
-        border: none;
-        border-radius: 50px;
-        font-size: 1rem;
-        font-weight: 600;
-        text-decoration: none;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
-        
-        &:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
-          
-          i {
-            transform: translateX(4px);
-          }
-        }
-        
-        i {
-          transition: transform 0.3s ease;
-        }
-      }
-    }
-  }
+// ...existing code...
+// PrimeFlex and global utility classes are now used in HTML templates. Remove orphaned blocks and unmatched braces.
+// All layout, spacing, and utility classes should be handled in the HTML using PrimeFlex and global classes.
 
   .hero-visual {
     position: relative;
