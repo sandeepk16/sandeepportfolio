@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 
 import { PortfolioService } from '../../services/portfolio.service';
 import { ContactInfoService, ContactInfo } from '../../services/contact-info.service';
+import { SEOService } from '../../services/seo.service';
 import { PersonalInfo, Education, Achievement } from '../../models/portfolio.model';
 
 
@@ -41,6 +42,8 @@ export class AboutComponent implements OnInit {
   }>;
   contactInfo: ContactInfo | null = null;
 
+  private seoService = inject(SEOService);
+
   constructor(
     private portfolioService: PortfolioService,
     private contactInfoService: ContactInfoService
@@ -52,6 +55,26 @@ export class AboutComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Update SEO metadata for about page
+    this.seoService.updatePageMetadata({
+      title: 'About Sandeep Kandula - UI/UX Designer & Developer',
+      description: 'Learn about Sandeep Kandula, a passionate UI/UX Designer and Developer with 16+ years of experience creating exceptional digital experiences. Background, skills, education, and achievements.',
+      keywords: 'About Sandeep Kandula, UI/UX Designer Bio, Web Developer Background, Designer Portfolio, Professional Experience, Education, Achievements',
+      ogTitle: 'About Sandeep Kandula - Professional Designer & Developer',
+      ogDescription: '16+ years of experience in UI/UX design and development. Specialized in creating innovative digital solutions.',
+      ogImage: 'https://sandeepkandula.com/assets/images/og-about.jpg',
+      ogUrl: 'https://sandeepkandula.com/about',
+      canonicalUrl: '/about'
+    });
+
+    // Add breadcrumb
+    this.seoService.addStructuredData(
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'About', url: '/about' }
+      ])
+    );
+
     // Load contact information
     this.contactInfoService.getContactInfo().subscribe(info => {
       this.contactInfo = info;

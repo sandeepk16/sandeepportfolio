@@ -9,6 +9,7 @@ import { ChipModule } from 'primeng/chip';
 import { DividerModule } from 'primeng/divider';
 import { SkeletonModule } from 'primeng/skeleton';
 import { PortfolioService } from '../../services/portfolio.service';
+import { SEOService } from '../../services/seo.service';
 import { Project } from '../../models/portfolio.model';
 import { ProjectCardComponent } from '../../components/project-card/project-card.component';
 
@@ -32,6 +33,7 @@ import { ProjectCardComponent } from '../../components/project-card/project-card
 })
 export class PortfolioComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
+  private seoService = inject(SEOService);
   
   // Signals for reactive state
   projects = signal<Project[]>([]);
@@ -75,6 +77,26 @@ export class PortfolioComponent implements OnInit {
   });
 
   ngOnInit() {
+    // Update SEO metadata for portfolio page
+    this.seoService.updatePageMetadata({
+      title: 'Portfolio & Projects - Sandeep Kandula | UI/UX Designer',
+      description: 'Browse through Sandeep Kandula\'s portfolio of UI/UX design and web development projects. Featuring work in healthcare, enterprise applications, mobile apps, and AI-powered solutions.',
+      keywords: 'Portfolio, Design Projects, UI/UX Projects, Web Design Portfolio, Mobile App Design, Healthcare Design, Enterprise Design, AI Projects',
+      ogTitle: 'Design Portfolio - Innovative UI/UX Projects',
+      ogDescription: 'Explore a collection of innovative design projects spanning healthcare, enterprise, and consumer applications.',
+      ogImage: 'https://sandeepkandula.com/assets/images/og-portfolio.jpg',
+      ogUrl: 'https://sandeepkandula.com/portfolio',
+      canonicalUrl: '/portfolio'
+    });
+
+    // Add breadcrumb
+    this.seoService.addStructuredData(
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Portfolio', url: '/portfolio' }
+      ])
+    );
+
     this.loadProjects();
   }
 

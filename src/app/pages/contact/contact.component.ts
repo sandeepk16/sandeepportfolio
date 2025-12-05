@@ -11,6 +11,7 @@ import { MessageService } from 'primeng/api';
 import { PortfolioService } from '../../services/portfolio.service';
 import { ContactInfoService, ContactInfo } from '../../services/contact-info.service';
 import { GoogleAnalyticsService } from '../../services/google-analytics.service';
+import { SEOService } from '../../services/seo.service';
 import { PersonalInfo } from '../../models/portfolio.model';
 
 @Component({
@@ -36,6 +37,7 @@ export class ContactComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
   private contactInfoService = inject(ContactInfoService);
   private googleAnalytics = inject(GoogleAnalyticsService);
+  private seoService = inject(SEOService);
   private platformId = inject(PLATFORM_ID);
   
   personalInfo = signal<PersonalInfo | null>(null);
@@ -58,6 +60,35 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Update SEO metadata for contact page
+    this.seoService.updatePageMetadata({
+      title: 'Contact Sandeep Kandula - Get In Touch for Design Projects',
+      description: 'Get in touch with Sandeep Kandula for UI/UX design projects, consultations, or collaborations. Based in Hyderabad, India. Available for projects worldwide.',
+      keywords: 'Contact Designer, Hire UI/UX Designer, Design Consultation, Project Inquiry, Contact Sandeep, Hyderabad Designer Contact',
+      ogTitle: 'Contact - Let\'s Create Something Amazing',
+      ogDescription: 'Ready to start your next design project? Get in touch for consultations and collaborations.',
+      ogImage: 'https://sandeepkandula.com/assets/images/og-contact.jpg',
+      ogUrl: 'https://sandeepkandula.com/contact',
+      canonicalUrl: '/contact'
+    });
+
+    // Add breadcrumb
+    this.seoService.addStructuredData(
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Contact', url: '/contact' }
+      ])
+    );
+
+    // Add ContactPage schema
+    this.seoService.addStructuredData({
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact Sandeep Kandula",
+      "description": "Get in touch for design projects and consultations",
+      "url": "https://sandeepkandula.com/contact"
+    });
+
     this.loadPersonalInfo();
     this.loadContactInfo();
     this.loadFaqData();

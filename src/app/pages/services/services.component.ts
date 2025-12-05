@@ -8,6 +8,7 @@ import { ChipModule } from 'primeng/chip';
 import { DividerModule } from 'primeng/divider';
 import { SkeletonModule } from 'primeng/skeleton';
 import { PortfolioService } from '../../services/portfolio.service';
+import { SEOService } from '../../services/seo.service';
 import { Service } from '../../models/portfolio.model';
 
 @Component({
@@ -28,6 +29,7 @@ import { Service } from '../../models/portfolio.model';
 })
 export class ServicesComponent implements OnInit {
   private portfolioService = inject(PortfolioService);
+  private seoService = inject(SEOService);
   
   services = signal<Service[]>([]);
   isLoading = signal<boolean>(true);
@@ -133,6 +135,65 @@ export class ServicesComponent implements OnInit {
   ];
 
   ngOnInit() {
+    // Update SEO metadata for services page
+    this.seoService.updatePageMetadata({
+      title: 'UI/UX Design Services - Sandeep Kandula | Professional Design Solutions',
+      description: 'Professional UI/UX design services including web design, mobile app design, branding, design systems, and consultation. Creating exceptional digital experiences that drive results.',
+      keywords: 'UI/UX Design Services, Web Design Services, Mobile App Design, Branding Services, Design System, UX Consultation, Design Services Hyderabad',
+      ogTitle: 'Professional UI/UX Design Services',
+      ogDescription: 'Comprehensive design services from UI/UX to branding and design systems. Let\'s create something exceptional together.',
+      ogImage: 'https://sandeepkandula.com/assets/images/og-services.jpg',
+      ogUrl: 'https://sandeepkandula.com/services',
+      canonicalUrl: '/services'
+    });
+
+    // Add breadcrumb
+    this.seoService.addStructuredData(
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Services', url: '/services' }
+      ])
+    );
+
+    // Add Service schema
+    this.seoService.addStructuredData({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "UI/UX Design Services",
+      "provider": {
+        "@type": "Person",
+        "name": "Sandeep Kandula"
+      },
+      "areaServed": "Worldwide",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Design Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "UI/UX Design"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Design"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile App Design"
+            }
+          }
+        ]
+      }
+    });
+
     this.loadServices();
   }
 

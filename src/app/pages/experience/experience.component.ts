@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { PortfolioService } from '../../services/portfolio.service';
+import { SEOService } from '../../services/seo.service';
 import { Experience, SkillEvolution, SkillCategory } from '../../models/portfolio.model';
 
 @Component({
@@ -24,6 +25,8 @@ export class ExperienceComponent implements OnInit {
   skillsCategories$: Observable<SkillCategory[]>;
   totalSkillsCount$: Observable<number>;
 
+  private seoService = inject(SEOService);
+
   constructor(private portfolioService: PortfolioService) {
     this.totalExperience$ = this.portfolioService.getTotalExperience();
     this.companiesWorked$ = this.portfolioService.getPortfolioStats().pipe(
@@ -39,7 +42,25 @@ export class ExperienceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Component initialization
+    // Update SEO metadata for experience page
+    this.seoService.updatePageMetadata({
+      title: 'Professional Experience - Sandeep Kandula | 16+ Years in UI/UX',
+      description: 'Explore Sandeep Kandula\'s 16+ years of professional experience as a UI/UX Designer and Developer. Worked with top companies including Medicover, Hitachi, HealthiPASS, and more.',
+      keywords: 'Professional Experience, Work History, UI/UX Career, Designer Career Path, Medicover, Hitachi, HealthiPASS, Frontend Developer Experience',
+      ogTitle: 'Professional Experience - 16+ Years in UI/UX Design & Development',
+      ogDescription: 'Detailed work history showcasing expertise across healthcare, enterprise solutions, and innovative startups.',
+      ogImage: 'https://sandeepkandula.com/assets/images/og-experience.jpg',
+      ogUrl: 'https://sandeepkandula.com/experience',
+      canonicalUrl: '/experience'
+    });
+
+    // Add breadcrumb
+    this.seoService.addStructuredData(
+      this.seoService.getBreadcrumbSchema([
+        { name: 'Home', url: '/' },
+        { name: 'Experience', url: '/experience' }
+      ])
+    );
   }
   
   // Track by function for performance
