@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 declare let gtag: Function;
@@ -7,6 +9,16 @@ declare let gtag: Function;
   providedIn: 'root'
 })
 export class GoogleAnalyticsService {
+
+  constructor(router: Router) {
+    if (typeof window === 'undefined') return;
+
+    router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.trackPageView(event.urlAfterRedirects);
+      });
+  }
 
   // constructor() {
   //   this.loadGoogleAnalytics();
@@ -34,54 +46,39 @@ export class GoogleAnalyticsService {
   // }
 
 
-  constructor(router: Router) {
-    if (typeof window === 'undefined') return;
+  // Track page views (SPA routing)
+  trackPageView(path: string): void {
+    if (!environment.googleAnalyticsId || typeof gtag === 'undefined') return;
 
-    router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.trackPageView(event.urlAfterRedirects);
-      });
+    gtag('config', environment.googleAnalyticsId, {
+      page_path: path
+    });
   }
 
-  // Track page views
-  trackPageView(url: string, title?: string): void {
-    if (environment.googleAnalyticsId && typeof gtag !== 'undefined') {
-      gtag('config', environment.googleAnalyticsId, {
-        page_location: url,
-        page_title: title || document.title
-      });
-    }
+  // Generic GA4 event tracking
+  trackEvent(eventName: string, params?: Record<string, any>): void {
+    if (!environment.googleAnalyticsId || typeof gtag === 'undefined') return;
+
+    gtag('event', eventName, params);
   }
 
-  // Track custom events
-  trackEvent(action: string, category: string, label?: string, value?: number): void {
-    if (environment.googleAnalyticsId && typeof gtag !== 'undefined') {
-      gtag('event', action, {
-        event_category: category,
-        event_label: label,
-        value: value
-      });
-    }
-  }
-
-  // Track contact form submissions
+  // Contact form submission
   trackContactForm(method: string = 'email'): void {
-    this.trackEvent('contact_form_submit', 'engagement', method);
+    this.trackEvent('contact_form_submit', { method });
   }
 
-  // Track portfolio project views
+  // Portfolio project view
   trackProjectView(projectName: string): void {
-    this.trackEvent('project_view', 'portfolio', projectName);
+    this.trackEvent('project_view', { project_name: projectName });
   }
 
-  // Track downloads (resume, etc.)
+  // File download
   trackDownload(fileName: string): void {
-    this.trackEvent('file_download', 'engagement', fileName);
+    this.trackEvent('file_download', { file_name: fileName });
   }
 
-  // Track external link clicks
-  trackExternalClick(url: string, linkType: string = 'external_link'): void {
-    this.trackEvent('click', linkType, url);
+  // External link click
+  trackExternalClick(url: string): void {
+    this.trackEvent('external_click', { url });
   }
 }
