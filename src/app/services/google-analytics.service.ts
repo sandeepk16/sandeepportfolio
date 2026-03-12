@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 declare let gtag: Function;
@@ -8,11 +10,11 @@ declare let gtag: Function;
 })
 export class GoogleAnalyticsService {
 
-  constructor(router: Router) {
+  constructor(private router: Router) {
     if (typeof window === 'undefined') return;
 
-    router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+    this.router.events
+      .pipe(filter((event: any) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.trackPageView(event.urlAfterRedirects);
       });
