@@ -3,10 +3,14 @@
     <div class="footer-inner">
       <a routerLink="/" class="footer-brand">Sundeep k</a>
       <nav class="footer-social">
-        <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" rel="noopener noreferrer" class="footer-link">
-          {{ link.platform }}
-        </a>
-        <a [href]="resumeUrl" target="_blank" rel="noopener noreferrer" class="footer-link">Resume</a>
+        <ng-container *ngIf="socialLinks$ | async as links">
+          <a *ngFor="let link of links" [href]="link.url" target="_blank" rel="noopener noreferrer" class="footer-link">
+            {{ link.platform }}
+          </a>
+        </ng-container>
+        <ng-container *ngIf="resumeUrl$ | async as resumeUrl">
+          <a [href]="resumeUrl" target="_blank" rel="noopener noreferrer" class="footer-link">Resume</a>
+        </ng-container>
       </nav>
     </div>
     <p class="footer-copy">&copy; {{ currentYear }} Portfolio - Turning Complex Products into Intuitive Experiences. Built with Clarity &amp; Energy.</p>
