@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, inject } from '@angular/core';
+import { PortfolioService } from '../../services/portfolio.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ContactInfoService, ContactInfo } from '../../services/contact-info.service';
@@ -25,6 +26,8 @@ interface SocialLink {
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  private portfolioService = inject(PortfolioService);
+  resumeUrl: string = '';
   currentYear: number = new Date().getFullYear();
   contactInfo: ContactInfo | null = null;
   
@@ -52,13 +55,15 @@ export class FooterComponent implements OnInit {
 
   socialLinks: SocialLink[] = [];
 
-  constructor(private contactInfoService: ContactInfoService) {}
+  constructor(private contactInfoService: ContactInfoService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
+    this.portfolioService.getPersonalInfo().subscribe(info => {
+      this.resumeUrl = info.resumeUrl;
+    });
     // Load contact information
     this.contactInfoService.getContactInfo().subscribe(info => {
       this.contactInfo = info;
-      
       // Set up social links from contact service
       this.socialLinks = [
         {
@@ -92,7 +97,19 @@ export class FooterComponent implements OnInit {
           icon: 'pi pi-bookmark'
         }
       ];
+      this.cdr.detectChanges();
     });
+  }
+
+  downloadResume() {
+    if (this.resumeUrl) {
+      const link = document.createElement('a');
+      link.href = this.resumeUrl;
+      link.download = 'Sandeep_Kandula_Senior_Product_Designer_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   }
 
   openSocialLink(url: string): void {

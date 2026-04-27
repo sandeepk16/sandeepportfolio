@@ -1,6 +1,7 @@
 import { Component, OnInit, inject, signal, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -20,6 +21,7 @@ import { PersonalInfo } from '../../models/portfolio.model';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule,
     CardModule,
     ButtonModule,
@@ -32,6 +34,19 @@ import { PersonalInfo } from '../../models/portfolio.model';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
+    selectedCurrency: string = 'USD';
+    usdBudgetOptions = [
+      { value: 'under-5k', label: 'Under $500' },
+      { value: '5k-10k', label: '$500 - $1000' },
+      { value: '10k-25k', label: '$1000 - $2500' },
+      { value: '25k-plus', label: '$2500+' }
+    ];
+    inrBudgetOptions = [
+      { value: 'in-under-50k', label: 'Under ₹50,000' },
+      { value: 'in-50k-1l', label: '₹50,000 - ₹1,00,000' },
+      { value: 'in-1l-2.5l', label: '₹1,00,000 - ₹2,50,000' },
+      { value: 'in-2.5l-plus', label: '₹2,50,000+' }
+    ];
   private fb = inject(FormBuilder);
   private messageService = inject(MessageService);
   private portfolioService = inject(PortfolioService);

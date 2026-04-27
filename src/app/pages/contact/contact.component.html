@@ -117,12 +117,18 @@
               <!-- Project Budget -->
               <div class="form-group">
                 <label for="budget" class="form-label">Project Budget</label>
+                <select [(ngModel)]="selectedCurrency" name="currency" [ngModelOptions]="{standalone: true}" class="form-input" style="margin-bottom: 10px;">
+                  <option value="USD">US Dollar (USD)</option>
+                  <option value="INR">Indian Rupee (INR)</option>
+                </select>
                 <select id="budget" formControlName="budget" class="form-input">
                   <option value="">Select budget range</option>
-                  <option value="under-5k">Under $500</option>
-                  <option value="5k-10k">$500 - $1000</option>
-                  <option value="10k-25k">$1000 - $2500</option>
-                  <option value="25k-plus">$2500+</option>
+                  <ng-container *ngIf="selectedCurrency === 'USD'">
+                    <option *ngFor="let opt of usdBudgetOptions" [value]="opt.value">{{ opt.label }}</option>
+                  </ng-container>
+                  <ng-container *ngIf="selectedCurrency === 'INR'">
+                    <option *ngFor="let opt of inrBudgetOptions" [value]="opt.value">{{ opt.label }}</option>
+                  </ng-container>
                   <option value="discuss">Let's Discuss</option>
                 </select>
               </div>
