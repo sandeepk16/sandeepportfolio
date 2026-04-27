@@ -11,8 +11,6 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { PortfolioService } from '../../services/portfolio.service';
 import { SEOService } from '../../services/seo.service';
 import { Project } from '../../models/portfolio.model';
-import { ProjectCardComponent } from '../../components/project-card/project-card.component';
-
 @Component({
   selector: 'app-portfolio',
   standalone: true,
@@ -25,8 +23,7 @@ import { ProjectCardComponent } from '../../components/project-card/project-card
     InputTextModule,
     ChipModule,
     DividerModule,
-    SkeletonModule,
-    ProjectCardComponent
+    SkeletonModule
   ],
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.scss']
@@ -42,6 +39,12 @@ export class PortfolioComponent implements OnInit {
   selectedCategory = signal<string>('');
   selectedTechnology = signal<string>('');
   isLoading = signal<boolean>(true);
+
+  filterCategories = [
+    { label: 'UX Architecture', value: 'ux-architecture' },
+    { label: 'Frontend Engineering', value: 'frontend-engineering' },
+    { label: 'Design Systems', value: 'design-systems' }
+  ];
   
   // Filter options computed from projects
   categories = computed(() => {
@@ -112,6 +115,11 @@ export class PortfolioComponent implements OnInit {
         this.isLoading.set(false);
       }
     });
+  }
+
+  filterByCategory(category: string) {
+    this.selectedCategory.set(category);
+    this.applyFilters();
   }
 
   onSearchChange(event: Event) {

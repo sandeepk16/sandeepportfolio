@@ -1,333 +1,101 @@
-<div class="services-container">
-  <!-- Services Hero Section -->
-  <section class="services-hero">
+<div class="services-page">
+
+  <!-- ===== HERO ===== -->
+  <section class="svc-hero">
     <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <i class="pi pi-cog"></i>
-          <span>What I Offer</span>
+      <div class="svc-hero-inner">
+        <div class="svc-hero-left">
+          <p class="section-label">CAPABILITIES</p>
+          <h1 class="svc-heading">
+            Architecture for <span class="orange-text">Digital<br>Excellence.</span>
+          </h1>
+          <p class="svc-desc">
+            I craft high-performance digital ecosystems where technical precision meets 
+            exceptional user experience. My approach treats every pixel and line of code 
+            as a structural component of a larger vision.
+          </p>
+          <a routerLink="/portfolio" class="btn btn-primary btn-lg">View Case Studies &rarr;</a>
         </div>
-        <h1 class="hero-title">
-          Professional <span class="gradient-text">Design & Development Services</span>
-        </h1>
-        <p class="hero-subtitle">
-          Transform your digital presence with comprehensive design solutions that combine 
-          aesthetic excellence with strategic thinking to drive business growth and user engagement.
-        </p>
-        
-        <div class="services-highlights">
-          <div class="highlight-item">
-            <div class="highlight-icon">
-              <i class="pi pi-verified"></i>
-            </div>
-            <div class="highlight-content">
-              <h4>Expert Experience</h4>
-              <p>5+ Years of Design Excellence</p>
-            </div>
+        <div class="svc-hero-right">
+          <div class="hero-visual-card">
+            <div class="visual-grid"></div>
           </div>
-          <div class="highlight-item">
-            <div class="highlight-icon">
-              <i class="pi pi-heart"></i>
-            </div>
-            <div class="highlight-content">
-              <h4>Client Success</h4>
-              <p>100% Satisfaction Rate</p>
-            </div>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-icon">
-              <i class="pi pi-clock"></i>
-            </div>
-            <div class="highlight-content">
-              <h4>Quick Delivery</h4>
-              <p>Fast Turnaround Time</p>
-            </div>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-icon">
-              <i class="pi pi-shield"></i>
-            </div>
-            <div class="highlight-content">
-              <h4>Quality Assured</h4>
-              <p>Premium Design Standards</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="hero-actions">
-          <button class="btn btn-primary" routerLink="/contact">
-            <i class="pi pi-send"></i>
-            Get Started
-          </button>
-          <button class="btn btn-secondary" routerLink="/portfolio">
-            <i class="pi pi-eye"></i>
-            View Portfolio
-          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section class="services-section">
+  <!-- ===== BRIDGING THE GAP ===== -->
+  <section class="bridging-section">
     <div class="container">
-      <h2 class="section-title">
-        <span class="section-badge">Services</span>
-        What I Can Do For You
-      </h2>
-      
-      <!-- Loading State -->
-      <div *ngIf="isLoading()" class="loading-grid">
-        <div class="services-grid">
-          <div class="service-skeleton" *ngFor="let i of [1,2,3,4,5,6]">
-            <div class="skeleton-icon"></div>
-            <div class="skeleton-content">
-              <div class="skeleton-title"></div>
-              <div class="skeleton-text"></div>
-              <div class="skeleton-text short"></div>
-              <div class="skeleton-features">
-                <div class="skeleton-feature"></div>
-                <div class="skeleton-feature"></div>
-                <div class="skeleton-feature"></div>
-              </div>
-              <div class="skeleton-button"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Services Grid -->
-        <div class="services-grid" *ngIf="services().length > 0">
-          <div class="service-card" *ngFor="let service of services(); trackBy: trackByServiceId">
-            <div class="service-header">
-              <div class="service-icon">
-                <i [class]="'pi ' + service.icon"></i>
-              </div>
-              <div class="service-meta">
-                <h3 class="service-title">{{ service.title }}</h3>
-                <p class="service-description">{{ service.description }}</p>
-              </div>
-            </div>
-
-            <div class="service-content">
-              <!-- Features List -->
-              <div class="service-features">
-                <h4 class="features-title">What's Included:</h4>
-                <ul class="features-list">
-                  <li class="feature-item" *ngFor="let feature of service.features">
-                    <i class="pi pi-check"></i>
-                    <span>{{ feature }}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- Pricing and Duration -->
-              <div class="service-info">
-                <div class="info-item">
-                  <span class="info-label">Starting Price:</span>
-                  <span class="info-value price">{{ service.price || 'Contact for Quote' }}</span>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">Timeline:</span>
-                  <span class="info-value duration">{{ service.duration || 'Varies' }}</span>
-                </div>
-              </div>
-
-              <div class="service-footer">
-                <button 
-                  class="btn btn-primary w-full"
-                  [routerLink]="['/contact']"
-                  [queryParams]="{service: service.id}">
-                  <i class="pi pi-shopping-cart"></i>
-                  Get Quote
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-  </section>
-
-  <!-- Process Section -->
-  <section class="process-section">
-    <div class="container">
-      <h2 class="section-title">
-        <span class="section-badge">Process</span>
-        How I Work With You
-      </h2>
-      <p class="section-description">
-        I follow a proven, collaborative approach that ensures every project delivers 
-        exceptional results and exceeds your expectations.
+      <h2 class="bridging-heading">Bridging the Gap</h2>
+      <p class="bridging-desc">
+        My methodology integrates design-thinking with systems engineering to
+        eliminate the friction between concept and deployment.
       </p>
 
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-number">01</div>
-          <div class="step-content">
-            <div class="step-icon">
-              <i class="pi pi-search"></i>
-            </div>
-            <h4 class="step-title">Discovery & Research</h4>
-            <p class="step-description">
-              Deep dive into your business objectives, target audience, and market landscape 
-              to create a strategic foundation for the project.
-            </p>
-            <ul class="step-features">
-              <li>Stakeholder interviews</li>
-              <li>User research & personas</li>
-              <li>Competitive analysis</li>
-              <li>Technical requirements</li>
-            </ul>
+      <div class="bridging-grid">
+        <div class="bridging-card" *ngFor="let item of bridgingItems">
+          <div class="bridging-icon">
+            <i [class]="item.icon"></i>
           </div>
-        </div>
-
-        <div class="process-step">
-          <div class="step-number">02</div>
-          <div class="step-content">
-            <div class="step-icon">
-              <i class="pi pi-pencil"></i>
-            </div>
-            <h4 class="step-title">Design & Prototyping</h4>
-            <p class="step-description">
-              Transform insights into compelling visual solutions through iterative design 
-              and interactive prototypes that bring ideas to life.
-            </p>
-            <ul class="step-features">
-              <li>Wireframes & user flows</li>
-              <li>Visual design concepts</li>
-              <li>Interactive prototypes</li>
-              <li>Design system creation</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="process-step">
-          <div class="step-number">03</div>
-          <div class="step-content">
-            <div class="step-icon">
-              <i class="pi pi-cog"></i>
-            </div>
-            <h4 class="step-title">Testing & Refinement</h4>
-            <p class="step-description">
-              Validate designs through user testing and iterate based on feedback to ensure 
-              optimal user experience and business outcomes.
-            </p>
-            <ul class="step-features">
-              <li>Usability testing</li>
-              <li>A/B testing setup</li>
-              <li>Performance optimization</li>
-              <li>Accessibility compliance</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="process-step">
-          <div class="step-number">04</div>
-          <div class="step-content">
-            <div class="step-icon">
-              <i class="pi pi-send"></i>
-            </div>
-            <h4 class="step-title">Delivery & Support</h4>
-            <p class="step-description">
-              Provide comprehensive deliverables and ongoing support to ensure successful 
-              implementation and long-term project success.
-            </p>
-            <ul class="step-features">
-              <li>Design system & assets</li>
-              <li>Developer handoff</li>
-              <li>Documentation</li>
-              <li>Post-launch support</li>
-            </ul>
-          </div>
+          <h3 class="bridging-title">{{ item.title }}</h3>
+          <p class="bridging-desc-sm">{{ item.description }}</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="faq-section py-6">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-6">
-          <h2 class="section-title text-3xl font-bold mb-3">Frequently Asked Questions</h2>
-          <p class="section-description text-color-secondary">
-            Here are answers to some common questions about my design services.
+  <!-- ===== SERVICES GRID ===== -->
+  <section class="services-grid-section">
+    <div class="container">
+      <p class="section-label">Our Expertise</p>
+      <div class="svc-grid-header">
+        <h2 class="svc-grid-heading">A full-spectrum approach to<br>digital product design.</h2>
+        <p class="svc-grid-desc">
+          From initial discovery to final accessibility compliance, I provide specialized 
+          services that ensure your product stands out.
+        </p>
+      </div>
+
+      <div class="svc-grid" *ngIf="!isLoading()">
+        <div class="svc-card" *ngFor="let service of services(); let i = index"
+          [class.featured]="i === 3">
+          <div class="svc-card-header">
+            <i [class]="'pi ' + service.icon"></i>
+            <span class="svc-num">0{{ i + 1 }}</span>
+          </div>
+          <h3 class="svc-title">{{ service.title }}</h3>
+          <p class="svc-desc-text">{{ service.description }}</p>
+          <div class="svc-tags" *ngIf="service.features && service.features.length > 0">
+            <span class="svc-tag" *ngFor="let tag of service.features | slice:0:2">{{ tag | uppercase }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading state -->
+      <div class="svc-grid" *ngIf="isLoading()">
+        <div class="svc-card skeleton-card" *ngFor="let i of [1,2,3,4,5]"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section class="svc-cta-section">
+    <div class="container">
+      <div class="svc-cta-box">
+        <div class="svc-cta-left">
+          <h2 class="svc-cta-heading">Ready to architect your<br>next digital leap?</h2>
+          <p class="svc-cta-desc">
+            Let's build something that isn't just functional, but revolutionary. 
+            I'm currently accepting new projects for Q3.
           </p>
         </div>
-
-        <div class="faq-grid">
-          <div class="grid">
-            <div class="col-12 md:col-6">
-              <div class="faq-item mb-4">
-                <h4 class="faq-question font-semibold mb-2">How long does a typical project take?</h4>
-                <p class="faq-answer text-color-secondary text-sm line-height-3">
-                  Project timelines vary depending on scope and complexity. A simple landing page 
-                  might take 1-2 weeks, while a complete mobile app design could take 4-6 weeks.
-                </p>
-              </div>
-            </div>
-            
-            <div class="col-12 md:col-6">
-              <div class="faq-item mb-4">
-                <h4 class="faq-question font-semibold mb-2">Do you work with development teams?</h4>
-                <p class="faq-answer text-color-secondary text-sm line-height-3">
-                  Yes, I collaborate closely with development teams to ensure designs are 
-                  implemented correctly and provide all necessary assets and specifications.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-12 md:col-6">
-              <div class="faq-item mb-4">
-                <h4 class="faq-question font-semibold mb-2">What's included in your deliverables?</h4>
-                <p class="faq-answer text-color-secondary text-sm line-height-3">
-                  Deliverables typically include design files, assets, style guides, 
-                  prototypes, and documentation needed for successful implementation.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-12 md:col-6">
-              <div class="faq-item mb-4">
-                <h4 class="faq-question font-semibold mb-2">Do you offer ongoing support?</h4>
-                <p class="faq-answer text-color-secondary text-sm line-height-3">
-                  Yes, I offer post-project support and can help with design iterations, 
-                  new features, or additional design needs as your product evolves.
-                </p>
-              </div>
-            </div>
-          </div>
+        <div class="svc-cta-right">
+          <a routerLink="/contact" class="btn btn-primary btn-lg">Start a Conversation</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Call to Action Section -->
-  <section class="cta-section py-6 surface-100">
-    <div class="container mx-auto px-4">
-      <div class="cta-content text-center max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold mb-3">Ready to Start Your Project?</h2>
-        <p class="text-color-secondary mb-5 line-height-3">
-          Let's discuss your project requirements and how I can help you create 
-          an exceptional digital experience that drives results for your business.
-        </p>
-        <div class="cta-buttons flex flex-wrap gap-3 justify-content-center">
-          <p-button 
-            label="Get Free Consultation" 
-            icon="pi pi-calendar"
-            [routerLink]="getContactLink()"
-            severity="primary"
-            size="large">
-          </p-button>
-          <p-button 
-            label="View My Work" 
-            icon="pi pi-eye"
-            [routerLink]="['/portfolio']"
-            [outlined]="true"
-            size="large">
-          </p-button>
-        </div>
-      </div>
-    </div>
-  </section>
 </div>

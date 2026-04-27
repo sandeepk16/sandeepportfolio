@@ -47,6 +47,29 @@ export class HomeComponent implements OnInit {
   recentExperience$: Observable<Experience[]>;
   servicesPreviews$: Observable<ServicePreview[]>;
 
+  capabilities = [
+    {
+      icon: 'pi pi-pen-to-square',
+      title: 'UI/UX Design',
+      description: 'Systems thinking applied to interface architecture and user flows.'
+    },
+    {
+      icon: 'pi pi-mobile',
+      title: 'Mobile Apps',
+      description: 'Native-feel cross-platform experiences built with performance in mind.'
+    },
+    {
+      icon: 'pi pi-desktop',
+      title: 'Web Apps',
+      description: 'Enterprise-grade React and Angular applications with robust architectures.'
+    },
+    {
+      icon: 'pi pi-palette',
+      title: 'Design Systems',
+      description: 'Scalable token-driven libraries that bridge design and development.'
+    }
+  ];
+
   private seoService = inject(SEOService);
 
   constructor(private portfolioService: PortfolioService) {

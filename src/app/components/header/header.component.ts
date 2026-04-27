@@ -28,12 +28,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = [
-      { label: 'Home', routerLink: ['/'] },
-      { label: 'About', routerLink: ['/about'] },
-      { label: 'Experience', routerLink: ['/experience'] },
       { label: 'Work', routerLink: ['/portfolio'] },
+      { label: 'Experience', routerLink: ['/experience'] },
       { label: 'Services', routerLink: ['/services'] },
-      { label: 'Contact', routerLink: ['/contact'] }
+      { label: 'About', routerLink: ['/about'] }
     ];
     this.portfolioService.getPersonalInfo().subscribe(info => {
       this.resumeUrl = info.resumeUrl;

@@ -152,3 +152,10 @@ export interface SkillCategory {
   description: string;
   skills: string[];
 }
+
+export interface TechEcosystemItem {
+  icon: string;
+  iconColor: 'orange' | 'blue';
+  title: string;
+  description: string;
+}

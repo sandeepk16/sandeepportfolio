@@ -1,546 +1,304 @@
-// ===============================
-// CONTACT PAGE - COMPONENT SPECIFIC STYLES
-// (Global styles applied via CSS classes in template)
-// ===============================
-
-.contact-container {
+.contact-page {
+  background: #FAF8F5;
+  color: #0D0D0D;
   min-height: 100vh;
 }
 
-// Contact-specific layout
+.section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #F05213;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+// ===== HERO =====
+.contact-hero {
+  padding: 5rem 0 3rem;
+
+  .contact-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: #0D0D0D;
+    margin-bottom: 1.25rem;
+    line-height: 1.1;
+  }
+
+  .contact-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #6B6B6B;
+    max-width: 480px;
+  }
+}
+
+// ===== MAIN LAYOUT =====
+.contact-main {
+  padding: 0 0 6rem;
+}
+
 .contact-layout {
   display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 3rem;
-  
-  @media (max-width: 968px) {
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+  align-items: start;
+
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
-    gap: 2rem;
   }
 }
 
-.contact-info-section {
-  .info-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  // Contact-specific profile section styles
-  .profile-section {
-    display: flex;
-    align-items: center;
+// ===== FORM =====
+.contact-form-col {}
+
+.contact-form-card {
+  background: #fff;
+  border: 1px solid #E8E5E1;
+  border-radius: 16px;
+  padding: 2.5rem;
+
+  @media (max-width: 640px) { padding: 1.5rem; }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    margin-bottom: 2rem;
-    
-    .profile-image {
-      .profile-img {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid var(--accent-color);
-      }
-    }
-    
-    .profile-info {
-      .contact-name {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 0.25rem;
-      }
-      
-      .contact-role {
-        color: var(--text-secondary);
-        font-size: 0.875rem;
-        margin: 0;
-      }
-    }
-  }
-}
+    margin-bottom: 0;
 
-// PrimeNG specific form styles (if using PrimeNG components)
-.contact-form {
+    @media (max-width: 640px) { grid-template-columns: 1fr; }
+  }
+
   .form-group {
+    margin-bottom: 1.25rem;
+
     .form-label {
-      color: var(--text-color);
-      font-size: 0.95rem;
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #9B9B9B;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
     }
-    
-    .p-inputtext, textarea {
-      border: 2px solid var(--surface-border);
-      border-radius: 8px;
-      padding: 0.75rem;
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-      
-      &:focus {
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.2);
-      }
-      
-      &.p-invalid {
-        border-color: var(--red-500);
-      }
-    }
-    
-    textarea {
-      resize: vertical;
-      min-height: 120px;
+
+    .form-input {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background: #FAF8F5;
+      border: 1.5px solid #E8E5E1;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: #0D0D0D;
       font-family: inherit;
+      transition: border-color 0.2s;
+
+      &::placeholder { color: #B0B0B0; }
+      &:focus { outline: none; border-color: #F05213; }
+      &.error { border-color: #dc2626; }
     }
-    
-    .p-error {
-      color: var(--red-500);
-      font-size: 0.85rem;
+
+    .form-textarea { resize: vertical; min-height: 140px; }
+    .form-select { cursor: pointer; }
+
+    .error-message {
+      display: block;
+      color: #dc2626;
+      font-size: 0.75rem;
       margin-top: 0.25rem;
     }
   }
-  
-  .form-actions {
-    :deep(.p-button) {
-      min-width: 150px;
-      font-weight: 600;
-    }
+
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    justify-content: center;
+    margin-top: 0.5rem;
+    background: #F05213;
+    color: #fff;
+    border: 2px solid #F05213;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 700;
+    transition: background 0.2s;
+
+    &:hover:not(:disabled) { background: #C94107; border-color: #C94107; }
+    &:disabled { opacity: 0.6; cursor: not-allowed; }
   }
 }
 
-// Contact Info Sidebar (PrimeNG specific styles)
-.contact-info-sidebar {
-  .contact-info-card, .social-links-card {
-    :deep(.p-card) {
-      border: 1px solid var(--surface-border);
-      border-radius: 12px;
+// ===== SIDEBAR =====
+.contact-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sidebar-profile-card {
+  background: #fff;
+  border: 1px solid #E8E5E1;
+  border-radius: 16px;
+  padding: 2rem;
+
+  .sidebar-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #E8E5E1;
+
+    .sidebar-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #E8E5E1;
       overflow: hidden;
-      
-      .p-card-header {
-        padding: 0;
-        background: linear-gradient(135deg, var(--surface-100) 0%, var(--surface-200) 100%);
-        border-bottom: 1px solid var(--surface-border);
-      }
-      
-      .p-card-body {
-        padding: 1.5rem;
-      }
+      flex-shrink: 0;
+
+      img { width: 100%; height: 100%; object-fit: cover; }
+    }
+
+    .sidebar-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0D0D0D;
+      margin-bottom: 0.2rem;
+    }
+
+    .sidebar-role {
+      font-size: 0.8rem;
+      color: #6B6B6B;
     }
   }
-  
-  .contact-info-card {
-    .info-header {
-      .profile-image {
-        .profile-img {
-          width: 80px;
-          height: 80px;
-          object-fit: cover;
-          border: 3px solid white;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-      }
-      
-      .contact-name {
-        color: var(--text-color);
-      }
-      
-      .contact-role {
-        font-size: 0.95rem;
-      }
-    }
-    
-    .contact-details {
-      .contact-item {
-        // Using global .contact-item class with additional styles
-        transition: all 0.3s ease;
-        border-radius: 8px;
-        
-        &:hover {
-          background-color: var(--surface-100);
-        }
-        
-        .contact-icon {
-          i {
-            width: 24px;
-            text-align: center;
-          }
-        }
-        
-        .contact-content {
-          flex: 1;
-          
-          .contact-label {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-          }
-          
-          .contact-value {
-            font-size: 0.95rem;
-            color: var(--text-color);
-            font-weight: 500;
-          }
-        }
-      }
-    }
+
+  .sidebar-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #E8E5E1;
   }
-  
-  .social-links-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(15px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 2rem;
-    margin-top: 1.5rem;
-    
-    .social-header {
-      text-align: center;
-      margin-bottom: 2rem;
-      
-      .social-title {
-        color: var(--text-color);
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        font-family: var(--font-display);
-      }
-      
-      .social-subtitle {
-        color: var(--text-light);
-        font-size: 0.9rem;
-        line-height: 1.5;
-      }
-    }
-    
-    .social-links {
+
+  .sidebar-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+
+    .contact-icon-wrap {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      
-      .social-item {
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      &.blue { background: rgba(27, 86, 199, 0.1); i { color: #1B56C7; } }
+      &.orange { background: rgba(240, 82, 19, 0.1); i { color: #F05213; } }
+
+      i { font-size: 0.9rem; }
+    }
+
+    .contact-item-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #9B9B9B;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-item-value {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #0D0D0D;
+    }
+  }
+
+  .sidebar-social {
+    .social-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #9B9B9B;
+      margin-bottom: 0.875rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.625rem;
+
+      .social-icon-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        border: 1.5px solid #E8E5E1;
+        background: #FAF8F5;
         display: flex;
         align-items: center;
-        padding: 1rem 1.25rem;
-        background: var(--surface-card);
-        border: 1px solid var(--surface-border);
-        border-radius: 12px;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.05) 100%);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-        
-        &:hover {
-          transform: translateY(-3px);
-          border-color: transparent;
-          
-          &::before {
-            opacity: 1;
-          }
-        }
-        
-        // LinkedIn specific styling
-        &:nth-child(1) {
-          &:hover {
-            background: linear-gradient(135deg, #0077B5 0%, #005885 100%);
-            box-shadow: 0 10px 30px rgba(0, 119, 181, 0.3);
-            
-            .social-icon {
-              background: rgba(255, 255, 255, 0.2);
-              
-              i {
-                color: white;
-              }
-            }
-            
-            .social-content {
-              .social-label,
-              .social-description {
-                color: white;
-              }
-            }
-          }
-        }
-        
-        // Behance specific styling
-        &:nth-child(2) {
-          &:hover {
-            background: linear-gradient(135deg, #1769FF 0%, #0B4FCC 100%);
-            box-shadow: 0 10px 30px rgba(23, 105, 255, 0.3);
-            
-            .social-icon {
-              background: rgba(255, 255, 255, 0.2);
-              
-              i {
-                color: white;
-              }
-            }
-            
-            .social-content {
-              .social-label,
-              .social-description {
-                color: white;
-              }
-            }
-          }
-        }
-        
-        // Dribbble specific styling
-        &:nth-child(3) {
-          &:hover {
-            background: linear-gradient(135deg, #EA4C89 0%, #C73669 100%);
-            box-shadow: 0 10px 30px rgba(234, 76, 137, 0.3);
-            
-            .social-icon {
-              background: rgba(255, 255, 255, 0.2);
-              
-              i {
-                color: white;
-              }
-            }
-            
-            .social-content {
-              .social-label,
-              .social-description {
-                color: white;
-              }
-            }
-          }
-        }
-        
-        .social-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 48px;
-          height: 48px;
-          border-radius: 12px;
-          background: var(--glass-bg);
-          border: 1px solid var(--glass-border);
-          margin-right: 1rem;
-          transition: all 0.3s ease;
-          
-          i {
-            font-size: 1.25rem;
-            color: var(--text-color);
-            transition: color 0.3s ease;
-          }
-        }
-        
-        .social-content {
-          flex: 1;
-          
-          .social-label {
-            color: var(--text-color);
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            transition: color 0.3s ease;
-          }
-          
-          .social-description {
-            color: var(--text-light);
-            font-size: 0.85rem;
-            line-height: 1.4;
-            transition: color 0.3s ease;
-          }
-        }
-        
-        // Add arrow indicator
-        &::after {
-          content: '';
-          width: 16px;
-          height: 16px;
-          border: 2px solid var(--text-light);
-          border-left: none;
-          border-bottom: none;
-          transform: rotate(45deg);
-          transition: all 0.3s ease;
-          opacity: 0.6;
-        }
-        
-        &:hover::after {
-          border-color: white;
-          opacity: 1;
-        }
+        justify-content: center;
+        text-decoration: none;
+        transition: border-color 0.2s;
+
+        &:hover { border-color: #0D0D0D; }
+
+        i { font-size: 0.9rem; color: #4A4A4A; }
       }
     }
   }
 }
 
-// FAQ Section
-.contact-faq-section {
-  .section-title {
-    color: var(--text-color);
-  }
-  
-  .section-description {
-    font-size: 1.1rem;
-  }
-  
-  .faq-grid {
-    .faq-item {
-      .faq-question {
-        color: var(--text-color);
-        font-size: 1rem;
-        display: flex;
-        align-items: center;
-      }
-      
-      .faq-answer {
-        font-size: 0.95rem;
-        line-height: 1.6;
-        margin-left: 1.75rem;
-      }
-    }
-  }
-}
+// ===== STATS MINI =====
+.stats-mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 
-// WhatsApp specific styling
-.whatsapp-item {
-  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
-  color: white !important;
-  border: none !important;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.1);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-    background: linear-gradient(135deg, #128C7E 0%, #25D366 100%) !important;
-    
-    &::before {
-      opacity: 1;
-    }
-  }
-  
-  .whatsapp-icon {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    
-    i {
-      color: white;
-      font-size: 1.2rem;
-    }
-  }
-  
-  .contact-content {
-    .contact-label,
-    .contact-value {
-      color: white !important;
-    }
-    
-    .contact-label {
-      font-weight: 600;
-    }
-    
-    .contact-value {
-      opacity: 0.9;
-    }
-  }
-}
+  .stat-mini-card {
+    background: #fff;
+    border: 1px solid #E8E5E1;
+    border-radius: 12px;
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.375rem;
 
-// Mobile Responsive Styles for Social Links
-@media (max-width: 768px) {
-  .social-links-card {
-    padding: 1.5rem !important;
-    margin-top: 1rem !important;
-    
-    .social-header {
-      margin-bottom: 1.5rem !important;
-      
-      .social-title {
-        font-size: 1.1rem !important;
-      }
-      
-      .social-subtitle {
-        font-size: 0.85rem !important;
-      }
-    }
-    
-    .social-links {
-      gap: 0.75rem !important;
-      
-      .social-item {
-        padding: 0.875rem 1rem !important;
-        
-        .social-icon {
-          width: 40px !important;
-          height: 40px !important;
-          margin-right: 0.75rem !important;
-          
-          i {
-            font-size: 1.1rem !important;
-          }
-        }
-        
-        .social-content {
-          .social-label {
-            font-size: 0.9rem !important;
-          }
-          
-          .social-description {
-            font-size: 0.8rem !important;
-          }
-        }
-        
-        &::after {
-          width: 14px !important;
-          height: 14px !important;
-        }
-      }
-    }
-  }
-}
+    .stat-mini-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.375rem;
 
-@media (max-width: 480px) {
-  .social-links-card {
-    .social-links {
-      .social-item {
-        padding: 0.75rem !important;
-        
-        .social-icon {
-          width: 36px !important;
-          height: 36px !important;
-          margin-right: 0.625rem !important;
-          
-          i {
-            font-size: 1rem !important;
-          }
-        }
-        
-        .social-content {
-          .social-label {
-            font-size: 0.85rem !important;
-            margin-bottom: 0.125rem !important;
-          }
-          
-          .social-description {
-            font-size: 0.75rem !important;
-          }
-        }
-      }
+      &.orange { background: rgba(240, 82, 19, 0.1); i { color: #F05213; } }
+      &.blue { background: rgba(27, 86, 199, 0.1); i { color: #1B56C7; } }
+
+      i { font-size: 1rem; }
+    }
+
+    .stat-mini-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0D0D0D;
+    }
+
+    .stat-mini-lbl {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #9B9B9B;
     }
   }
 }

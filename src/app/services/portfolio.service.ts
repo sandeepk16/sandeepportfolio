@@ -11,7 +11,8 @@ import {
   Service, 
   Achievement,
   SkillEvolution,
-  SkillCategory 
+  SkillCategory,
+  TechEcosystemItem
 } from '../models/portfolio.model';
 
 @Injectable({
@@ -97,6 +98,12 @@ export class PortfolioService {
   getAchievements(): Observable<Achievement[]> {
     return this.http.get<{achievements: Achievement[]}>('/assets/data/additional-data.json')
       .pipe(map(data => data.achievements));
+  }
+
+  // Get tech ecosystem items
+  getTechEcosystem(): Observable<TechEcosystemItem[]> {
+    return this.http.get<{techEcosystem: TechEcosystemItem[]}>('/assets/data/additional-data.json')
+      .pipe(map(data => data.techEcosystem));
   }
 
   // Get skill evolution data

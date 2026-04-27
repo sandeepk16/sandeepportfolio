@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { PortfolioService } from '../../services/portfolio.service';
 import { SEOService } from '../../services/seo.service';
-import { Experience, SkillEvolution, SkillCategory } from '../../models/portfolio.model';
+import { Experience, SkillEvolution, SkillCategory, TechEcosystemItem } from '../../models/portfolio.model';
 
 @Component({
   selector: 'app-experience',
@@ -24,8 +24,30 @@ export class ExperienceComponent implements OnInit {
   skillEvolution$: Observable<SkillEvolution[]>;
   skillsCategories$: Observable<SkillCategory[]>;
   totalSkillsCount$: Observable<number>;
+  techEcosystem$: Observable<TechEcosystemItem[]>;
 
   private seoService = inject(SEOService);
+
+
+
+  accessibilityItems = [
+    {
+      title: 'WCAG 2.1',
+      description: 'Ensuring AA/AAA compliance as a baseline for every production build.'
+    },
+    {
+      title: 'ARIA',
+      description: 'Implementing intelligent screen-reader patterns for complex UI widgets.'
+    },
+    {
+      title: 'TESTING',
+      description: 'Rigorous manual and automated keyboard & screen-reader audits.'
+    },
+    {
+      title: 'COLOR CONTRAST',
+      description: 'Designing for low vision and color blindness using data-driven palettes.'
+    }
+  ];
 
   constructor(private portfolioService: PortfolioService) {
     this.totalExperience$ = this.portfolioService.getTotalExperience();
@@ -39,6 +61,7 @@ export class ExperienceComponent implements OnInit {
     this.skillEvolution$ = this.portfolioService.getSkillEvolution();
     this.skillsCategories$ = this.portfolioService.getSkillsCategories();
     this.totalSkillsCount$ = this.portfolioService.getTotalSkillsCount();
+    this.techEcosystem$ = this.portfolioService.getTechEcosystem();
   }
 
   ngOnInit(): void {

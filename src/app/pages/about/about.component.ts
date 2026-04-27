@@ -44,6 +44,49 @@ export class AboutComponent implements OnInit {
 
   private seoService = inject(SEOService);
 
+  principles = [
+    {
+      icon: 'pi-users',
+      title: 'Ethical Inclusivity',
+      description: 'Ensuring accessibility is woven into the architecture, not added as a checkbox.',
+      bg: '#fff',
+      color: '#0D0D0D',
+      iconColor: '#1B56C7'
+    },
+    {
+      icon: 'pi-sparkles',
+      title: 'The AI Frontier',
+      description: 'Leveraging generative intelligence to augment human creativity, not replace it.',
+      bg: '#F05213',
+      color: '#fff',
+      iconColor: '#fff'
+    },
+    {
+      icon: 'pi-eye',
+      title: 'Vision',
+      description: 'Seeing the end-to-end journey before the first line of code is ever written. Strategic foresight for long-term product health.',
+      bg: '#1B56C7',
+      color: '#fff',
+      iconColor: '#fff'
+    },
+    {
+      icon: 'pi-sitemap',
+      title: 'Systems',
+      description: 'Building scalable design languages and modular frontend frameworks.',
+      bg: '#FAF8F5',
+      color: '#0D0D0D',
+      iconColor: '#F05213'
+    },
+    {
+      icon: 'pi-graduation-cap',
+      title: 'Mentorship',
+      description: 'Fostering the next generation of designers through radical candor and technical empathy.',
+      bg: '#fff',
+      color: '#0D0D0D',
+      iconColor: '#1B56C7'
+    }
+  ];
+
   constructor(
     private portfolioService: PortfolioService,
     private contactInfoService: ContactInfoService

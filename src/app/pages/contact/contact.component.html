@@ -1,319 +1,162 @@
-<div class="contact-container">
-  <!-- Contact Hero Section -->
-  <section class="contact-hero hero-section">
+<div class="contact-page">
+  <p-toast></p-toast>
+
+  <!-- ===== HERO ===== -->
+  <section class="contact-hero">
     <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <i class="pi pi-send"></i>
-          <span>Let's Connect</span>
-        </div>
-        <h1 class="hero-title">
-          Start Your <span class="gradient-text">Project Today</span>
-        </h1>
-        <p class="hero-subtitle">
-          Ready to transform your ideas into exceptional digital experiences? 
-          Let's collaborate and create something extraordinary together.
-        </p>
-        
-        <div class="contact-stats stats-grid">
-          <div class="stat-item">
-            <div class="stat-icon">
-              <i class="pi pi-clock"></i>
-            </div>
-            <div class="stat-content">
-              <span class="stat-number">24hrs</span>
-              <span class="stat-label">Response Time</span>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-icon">
-              <i class="pi pi-users"></i>
-            </div>
-            <div class="stat-content">
-              <span class="stat-number">100+</span>
-              <span class="stat-label">Happy Clients</span>
-            </div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-icon">
-              <i class="pi pi-star"></i>
-            </div>
-            <div class="stat-content">
-              <span class="stat-number">5.0</span>
-              <span class="stat-label">Average Rating</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <p class="section-label">AVAILABLE FOR NEW OPPORTUNITIES</p>
+      <h1 class="contact-heading">Start Your Project Today</h1>
+      <p class="contact-desc">
+        I'm currently accepting new projects and consulting engagements. Whether 
+        you have a specific vision or just an idea, let's build something exceptional together.
+      </p>
     </div>
   </section>
 
-  <!-- Contact Content Section -->
-  <section class="contact-content section">
+  <!-- ===== MAIN CONTENT ===== -->
+  <section class="contact-main">
     <div class="container">
       <div class="contact-layout">
-        
-        <!-- Contact Form -->
-        <div class="contact-form-section">
-          <div class="form-card glass-card">
-            <div class="form-header">
-              <h2 class="form-title">Send Me a Message</h2>
-              <p class="form-subtitle">
-                Tell me about your project and I'll get back to you within 24 hours with a detailed proposal.
-              </p>
+
+        <!-- ===== FORM ===== -->
+        <div class="contact-form-col">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form-card">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">FULL NAME</label>
+                <input formControlName="name" placeholder="John Doe" class="form-input"
+                  [class.error]="isFieldInvalid('name')" />
+                <span class="error-message" *ngIf="isFieldInvalid('name')">{{ getFieldErrorMessage('name') }}</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label">EMAIL ADDRESS</label>
+                <input formControlName="email" type="email" placeholder="john@example.com" class="form-input"
+                  [class.error]="isFieldInvalid('email')" />
+                <span class="error-message" *ngIf="isFieldInvalid('email')">{{ getFieldErrorMessage('email') }}</span>
+              </div>
             </div>
 
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-              <!-- Name & Email Row -->
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="name" class="form-label">
-                    Name <span class="required">*</span>
-                  </label>
-                  <input 
-                    id="name" 
-                    formControlName="name"
-                    placeholder="Your full name"
-                    class="form-input"
-                    [class.error]="isFieldInvalid('name')" />
-                  <span class="error-message" *ngIf="isFieldInvalid('name')">
-                    {{ getFieldErrorMessage('name') }}
-                  </span>
-                </div>
-
-                <div class="form-group">
-                  <label for="email" class="form-label">
-                    Email <span class="required">*</span>
-                  </label>
-                  <input 
-                    id="email" 
-                    type="email"
-                    formControlName="email"
-                    placeholder="your.email@example.com"
-                    class="form-input"
-                    [class.error]="isFieldInvalid('email')" />
-                  <span class="error-message" *ngIf="isFieldInvalid('email')">
-                    {{ getFieldErrorMessage('email') }}
-                  </span>
-                </div>
-              </div>
-
-              <!-- Subject Field -->
+            <div class="form-row">
               <div class="form-group">
-                <label for="subject" class="form-label">
-                  Subject <span class="required">*</span>
-                </label>
-                <input 
-                  id="subject" 
-                  formControlName="subject"
-                  placeholder="What's this about?"
-                  class="form-input"
+                <label class="form-label">SUBJECT</label>
+                <input formControlName="subject" placeholder="Project Inquiry" class="form-input"
                   [class.error]="isFieldInvalid('subject')" />
-                <span class="error-message" *ngIf="isFieldInvalid('subject')">
-                  {{ getFieldErrorMessage('subject') }}
-                </span>
+                <span class="error-message" *ngIf="isFieldInvalid('subject')">{{ getFieldErrorMessage('subject') }}</span>
               </div>
-
-              <!-- Project Budget -->
               <div class="form-group">
-                <label for="budget" class="form-label">Project Budget</label>
-                <select [(ngModel)]="selectedCurrency" name="currency" [ngModelOptions]="{standalone: true}" class="form-input" style="margin-bottom: 10px;">
-                  <option value="USD">US Dollar (USD)</option>
-                  <option value="INR">Indian Rupee (INR)</option>
-                </select>
-                <select id="budget" formControlName="budget" class="form-input">
-                  <option value="">Select budget range</option>
-                  <ng-container *ngIf="selectedCurrency === 'USD'">
-                    <option *ngFor="let opt of usdBudgetOptions" [value]="opt.value">{{ opt.label }}</option>
-                  </ng-container>
-                  <ng-container *ngIf="selectedCurrency === 'INR'">
-                    <option *ngFor="let opt of inrBudgetOptions" [value]="opt.value">{{ opt.label }}</option>
-                  </ng-container>
-                  <option value="discuss">Let's Discuss</option>
+                <label class="form-label">PROJECT BUDGET</label>
+                <select formControlName="budget" class="form-input form-select">
+                  <option value="">Select a range</option>
+                  <option *ngFor="let opt of usdBudgetOptions" [value]="opt.value">{{ opt.label }}</option>
                 </select>
               </div>
+            </div>
 
-              <!-- Message Field -->
-              <div class="form-group">
-                <label for="message" class="form-label">
-                  Message <span class="required">*</span>
-                </label>
-                <textarea 
-                  id="message" 
-                  formControlName="message"
-                  placeholder="Tell me about your project, goals, timeline, and any specific requirements..."
-                  rows="6"
-                  class="form-input"
-                  [class.error]="isFieldInvalid('message')">
-                </textarea>
-                <span class="error-message" *ngIf="isFieldInvalid('message')">
-                  {{ getFieldErrorMessage('message') }}
-                </span>
-              </div>
+            <div class="form-group">
+              <label class="form-label">MESSAGE</label>
+              <textarea formControlName="message" rows="6" placeholder="Tell me about your project goals..."
+                class="form-input form-textarea" [class.error]="isFieldInvalid('message')"></textarea>
+              <span class="error-message" *ngIf="isFieldInvalid('message')">{{ getFieldErrorMessage('message') }}</span>
+            </div>
 
-              <!-- Submit Button -->
-              <div class="form-actions">
-                <button 
-                  type="submit"
-                  class="btn btn-primary btn-large"
-                  [disabled]="contactForm.invalid || isSubmitting()">
-                  <i class="pi pi-send"></i>
-                  <span *ngIf="!isSubmitting()">Send Message</span>
-                  <span *ngIf="isSubmitting()">Sending...</span>
-                </button>
-              </div>
-            </form>
-          </div>
+            <button type="submit" class="btn btn-primary btn-submit"
+              [disabled]="contactForm.invalid || isSubmitting()">
+              <span *ngIf="!isSubmitting()">Send Message &rarr;</span>
+              <span *ngIf="isSubmitting()">Sending...</span>
+            </button>
+          </form>
         </div>
 
-        <!-- Contact Info Sidebar -->
-        <div class="contact-info-section">
-          <div class="info-cards">
-            
-            <!-- Contact Details Card -->
-            <div class="contact-info-card glass-card" *ngIf="personalInfo() && !isLoading()">
-              <div class="info-header">
-                <div class="profile-section">
-                  <div class="profile-image">
-                    <img 
-                      [src]="personalInfo()?.profileImage" 
-                      [alt]="personalInfo()?.name"
-                      class="profile-img" />
-                  </div>
-                  <div class="profile-info">
-                    <h3 class="contact-name">{{ personalInfo()?.name }}</h3>
-                    <p class="contact-role">{{ personalInfo()?.title }}</p>
-                  </div>
+        <!-- ===== SIDEBAR ===== -->
+        <div class="contact-sidebar">
+
+          <!-- Profile Card -->
+          <div class="sidebar-profile-card" *ngIf="personalInfo() as info">
+            <div class="sidebar-profile-header">
+              <div class="sidebar-avatar">
+                <img [src]="info.profileImage" [alt]="info.name"
+                  onerror="this.style.display='none'" />
+              </div>
+              <div>
+                <h3 class="sidebar-name">Connect with Me</h3>
+                <p class="sidebar-role">{{ info.name }} — {{ info.title }}</p>
+              </div>
+            </div>
+
+            <div class="sidebar-contacts">
+              <div class="sidebar-contact-item">
+                <div class="contact-icon-wrap blue">
+                  <i class="pi pi-envelope"></i>
+                </div>
+                <div>
+                  <p class="contact-item-label">EMAIL ME</p>
+                  <p class="contact-item-value">{{ info.email }}</p>
                 </div>
               </div>
-
-              <div class="contact-methods">
-                <!-- Email -->
-                <div class="contact-item" (click)="openExternalLink(getEmailLink())">
-                  <div class="contact-icon">
-                    <i class="pi pi-envelope"></i>
-                  </div>
-                  <div class="contact-content">
-                    <div class="contact-label">Email</div>
-                    <div class="contact-value">{{ getEmail() }}</div>
-                  </div>
+              <div class="sidebar-contact-item">
+                <div class="contact-icon-wrap blue">
+                  <i class="pi pi-phone"></i>
                 </div>
-
-                <!-- Phone -->
-                <div class="contact-item" (click)="openExternalLink(getPhoneLink())">
-                  <div class="contact-icon">
-                    <i class="pi pi-phone"></i>
-                  </div>
-                  <div class="contact-content">
-                    <div class="contact-label">Phone</div>
-                    <div class="contact-value">{{ getPhone() }}</div>
-                  </div>
+                <div>
+                  <p class="contact-item-label">CALL OR WHATSAPP</p>
+                  <p class="contact-item-value">{{ info.phone }}</p>
                 </div>
-
-                <!-- WhatsApp -->
-                <div class="contact-item whatsapp-item" (click)="openWhatsApp()">
-                  <div class="contact-icon whatsapp-icon">
-                    <i class="pi pi-whatsapp"></i>
-                  </div>
-                  <div class="contact-content">
-                    <div class="contact-label">WhatsApp</div>
-                    <div class="contact-value">Let's connect instantly</div>
-                  </div>
+              </div>
+              <div class="sidebar-contact-item">
+                <div class="contact-icon-wrap orange">
+                  <i class="pi pi-map-marker"></i>
                 </div>
-
-                <!-- Location -->
-                <div class="contact-item">
-                  <div class="contact-icon">
-                    <i class="pi pi-map-marker"></i>
-                  </div>
-                  <div class="contact-content">
-                    <div class="contact-label">Location</div>
-                    <div class="contact-value">{{ getLocation() }}</div>
-                  </div>
+                <div>
+                  <p class="contact-item-label">LOCATION</p>
+                  <p class="contact-item-value">{{ info.location }}</p>
                 </div>
               </div>
             </div>
 
-            <!-- Social Links Card -->
-            <div class="social-links-card" *ngIf="personalInfo() && !isLoading()">
-              <div class="social-header">
-                <h4 class="social-title">Connect With Me</h4>
-                <p class="social-subtitle">
-                  Follow my work and connect on social media
-                </p>
-              </div>
-
-              <div class="social-links">
-                <!-- LinkedIn -->
-                <div class="social-item" (click)="openSocialLink('linkedin', personalInfo()?.linkedin || '')">
-                  <div class="social-icon">
-                    <i class="pi pi-linkedin"></i>
-                  </div>
-                  <div class="social-content">
-                    <div class="social-label">LinkedIn</div>
-                    <div class="social-description">Professional network</div>
-                  </div>
-                </div>
-
-                <!-- Behance -->
-                <div class="social-item" (click)="openSocialLink('behance', personalInfo()?.behance || '')">
-                  <div class="social-icon behance">
-                    <i class="pi pi-palette"></i>
-                  </div>
-                  <div class="social-content">
-                    <div class="social-label">Behance</div>
-                    <div class="social-description">Design portfolio</div>
-                  </div>
-                </div>
-
-                <!-- Dribbble -->
-                <div class="social-item" (click)="openSocialLink('dribbble', personalInfo()?.dribbble || '')">
-                  <div class="social-icon dribbble">
-                    <i class="pi pi-circle"></i>
-                  </div>
-                  <div class="social-content">
-                    <div class="social-label">Dribbble</div>
-                    <div class="social-description">Design inspiration</div>
-                  </div>
-                </div>
+            <div class="sidebar-social">
+              <p class="social-label">FOLLOW MY WORK</p>
+              <div class="social-icons">
+                <a [href]="info.linkedin" target="_blank" class="social-icon-btn" title="LinkedIn">
+                  <i class="pi pi-globe"></i>
+                </a>
+                <a [href]="info.instagram" target="_blank" class="social-icon-btn" title="Instagram">
+                  <i class="pi pi-instagram"></i>
+                </a>
+                <a href="#" class="social-icon-btn" title="Dribbble">
+                  <i class="pi pi-circle"></i>
+                </a>
               </div>
             </div>
           </div>
+
+          <!-- Stats Cards -->
+          <div class="stats-mini-grid">
+            <div class="stat-mini-card">
+              <div class="stat-mini-icon orange"><i class="pi pi-bolt"></i></div>
+              <p class="stat-mini-num">24hrs</p>
+              <p class="stat-mini-lbl">RESPONSE TIME</p>
+            </div>
+            <div class="stat-mini-card">
+              <div class="stat-mini-icon blue"><i class="pi pi-verified"></i></div>
+              <p class="stat-mini-num">100+</p>
+              <p class="stat-mini-lbl">HAPPY CLIENTS</p>
+            </div>
+            <div class="stat-mini-card">
+              <div class="stat-mini-icon orange"><i class="pi pi-clock"></i></div>
+              <p class="stat-mini-num">Flexible</p>
+              <p class="stat-mini-lbl">TIMEZONES</p>
+            </div>
+            <div class="stat-mini-card">
+              <div class="stat-mini-icon blue"><i class="pi pi-star-fill"></i></div>
+              <p class="stat-mini-num">5.0</p>
+              <p class="stat-mini-lbl">AVG. RATING</p>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section (Dynamic) -->
-  <section class="contact-faq-section py-6 surface-100" *ngIf="isFaqActive() && faqData()">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-6">
-          <h2 class="section-title text-3xl font-bold mb-3">{{ faqData()?.title }}</h2>
-          <p class="section-description text-color-secondary">
-            {{ faqData()?.subtitle }}
-          </p>
-        </div>
-
-        <div class="faq-grid">
-          <div class="grid">
-            <div class="col-12 md:col-6" *ngFor="let faq of faqData()?.faqs; trackBy: trackByFaqId">
-              <div class="faq-item mb-4">
-                <h4 class="faq-question font-semibold mb-2">
-                  <i [class]="faq.icon + ' mr-2 text-primary'"></i>
-                  {{ faq.question }}
-                </h4>
-                <p class="faq-answer text-color-secondary text-sm line-height-3">
-                  {{ faq.answer }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Toast for notifications -->
-  <p-toast position="top-right"></p-toast>
 </div>

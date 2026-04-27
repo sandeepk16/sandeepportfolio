@@ -163,5 +163,31 @@
       "issuer": "TechFlow Solutions",
       "icon": "pi pi-heart"
     }
+  ],
+  "techEcosystem": [
+    {
+      "icon": "pi pi-code",
+      "iconColor": "orange",
+      "title": "Angular & TypeScript",
+      "description": "Scalable, typed architectures for robust enterprise applications."
+    },
+    {
+      "icon": "pi pi-pen-to-square",
+      "iconColor": "blue",
+      "title": "Design Systems",
+      "description": "Bridging Figma to Code through atomic design principles and visual tokens."
+    },
+    {
+      "icon": "pi pi-globe",
+      "iconColor": "blue",
+      "title": "Semantic Web",
+      "description": "Meaningful markup that prioritizes structure, SEO, and interoperability."
+    },
+    {
+      "icon": "pi pi-objects-column",
+      "iconColor": "orange",
+      "title": "Modern CSS",
+      "description": "Mastery of Grid, Flexbox, Tailwind, and high-performance animations."
+    }
   ]
 }

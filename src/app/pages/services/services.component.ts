@@ -34,6 +34,24 @@ export class ServicesComponent implements OnInit {
   services = signal<Service[]>([]);
   isLoading = signal<boolean>(true);
 
+  bridgingItems = [
+    {
+      icon: 'pi pi-sitemap',
+      title: 'Scalable Systems',
+      description: 'I build atomic design systems that empower teams to scale products consistently across platforms without technical debt.'
+    },
+    {
+      icon: 'pi pi-code',
+      title: 'Code-First Logic',
+      description: 'Designing with engineering constraints in mind results in high-fidelity prototypes that transition seamlessly into production-ready code.'
+    },
+    {
+      icon: 'pi pi-bolt',
+      title: 'Interaction Logic',
+      description: 'Motion and micro-interactions aren\'t just decor—they are functional signifiers that guide users through complex workflows.'
+    }
+  ];
+
   // Predefined services data
   private defaultServices: Service[] = [
     {
