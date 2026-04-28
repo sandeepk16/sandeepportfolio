@@ -12,7 +12,8 @@ import {
   Achievement,
   SkillEvolution,
   SkillCategory,
-  TechEcosystemItem
+  TechEcosystemItem,
+  Blog
 } from '../models/portfolio.model';
 
 @Injectable({
@@ -104,6 +105,26 @@ export class PortfolioService {
   getTechEcosystem(): Observable<TechEcosystemItem[]> {
     return this.http.get<{techEcosystem: TechEcosystemItem[]}>('/assets/data/additional-data.json')
       .pipe(map(data => data.techEcosystem));
+  }
+
+  // Get all blog posts
+  getBlogs(): Observable<Blog[]> {
+    return this.http.get<{ blogs: Blog[] }>('/assets/data/blogs.json')
+      .pipe(map(data => data.blogs));
+  }
+
+  // Get a blog post by slug
+  getBlogBySlug(slug: string): Observable<Blog | undefined> {
+    return this.getBlogs().pipe(
+      map(blogs => blogs.find(b => b.slug === slug))
+    );
+  }
+
+  // Get featured blog (first featured, falls back to most recent)
+  getFeaturedBlog(): Observable<Blog | undefined> {
+    return this.getBlogs().pipe(
+      map(blogs => blogs.find(b => b.featured) ?? blogs[0])
+    );
   }
 
   // Get skill evolution data

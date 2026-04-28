@@ -114,17 +114,31 @@ export interface SocialLink {
   icon: string;
 }
 
-export interface BlogPost {
+export interface BlogAuthor {
+  name: string;
+  role: string;
+  avatar: string;
+}
+
+export type BlogContentBlock =
+  | { type: 'paragraph'; text: string }
+  | { type: 'heading'; text: string }
+  | { type: 'quote'; text: string; author?: string }
+  | { type: 'code'; language: string; text: string };
+
+export interface Blog {
   id: string;
+  slug: string;
   title: string;
   excerpt: string;
-  content: string;
-  author: string;
-  publishDate: string;
+  category: string;
   tags: string[];
-  thumbnail: string;
+  author: BlogAuthor;
+  publishedDate: string;
   readTime: number;
+  image: string;
   featured: boolean;
+  content: BlogContentBlock[];
 }
 
 export interface Achievement {

@@ -1,0 +1,324 @@
+.blog-page {
+  background: #FAF8F5;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+// ===== HERO =====
+.blog-hero {
+  padding: 5rem 0 2.5rem;
+
+  .blog-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #0D0D0D;
+    margin-bottom: 1rem;
+  }
+
+  .blog-subheading {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #6B6B6B;
+    max-width: 540px;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.filter-pills {
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+
+  .pill {
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    border: 1.5px solid #E8E5E1;
+    background: transparent;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4A4A4A;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+
+    &:hover {
+      border-color: #0D0D0D;
+      color: #0D0D0D;
+    }
+
+    &.active {
+      background: #F05213;
+      border-color: #F05213;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+}
+
+// ===== FEATURED =====
+.featured-section {
+  padding: 1.5rem 0 2.5rem;
+}
+
+.featured-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fff;
+  border: 1px solid #E8E5E1;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-image {
+    position: relative;
+    background: #E8E5E1;
+    min-height: 320px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    &.no-img img { display: none; }
+
+    .image-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1B3A5C 0%, #2C6E7A 100%);
+    }
+  }
+
+  .featured-info {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media (max-width: 800px) {
+      padding: 1.75rem;
+    }
+  }
+
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.85rem;
+    color: #6B6B6B;
+    margin-bottom: 1rem;
+
+    .badge {
+      background: #E8F1FB;
+      color: #1A73E8;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.625rem;
+      border-radius: 100px;
+    }
+
+    .dot { color: #C0BDB7; }
+  }
+
+  .featured-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    color: #0D0D0D;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin-bottom: 1rem;
+  }
+
+  .featured-excerpt {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #6B6B6B;
+    margin-bottom: 1.75rem;
+  }
+
+  .featured-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.85rem;
+    color: #6B6B6B;
+
+    .read-link {
+      color: #1A73E8;
+      font-weight: 600;
+    }
+
+    .dot { color: #C0BDB7; }
+  }
+}
+
+// ===== GRID =====
+.blog-section {
+  padding: 1.5rem 0 5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blog-card {
+  background: #fff;
+  border: 1px solid #E8E5E1;
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+    transform: translateY(-2px);
+  }
+
+  &.skeleton {
+    height: 360px;
+    background: linear-gradient(90deg, #f0ece6 25%, #e8e5e1 50%, #f0ece6 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .card-image {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    background: #E8E5E1;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    &.no-img img { display: none; }
+
+    .image-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #1B3A5C 0%, #2C6E7A 100%);
+    }
+  }
+
+  .card-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.875rem;
+
+    .category-pill {
+      background: #E8F1FB;
+      color: #1A73E8;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.625rem;
+      border-radius: 100px;
+    }
+
+    .read-time {
+      font-size: 0.75rem;
+      color: #6B6B6B;
+    }
+  }
+
+  .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0D0D0D;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-excerpt {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: #6B6B6B;
+    margin-bottom: 1.25rem;
+    flex: 1;
+  }
+
+  .card-date {
+    font-size: 0.75rem;
+    color: #9A9A9A;
+  }
+}
+
+.load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.load-more-btn {
+  padding: 0.875rem 2.25rem;
+  border-radius: 8px;
+  border: 1.5px solid #1A73E8;
+  background: transparent;
+  color: #1A73E8;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+
+  &:hover {
+    background: #1A73E8;
+    color: #fff;
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem;
+  color: #6B6B6B;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

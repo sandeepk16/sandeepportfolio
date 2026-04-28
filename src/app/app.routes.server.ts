@@ -30,6 +30,15 @@ export const serverRoutes: ServerRoute[] = [
     path: 'contact',
     renderMode: RenderMode.Prerender
   },
+  {
+    path: 'blog',
+    renderMode: RenderMode.Prerender
+  },
+  {
+    // Blog detail pages are rendered on demand (dynamic slug)
+    path: 'blog/:slug',
+    renderMode: RenderMode.Server
+  },
   // Catch-all route for any future routes - will use SSR instead of prerendering
   {
     path: '**',

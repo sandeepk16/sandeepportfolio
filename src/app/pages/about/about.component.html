@@ -27,9 +27,11 @@
 
         <div class="about-hero-right">
           <div class="profile-frame">
-            <img [src]="info.profileImage" [alt]="info.name"
+            <img class="profile-img profile-img-default" src="/sundeep-orange.png" [alt]="info.name"
               onerror="this.style.display='none'; this.parentElement.classList.add('no-img')" />
-            <div class="profile-placeholder"></div>
+            <img class="profile-img profile-img-hover" src="/sundeep-white.png" [alt]="info.name" aria-hidden="true"
+              onerror="this.style.display='none'" />
+            <!-- <div class="profile-placeholder"></div> -->
           </div>
         </div>
       </div>

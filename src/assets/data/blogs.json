@@ -1,0 +1,178 @@
+{
+  "blogs": [
+    {
+      "id": "ai-ux-orchestration",
+      "slug": "future-of-ai-in-ux-orchestration",
+      "title": "The Future of AI in User Experience Orchestration",
+      "excerpt": "How large language models are shifting the paradigm from static interfaces to dynamic, intent-based user journeys. Analyzing the next frontier of human-computer interaction.",
+      "category": "AI",
+      "tags": ["AI", "UX", "LLM", "Product Design"],
+      "author": {
+        "name": "Sandeep Kandula",
+        "role": "Senior Product Designer",
+        "avatar": "/assets/images/blogs/author-sandeep.jpg"
+      },
+      "publishedDate": "2024-05-24",
+      "readTime": 12,
+      "image": "/assets/images/blogs/ai-ux-orchestration.jpg",
+      "featured": true,
+      "content": [
+        { "type": "paragraph", "text": "Large language models are reshaping the way users interact with software. Instead of clicking through static screens, users now express intent — and the interface assembles itself around that intent in real time." },
+        { "type": "heading", "text": "From Screens to Intents" },
+        { "type": "paragraph", "text": "The next generation of products won't be designed as a finite set of pages. They'll be designed as a system of capabilities that an orchestrator composes on demand. The designer's job shifts from drawing screens to defining the grammar of those capabilities." },
+        { "type": "quote", "text": "The interface of the future is a conversation with a system that understands you.", "author": "Anonymous Researcher" },
+        { "type": "heading", "text": "Designing the Orchestrator" },
+        { "type": "paragraph", "text": "An orchestrator needs three things: a clear inventory of capabilities, a stable contract for invoking them, and a feedback loop that allows the model to recover when it's wrong. Each of these is a design problem, not just an engineering one." }
+      ]
+    },
+    {
+      "id": "design-systems-engineering",
+      "slug": "bridging-design-systems-with-production-engineering",
+      "title": "Bridging Design Systems with Production Engineering",
+      "excerpt": "How to move past documentation and build living libraries that engineers actually love using.",
+      "category": "UX Design",
+      "tags": ["Design Systems", "Engineering", "Tailwind"],
+      "author": {
+        "name": "Sandeep Kandula",
+        "role": "Senior Product Designer",
+        "avatar": "/assets/images/blogs/author-sandeep.jpg"
+      },
+      "publishedDate": "2024-05-14",
+      "readTime": 8,
+      "image": "/assets/images/blogs/design-systems.jpg",
+      "featured": false,
+      "content": [
+        { "type": "paragraph", "text": "The gap between design and engineering is rarely a lack of talent. It's usually a lack of shared vocabulary. In my decade leading UX teams, I've found that the most successful products aren't the ones with the \"prettiest\" Figma files, but the ones where the code directly mirrors the design intent." },
+        { "type": "heading", "text": "The Components of Connection" },
+        { "type": "paragraph", "text": "Design systems are often treated as static artifacts. We spend weeks defining the perfect radius, the ideal hex value for \"Ocean Blue,\" and the exact padding for a primary button. But if that button isn't a reusable Angular component with strictly typed inputs, the documentation is just a suggestion." },
+        { "type": "quote", "text": "A design system is not a project. It is a product, serving other products.", "author": "Nathan Curtis" },
+        { "type": "heading", "text": "Implementing Tokens via Tailwind" },
+        { "type": "paragraph", "text": "When bridging the gap, Tailwind CSS becomes a powerful ally. By mapping our design system tokens directly into a tailwind.config.js, we ensure that engineers are using the exact same constraints the designers are." },
+        { "type": "code", "language": "javascript", "text": "module.exports = {\n  theme: {\n    extend: {\n      colors: {\n        'solar-orange': '#F04100',\n        'sky-blue':     '#0095F0',\n        'surface-dim':  '#EFD5CA'\n      },\n      spacing: {\n        'gutter': '24px',\n        'base':   '8px'\n      }\n    }\n  }\n}" },
+        { "type": "paragraph", "text": "This technical alignment ensures that when a designer asks for a \"Solar Orange\" background with \"Base\" spacing, the engineer has a literal implementation for that intent. No more guesswork." }
+      ]
+    },
+    {
+      "id": "css-grid-dashboards",
+      "slug": "mastering-css-grid-for-complex-enterprise-dashboards",
+      "title": "Mastering CSS Grid for Complex Enterprise Dashboards",
+      "excerpt": "Breaking down the architectural patterns needed to build responsive, data-heavy dashboards without compromising on visual rhythm.",
+      "category": "Frontend",
+      "tags": ["CSS", "Grid", "Dashboards"],
+      "author": {
+        "name": "Sandeep Kandula",
+        "role": "Senior Product Designer",
+        "avatar": "/assets/images/blogs/author-sandeep.jpg"
+      },
+      "publishedDate": "2024-04-12",
+      "readTime": 6,
+      "image": "/assets/images/blogs/css-grid.jpg",
+      "featured": false,
+      "content": [
+        { "type": "paragraph", "text": "Enterprise dashboards live or die by their layout system. CSS Grid, when used with named template areas, gives you the structural clarity that flexbox-only layouts struggle to maintain at scale." },
+        { "type": "heading", "text": "Named Areas as Architecture" },
+        { "type": "paragraph", "text": "Treat grid-template-areas as the architectural blueprint of the page. It encodes intent in a way every engineer on the team can read at a glance." }
+      ]
+    },
+    {
+      "id": "empathy-as-spec",
+      "slug": "empathy-as-a-technical-specification",
+      "title": "Empathy as a Technical Specification",
+      "excerpt": "Why senior designers must translate qualitative user needs into quantitative engineering requirements to ensure product success.",
+      "category": "UX Design",
+      "tags": ["UX", "Research", "Specification"],
+      "author": {
+        "name": "Sandeep Kandula",
+        "role": "Senior Product Designer",
+        "avatar": "/assets/images/blogs/author-sandeep.jpg"
+      },
+      "publishedDate": "2024-03-28",
+      "readTime": 6,
+      "image": "/assets/images/blogs/empathy-spec.jpg",
+      "featured": false,
+      "content": [
+        { "type": "paragraph", "text": "Empathy without translation is just a feeling. The senior designer's craft is converting that feeling into measurable, testable requirements that the rest of the team can build against." }
+      ]
+    },
+    {
+      "id": "designer-developer-hybrid",
+      "slug": "the-designer-developer-hybrid-path",
+      "title": "The Designer-Developer Hybrid Path",
+      "excerpt": "Navigating the career landscape when you possess both the eye for detail and the logic for complex code implementations.",
+      "category": "Career",
+      "tags": ["Career", "Hybrid", "Growth"],
+      "author": {
+        "name": "Sandeep Kandula",
+        "role": "Senior Product Designer",
+        "avatar": "/assets/images/blogs/author-sandeep.jpg"
+      },
+      "publishedDate": "2024-03-15",
+      "readTime": 15,
+      "image": "/assets/images/blogs/hybrid-path.jpg",
+      "featured": false,
+      "content": [
+        { "type": "paragraph", "text": "The hybrid path is no longer a niche. As products become more nuanced, teams increasingly value people who can hold both the design intent and the implementation reality in their head at the same time." }
+      ]
+    },
+    {
+      "id": "micro-interactions",
+      "slug": "micro-interactions-that-actually-matter",
+      "title": "Micro-interactions that actually matter",
+      "excerpt": "Focusing on functional delight over decorative animation. How to use small movements to guide users through complex flows.",
+      "category": "Frontend",
+      "tags": ["Animation", "Interaction", "Frontend"],
+      "author": {
+        "name": "Sandeep Kandula",
+        "role": "Senior Product Designer",
+        "avatar": "/assets/images/blogs/author-sandeep.jpg"
+      },
+      "publishedDate": "2024-02-10",
+      "readTime": 5,
+      "image": "/assets/images/blogs/micro-interactions.jpg",
+      "featured": false,
+      "content": [
+        { "type": "paragraph", "text": "The best micro-interactions are the ones users don't consciously notice — but would absolutely miss if they were gone." }
+      ]
+    },
+    {
+      "id": "designing-for-black-box",
+      "slug": "designing-for-the-black-box",
+      "title": "Designing for the \"Black Box\"",
+      "excerpt": "Strategies for creating transparent and trustworthy UI components for machine learning outputs and predictive analytics.",
+      "category": "AI",
+      "tags": ["AI", "ML", "Trust", "Transparency"],
+      "author": {
+        "name": "Sandeep Kandula",
+        "role": "Senior Product Designer",
+        "avatar": "/assets/images/blogs/author-sandeep.jpg"
+      },
+      "publishedDate": "2024-01-22",
+      "readTime": 10,
+      "image": "/assets/images/blogs/black-box.jpg",
+      "featured": false,
+      "content": [
+        { "type": "paragraph", "text": "When the system itself is uncertain, the interface must communicate that uncertainty honestly. Confidence ranges, source attribution, and easy override paths are no longer optional." }
+      ]
+    },
+    {
+      "id": "saying-no-to-features",
+      "slug": "the-power-of-saying-no-to-features",
+      "title": "The Power of Saying \"No\" to Features",
+      "excerpt": "How senior product designers advocate for simplicity by rejecting scope creep and focusing on core value propositions.",
+      "category": "Career",
+      "tags": ["Product", "Strategy", "Leadership"],
+      "author": {
+        "name": "Sandeep Kandula",
+        "role": "Senior Product Designer",
+        "avatar": "/assets/images/blogs/author-sandeep.jpg"
+      },
+      "publishedDate": "2024-01-05",
+      "readTime": 4,
+      "image": "/assets/images/blogs/saying-no.jpg",
+      "featured": false,
+      "content": [
+        { "type": "paragraph", "text": "Every \"yes\" to a feature is a \"no\" to the focus of the existing product. The senior designer's most underrated skill is making that trade-off visible." }
+      ]
+    }
+  ]
+}

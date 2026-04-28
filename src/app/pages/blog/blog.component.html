@@ -1,0 +1,102 @@
+<div class="blog-page">
+
+  <!-- HERO -->
+  <section class="blog-hero">
+    <div class="container">
+      <h1 class="blog-heading">Insights &amp; Perspective</h1>
+      <p class="blog-subheading">
+        Exploring the intersection of complex frontend systems and empathetic user
+        experiences. A collection of thoughts on design, code, and the future of
+        digital products.
+      </p>
+
+      <div class="filter-pills">
+        <button
+          *ngFor="let cat of categories()"
+          class="pill"
+          [class.active]="selectedCategory() === cat"
+          (click)="selectCategory(cat)">
+          {{ categoryLabel(cat) }}
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOADING -->
+  <section class="blog-section" *ngIf="isLoading()">
+    <div class="container">
+      <div class="grid">
+        <div class="blog-card skeleton" *ngFor="let _ of [1,2,3,4,5,6]"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="featured-section" *ngIf="!isLoading() && featuredBlog() && selectedCategory() === ''">
+    <div class="container">
+      <a [routerLink]="['/blog', featuredBlog()!.slug]" class="featured-card">
+        <div class="featured-image">
+          <img [src]="featuredBlog()!.image" [alt]="featuredBlog()!.title" loading="lazy"
+               onerror="this.style.display='none'; this.parentElement.classList.add('no-img')" />
+          <div class="image-placeholder"></div>
+        </div>
+        <div class="featured-info">
+          <div class="featured-meta">
+            <span class="badge">Featured</span>
+            <span class="dot">•</span>
+            <span class="read-time">{{ featuredBlog()!.readTime }} Min Read</span>
+          </div>
+          <h2 class="featured-title">{{ featuredBlog()!.title }}</h2>
+          <p class="featured-excerpt">{{ featuredBlog()!.excerpt }}</p>
+          <div class="featured-footer">
+            <span class="date">{{ featuredBlog()!.publishedDate | date:'MMMM d, y' }}</span>
+            <span class="dot">•</span>
+            <span class="read-link">Read Full Article →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- LIST -->
+  <section class="blog-section" *ngIf="!isLoading() && filteredBlogs().length > 0">
+    <div class="container">
+      <div class="grid">
+        <a *ngFor="let blog of visibleBlogs(); trackBy: trackByBlogId"
+           class="blog-card"
+           [routerLink]="['/blog', blog.slug]">
+          <div class="card-image">
+            <img [src]="blog.image" [alt]="blog.title" loading="lazy"
+                 onerror="this.style.display='none'; this.parentElement.classList.add('no-img')" />
+            <div class="image-placeholder"></div>
+          </div>
+          <div class="card-info">
+            <div class="card-meta">
+              <span class="category-pill">{{ blog.category }}</span>
+              <span class="read-time">{{ blog.readTime }} Min</span>
+            </div>
+            <h3 class="card-title">{{ blog.title }}</h3>
+            <p class="card-excerpt">{{ blog.excerpt }}</p>
+            <span class="card-date">{{ blog.publishedDate | date:'MMMM d, y' }}</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="load-more-wrap" *ngIf="hasMore()">
+        <button class="load-more-btn" (click)="loadMore()">
+          Load More Articles ⌄
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPTY -->
+  <section class="blog-section" *ngIf="!isLoading() && filteredBlogs().length === 0">
+    <div class="container">
+      <div class="empty-state">
+        <p>No articles found in this category yet.</p>
+      </div>
+    </div>
+  </section>
+
+</div>

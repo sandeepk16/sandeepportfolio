@@ -1,0 +1,129 @@
+<div class="blog-detail-page" *ngIf="!isLoading(); else loadingTpl">
+
+  <ng-container *ngIf="blog() as post; else notFoundTpl">
+
+    <!-- HEADER -->
+    <section class="post-header">
+      <div class="container">
+        <div class="post-meta-top">
+          <span class="category-pill">{{ post.category | uppercase }}</span>
+          <span class="dot">•</span>
+          <span class="read-time">{{ post.readTime }} min read</span>
+        </div>
+        <h1 class="post-title">{{ post.title }}</h1>
+        <p class="post-excerpt">{{ post.excerpt }}</p>
+        <div class="post-author">
+          <img class="author-avatar" [src]="post.author.avatar" [alt]="post.author.name"
+               onerror="this.style.display='none'" />
+          <div class="author-info">
+            <div class="author-name">{{ post.author.name }}</div>
+            <div class="author-sub">
+              {{ post.author.role }} • {{ post.publishedDate | date:'MMMM d, y' }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COVER -->
+    <section class="cover-section">
+      <div class="container">
+        <div class="cover-image">
+          <img [src]="post.image" [alt]="post.title" loading="lazy"
+               onerror="this.style.display='none'; this.parentElement.classList.add('no-img')" />
+          <div class="image-placeholder"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <section class="body-section">
+      <div class="container body-grid">
+
+        <article class="post-body">
+          <ng-container *ngFor="let block of post.content">
+            <p *ngIf="block.type === 'paragraph'" class="paragraph">{{ block.text }}</p>
+            <h2 *ngIf="block.type === 'heading'" class="heading">{{ block.text }}</h2>
+            <blockquote *ngIf="block.type === 'quote'" class="quote">
+              <p>"{{ block.text }}"</p>
+              <cite *ngIf="block.author">— {{ block.author }}</cite>
+            </blockquote>
+            <pre *ngIf="block.type === 'code'" class="code-block"><code>{{ block.text }}</code></pre>
+          </ng-container>
+
+          <div class="share-row">
+            <span class="share-label">SHARE THIS POST</span>
+            <div class="share-actions">
+              <button class="share-btn" (click)="share()" aria-label="Share">↗</button>
+              <button class="share-btn" (click)="share()" aria-label="Copy link">∞</button>
+            </div>
+          </div>
+        </article>
+
+        <aside class="sidebar">
+          <div class="related" *ngIf="relatedBlogs().length > 0">
+            <h3 class="sidebar-title">Related Posts</h3>
+            <a *ngFor="let r of relatedBlogs()"
+               [routerLink]="['/blog', r.slug]"
+               class="related-card">
+              <div class="related-image">
+                <img [src]="r.image" [alt]="r.title" loading="lazy"
+                     onerror="this.style.display='none'; this.parentElement.classList.add('no-img')" />
+                <div class="image-placeholder"></div>
+              </div>
+              <div class="related-info">
+                <span class="related-cat">{{ r.category | uppercase }}</span>
+                <div class="related-title">{{ r.title }}</div>
+              </div>
+            </a>
+          </div>
+
+          <div class="newsletter">
+            <h4>Design Insights</h4>
+            <p>Weekly thoughts on design systems, code, and UX leadership.</p>
+            <input type="email" placeholder="Email address" />
+            <button class="subscribe-btn">Join 2,400+ readers</button>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-card">
+          <div class="cta-text">
+            <h2>Let's talk about your next big thing.</h2>
+            <p>Whether it's a complex design system or a ground-up SaaS product, I help teams build better experiences.</p>
+          </div>
+          <div class="cta-actions">
+            <a routerLink="/contact" class="cta-btn primary">Schedule a Coffee Chat</a>
+            <a routerLink="/portfolio" class="cta-btn secondary">View Portfolio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </ng-container>
+
+</div>
+
+<ng-template #loadingTpl>
+  <div class="blog-detail-page">
+    <div class="container loading">
+      <div class="skeleton-line w-30"></div>
+      <div class="skeleton-line w-80 large"></div>
+      <div class="skeleton-line w-90"></div>
+      <div class="skeleton-block"></div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #notFoundTpl>
+  <div class="container not-found">
+    <h2>Article not found</h2>
+    <p>The article you're looking for doesn't exist or has been moved.</p>
+    <a routerLink="/blog" class="cta-btn primary">← Back to Blog</a>
+  </div>
+</ng-template>

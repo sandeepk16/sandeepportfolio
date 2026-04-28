@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.menuItems = [
       { label: 'Work', routerLink: ['/portfolio'] },
+      { label: 'Blog', routerLink: ['/blog'] },
       { label: 'Experience', routerLink: ['/experience'] },
       { label: 'Services', routerLink: ['/services'] },
       { label: 'About', routerLink: ['/about'] }
