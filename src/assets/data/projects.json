@@ -1,259 +1,760 @@
 {
   "projects": [
     {
-      "id": "project1",
-      "title": "E-Commerce Mobile App Redesign",
-      "subtitle": "Transforming Shopping Experience",
-      "description": "Complete redesign of a popular e-commerce mobile application focusing on user experience optimization and conversion improvement.",
-      "longDescription": "Led the complete redesign of ShopEasy, a leading e-commerce mobile application with 2M+ users. The project involved extensive user research, competitive analysis, and iterative design improvements to enhance the shopping experience and increase conversion rates.",
-      "category": "mobile-app",
-      "tags": ["Mobile Design", "E-Commerce", "User Research", "Prototyping"],
+      "id": "trendstarz",
+      "title": "TrendStarz - Influencer & Brand Collaboration Platform",
+      "subtitle": "Building a Creator Marketplace for India",
+      "description": "Designed and developed a collaboration platform connecting influencers and brands for campaign partnerships, product promotions, and creator discovery.",
+      "longDescription": "TrendStarz is a startup product focused on simplifying collaborations between influencers and brands in India. I led the end-to-end product strategy, UX architecture, UI design, frontend engineering, and MVP development. The platform focuses on creator discovery, campaign invitations, profile verification, collaboration workflows, and scalable marketplace UX patterns tailored for Indian users.",
+      "category": "startup-platform",
+      "tags": [
+        "UX Strategy",
+        "Marketplace Design",
+        "Angular",
+        "Node.js",
+        "MongoDB",
+        "Startup MVP",
+        "Creator Economy",
+        "Product Design"
+      ],
       "images": [
         {
-          "url": "/assets/images/projects/ecommerce-app/main.jpg",
-          "alt": "E-Commerce App Main Screen",
-          "caption": "Home screen redesign with improved navigation",
+          "url": "/assets/images/projects/trendstarz/dashboard.jpg",
+          "alt": "TrendStarz Dashboard",
+          "caption": "Brand dashboard for managing influencer campaigns",
           "type": "main"
         },
         {
-          "url": "/assets/images/projects/ecommerce-app/wireframes.jpg",
-          "alt": "Wireframes",
-          "caption": "Initial wireframe concepts",
-          "type": "wireframe"
+          "url": "/assets/images/projects/trendstarz/influencer-search.jpg",
+          "alt": "Influencer Discovery",
+          "caption": "Advanced influencer discovery and filtering experience",
+          "type": "feature"
+        },
+        {
+          "url": "/assets/images/projects/trendstarz/mobile-view.jpg",
+          "alt": "Mobile Responsive Screens",
+          "caption": "Responsive mobile-first creator experience",
+          "type": "mobile"
         }
       ],
-      "thumbnail": "/assets/images/projects/ecommerce-app/thumbnail.jpg",
-      "duration": "3 months",
-      "client": "ShopEasy Inc.",
-      "role": "Lead UI/UX Designer",
-      "tools": ["Figma", "Principle", "Adobe XD", "Miro"],
-      "challenges": [
-        "High cart abandonment rate (65%)",
-        "Complex navigation structure",
-        "Poor search functionality",
-        "Inconsistent design patterns"
+      "thumbnail": "/assets/images/projects/trendstarz/thumbnail.jpg",
+      "duration": "Ongoing Startup Product",
+      "client": "Self-Initiated Startup",
+      "role": "Founder, Senior UX Designer & Full Stack Developer",
+      "tools": [
+        "Figma",
+        "Angular",
+        "Node.js",
+        "MongoDB",
+        "AWS SES",
+        "Railway",
+        "Vercel"
       ],
+      "problemStatement": {
+        "title": "Problem Statement",
+        "content": "Small and mid-level influencers in India struggle to discover brand collaborations, while brands face difficulty finding relevant creators with genuine engagement. Existing platforms are either too expensive, overly complex, or focused only on large creators. TrendStarz aims to simplify influencer-brand collaborations through a scalable, trust-driven marketplace experience."
+      },
+      "marketOpportunity": {
+        "title": "Market Opportunity",
+        "content": "India’s creator economy is rapidly growing across Instagram, YouTube, and short-form video platforms. Thousands of influencers seek monetization opportunities while brands increasingly depend on creator-led marketing. TrendStarz focuses on bridging this gap with an affordable and scalable collaboration platform tailored for the Indian market."
+      },
+      "userTypes": [
+        {
+          "type": "Brands",
+          "description": "Businesses and startups looking to discover influencers, launch campaigns, manage invitations, and track collaboration outcomes."
+        },
+        {
+          "type": "Influencers",
+          "description": "Content creators seeking brand deals, campaign opportunities, profile visibility, and long-term collaboration partnerships."
+        }
+      ],
+      "uxChallenges": [
+        "Designing trust-first collaboration workflows",
+        "Balancing UX for both influencers and brands",
+        "Simplifying creator discovery and filtering",
+        "Managing campaign invitation complexity",
+        "Creating scalable onboarding and verification flows",
+        "Building MVP with startup budget constraints"
+      ],
+      "productFlows": [
+        "Brand registration and onboarding",
+        "Influencer profile creation",
+        "Influencer discovery and filtering",
+        "Campaign invitation workflow",
+        "Campaign acceptance and collaboration flow",
+        "Contact unlock and premium access flow",
+        "Email OTP verification system"
+      ],
+      "wireframes": {
+        "title": "Wireframes & UX Exploration",
+        "content": "Initial wireframes focused on simplifying creator discovery, reducing friction during onboarding, and improving collaboration visibility between brands and influencers. Multiple iterations were explored to optimize campaign invitations and response workflows."
+      },
+      "uiSystem": {
+        "title": "UI System",
+        "content": "A scalable design system was created to maintain consistency across dashboards, campaign cards, profile components, forms, and mobile-responsive layouts. The visual language focuses on clarity, trust, and modern startup aesthetics."
+      },
+      "mvpArchitecture": {
+        "title": "MVP Architecture",
+        "content": "TrendStarz was designed as a lean MVP platform with modular frontend architecture, scalable backend APIs, secure email verification flows, and responsive UI components to support future feature expansion and mobile applications."
+      },
+      "technicalStack": {
+        "frontend": [
+          "Angular"
+        ],
+        "backend": [
+          "Node.js",
+          "Express.js"
+        ],
+        "database": [
+          "MongoDB"
+        ],
+        "infrastructure": [
+          "Railway",
+          "Vercel",
+          "AWS SES"
+        ],
+        "design": [
+          "Figma"
+        ]
+      },
+      "businessThinking": {
+        "title": "Business Thinking",
+        "content": "The platform was strategically designed with freemium and premium collaboration models in mind. UX decisions considered user acquisition, creator engagement, campaign visibility, monetization opportunities, and scalable marketplace growth."
+      },
+      "futureVision": {
+        "title": "Future Vision",
+        "content": "Future roadmap includes AI-driven influencer recommendations, smart campaign matching, creator analytics, automated collaboration scoring, mobile applications, and advanced campaign management tools for brands."
+      },
       "solutions": [
-        "Streamlined checkout process",
-        "Implemented intuitive navigation",
-        "Enhanced search with filters",
-        "Created comprehensive design system"
+        "Designed dual-role marketplace user journeys",
+        "Built campaign invitation workflows",
+        "Implemented scalable component architecture",
+        "Created responsive mobile-first experience",
+        "Integrated secure email OTP verification",
+        "Developed scalable startup MVP foundation"
       ],
       "results": [
-        "35% increase in conversion rate",
-        "50% reduction in cart abandonment",
-        "40% improvement in user satisfaction",
-        "25% increase in average order value"
+        "Successfully launched MVP platform",
+        "Built complete end-to-end product architecture",
+        "Created scalable creator marketplace foundation",
+        "Established startup-ready UX and technical infrastructure",
+        "Positioned platform for future AI-driven creator discovery"
       ],
       "featured": true,
-      "createdDate": "2023-08-15"
+      "createdDate": "2026-02-01"
     },
     {
-      "id": "project2",
-      "title": "Healthcare Dashboard",
-      "subtitle": "Doctor's Appointment Management System",
-      "description": "Comprehensive dashboard design for healthcare professionals to manage appointments, patient records, and medical consultations.",
-      "longDescription": "Designed an intuitive dashboard for MediCare Pro, enabling healthcare professionals to efficiently manage their daily operations. The solution includes appointment scheduling, patient management, medical records, and telemedicine features.",
-      "category": "web-design",
-      "tags": ["Dashboard Design", "Healthcare", "Data Visualization", "Web App"],
+      "id": "healthcare-dashboard",
+      "title": "Enterprise Healthcare Operations Platform",
+      "subtitle": "Optimizing Clinical & Operational Workflows",
+      "description": "Designed enterprise healthcare workflows and dashboard systems for medical professionals, improving operational efficiency, patient management, and enterprise usability.",
+      "longDescription": "Led UX initiatives for a large-scale healthcare operations platform used by medical professionals, support teams, and internal operational stakeholders. The project focused on simplifying complex healthcare workflows, improving appointment management systems, optimizing account-related experiences, and enhancing usability across high-density enterprise dashboards. The platform required scalable UX architecture, role-based experiences, and structured data visualization tailored for healthcare environments.",
+      "category": "enterprise-platform",
+      "tags": [
+        "Healthcare UX",
+        "Enterprise UX",
+        "Dashboard Design",
+        "Workflow Optimization",
+        "Data Visualization",
+        "Design Systems",
+        "Operational Platforms",
+        "UX Strategy"
+      ],
       "images": [
         {
           "url": "/assets/images/projects/healthcare-dashboard/main.jpg",
-          "alt": "Healthcare Dashboard Overview",
-          "caption": "Main dashboard with key metrics",
+          "alt": "Healthcare Operations Dashboard",
+          "caption": "Enterprise healthcare dashboard optimized for operational workflows",
           "type": "main"
+        },
+        {
+          "url": "/assets/images/projects/healthcare-dashboard/workflow.jpg",
+          "alt": "Healthcare Workflow Design",
+          "caption": "Workflow optimization for appointment and account management",
+          "type": "workflow"
         }
       ],
       "thumbnail": "/assets/images/projects/healthcare-dashboard/thumbnail.jpg",
-      "duration": "4 months",
-      "client": "MediCare Pro",
-      "role": "Senior UI/UX Designer",
-      "tools": ["Figma", "Adobe XD", "Sketch", "InVision"],
-      "challenges": [
-        "Complex data visualization requirements",
-        "Multiple user roles and permissions",
-        "HIPAA compliance considerations",
-        "Integration with existing systems"
+      "duration": "4 Months",
+      "client": "Confidential Healthcare Technology Platform",
+      "role": "Senior UX Designer",
+      "tools": [
+        "Figma",
+        "Angular",
+        "Adobe XD",
+        "Miro",
+        "Design Systems"
+      ],
+      "problemStatement": {
+        "title": "Problem Statement",
+        "content": "Healthcare operational teams faced workflow inefficiencies caused by fragmented interfaces, complex navigation systems, dense information architecture, and inconsistent user experiences across multiple enterprise modules."
+      },
+      "businessImpact": {
+        "title": "Business Impact",
+        "content": "The UX redesign focused on improving operational efficiency, reducing workflow friction, enhancing usability for healthcare professionals, and establishing scalable enterprise UX foundations for future platform growth."
+      },
+      "designProcess": [
+        "Stakeholder Discussions",
+        "Workflow Analysis",
+        "Information Architecture Planning",
+        "User Flow Optimization",
+        "Wireframing",
+        "Dashboard UX Design",
+        "Design System Improvements",
+        "Prototype Validation",
+        "Developer Collaboration",
+        "UX Iteration"
+      ],
+      "keyResponsibilities": [
+        "Enterprise UX Strategy",
+        "Healthcare Workflow Optimization",
+        "Dashboard Experience Design",
+        "Information Architecture",
+        "Interaction Design",
+        "Design System Contribution",
+        "Cross-functional Collaboration",
+        "Developer Handoff"
+      ],
+      "uxChallenges": [
+        "Complex healthcare workflows",
+        "High-density enterprise dashboards",
+        "Role-based permission complexity",
+        "Managing usability with compliance requirements",
+        "Workflow prioritization across modules",
+        "Reducing operational inefficiencies"
       ],
       "solutions": [
-        "Created role-based interface designs",
-        "Implemented clear data hierarchy",
-        "Ensured privacy-compliant designs",
-        "Designed flexible component system"
+        "Designed scalable healthcare dashboard patterns",
+        "Improved workflow clarity and navigation hierarchy",
+        "Created reusable enterprise healthcare components",
+        "Optimized appointment and account management experiences",
+        "Simplified multi-role operational workflows",
+        "Established structured UX consistency across the platform"
       ],
       "results": [
-        "60% improvement in task completion time",
-        "45% reduction in user errors",
-        "90% user satisfaction rate",
-        "Successful HIPAA compliance audit"
+        "Improved operational workflow efficiency",
+        "Reduced usability friction for internal teams",
+        "Enhanced dashboard usability and consistency",
+        "Improved task visibility and workflow prioritization",
+        "Supported scalable enterprise product evolution"
+      ],
+      "futureEnhancements": [
+        "AI-assisted workflow recommendations",
+        "Advanced healthcare analytics dashboards",
+        "Predictive operational insights",
+        "Enhanced mobile operational experiences",
+        "Scalable enterprise component architecture"
       ],
       "featured": true,
       "createdDate": "2023-05-20"
     },
     {
-      "id": "project3",
-      "title": "Food Delivery App",
-      "subtitle": "Quick & Easy Food Ordering",
-      "description": "Modern food delivery application with focus on quick ordering, real-time tracking, and seamless user experience.",
-      "longDescription": "Designed QuickBite, a food delivery app that prioritizes speed and convenience. The app features smart recommendations, one-tap reordering, real-time tracking, and integration with multiple payment options.",
-      "category": "mobile-app",
-      "tags": ["Mobile App", "Food Tech", "Real-time Tracking", "UI Design"],
+      "id": "enterprise-commerce-platform",
+      "title": "Enterprise Commerce Experience Platform",
+      "subtitle": "Optimizing Digital Shopping & Conversion Workflows",
+      "description": "Redesigned a large-scale commerce platform focused on improving user experience, conversion optimization, product discovery, and scalable mobile-first shopping interactions.",
+      "longDescription": "Led the UX transformation of a high-traffic digital commerce platform focused on improving customer engagement, simplifying checkout experiences, and optimizing product discovery workflows. The project involved user behavior analysis, UX audits, conversion-focused redesign strategies, design system improvements, and scalable mobile-first experience architecture.",
+      "category": "enterprise-platform",
+      "tags": [
+        "UX Strategy",
+        "E-Commerce UX",
+        "Conversion Optimization",
+        "Mobile Experience",
+        "Design Systems",
+        "User Research",
+        "Enterprise UX",
+        "Product Design"
+      ],
+      "images": [
+        {
+          "url": "/assets/images/projects/ecommerce-app/main.jpg",
+          "alt": "Enterprise Commerce Dashboard",
+          "caption": "Optimized commerce homepage and navigation experience",
+          "type": "main"
+        },
+        {
+          "url": "/assets/images/projects/ecommerce-app/wireframes.jpg",
+          "alt": "Commerce UX Wireframes",
+          "caption": "User flow exploration and checkout optimization wireframes",
+          "type": "wireframe"
+        }
+      ],
+      "thumbnail": "/assets/images/projects/ecommerce-app/thumbnail.jpg",
+      "duration": "3 Months",
+      "client": "Confidential Commerce Platform",
+      "role": "Lead UX Designer",
+      "tools": [
+        "Figma",
+        "Adobe XD",
+        "Miro",
+        "Principle"
+      ],
+      "problemStatement": {
+        "title": "Problem Statement",
+        "content": "The existing commerce experience suffered from high cart abandonment, inconsistent navigation patterns, weak product discovery, and friction-heavy checkout flows impacting conversions and customer retention."
+      },
+      "businessImpact": {
+        "title": "Business Impact",
+        "content": "The redesign focused on improving conversion performance, simplifying shopping workflows, enhancing product discoverability, and creating scalable UX foundations for long-term platform growth."
+      },
+      "designProcess": [
+        "UX Audit",
+        "Competitor Analysis",
+        "User Journey Mapping",
+        "Wireframing",
+        "Interaction Design",
+        "Prototype Testing",
+        "Design System Improvements",
+        "Developer Collaboration",
+        "UX Optimization Iterations"
+      ],
+      "keyResponsibilities": [
+        "UX Strategy",
+        "Mobile Experience Design",
+        "Conversion Optimization",
+        "Checkout Flow Redesign",
+        "Interaction Design",
+        "Cross-functional Collaboration",
+        "Design System Enhancement"
+      ],
+      "uxChallenges": [
+        "High cart abandonment rates",
+        "Complex navigation structure",
+        "Poor search discoverability",
+        "Inconsistent UI patterns",
+        "Mobile usability friction",
+        "Complex checkout experience"
+      ],
+      "solutions": [
+        "Simplified multi-step checkout process",
+        "Improved navigation hierarchy and discoverability",
+        "Enhanced search and filtering workflows",
+        "Created scalable reusable UI components",
+        "Optimized mobile-first shopping interactions",
+        "Improved visual consistency across the platform"
+      ],
+      "results": [
+        "35% improvement in conversion performance",
+        "50% reduction in cart abandonment",
+        "Improved customer engagement across shopping flows",
+        "Enhanced mobile usability and interaction clarity",
+        "Established scalable UX foundation for future growth"
+      ],
+      "futureEnhancements": [
+        "AI-powered product recommendations",
+        "Personalized shopping experiences",
+        "Advanced behavioral analytics integration",
+        "Voice-assisted search workflows",
+        "Progressive mobile commerce optimization"
+      ],
+      "featured": true,
+      "createdDate": "2023-08-15"
+    },
+    {
+      "id": "smart-food-platform",
+      "title": "Smart Food Ordering & Delivery Platform",
+      "subtitle": "Optimizing Real-Time Ordering Experiences",
+      "description": "Designed a modern food delivery platform focused on fast ordering workflows, real-time delivery tracking, mobile usability, and scalable customer experiences.",
+      "longDescription": "Led the UX design and mobile experience optimization for a food ordering and delivery platform focused on simplifying customer ordering journeys and improving delivery visibility. The project involved designing intuitive restaurant discovery workflows, real-time tracking interfaces, checkout optimization, and scalable mobile-first interaction systems for high-frequency users.",
+      "category": "mobile-platform",
+      "tags": [
+        "FoodTech",
+        "Mobile UX",
+        "Real-Time Tracking",
+        "UX Strategy",
+        "Interaction Design",
+        "Mobile Commerce",
+        "User Experience",
+        "Product Design"
+      ],
       "images": [
         {
           "url": "/assets/images/projects/food-delivery/main.jpg",
-          "alt": "Food Delivery App Interface",
-          "caption": "App interface with restaurant listings",
+          "alt": "Food Ordering Platform Interface",
+          "caption": "Optimized mobile ordering and restaurant discovery experience",
           "type": "main"
         }
       ],
       "thumbnail": "/assets/images/projects/food-delivery/thumbnail.jpg",
-      "duration": "2.5 months",
-      "client": "QuickBite Technologies",
+      "duration": "2.5 Months",
+      "client": "Confidential FoodTech Platform",
       "role": "UI/UX Designer",
-      "tools": ["Figma", "Principle", "Adobe Illustrator"],
-      "challenges": [
-        "Complex order customization",
-        "Real-time tracking visualization",
-        "Multiple restaurant integrations",
-        "Peak time performance optimization"
+      "tools": [
+        "Figma",
+        "Adobe Illustrator",
+        "Principle",
+        "Miro"
+      ],
+      "problemStatement": {
+        "title": "Problem Statement",
+        "content": "Users experienced friction during food ordering, customization, and delivery tracking workflows. The platform required a faster, more intuitive mobile experience capable of handling high-frequency ordering behavior and real-time delivery interactions."
+      },
+      "businessImpact": {
+        "title": "Business Impact",
+        "content": "The redesign focused on improving ordering speed, customer retention, delivery visibility, and mobile usability while supporting scalable restaurant onboarding and operational efficiency."
+      },
+
+      "designProcess": [
+        "User Research",
+        "Journey Mapping",
+        "Competitive Analysis",
+        "Wireframing",
+        "Interaction Design",
+        "Prototype Testing",
+        "Mobile UX Optimization",
+        "Developer Collaboration",
+        "UX Iteration"
+      ],
+      "keyResponsibilities": [
+        "Mobile UX Design",
+        "Ordering Flow Optimization",
+        "Real-Time Tracking Experience",
+        "Interaction Design",
+        "User Journey Simplification",
+        "Visual Design",
+        "Cross-functional Collaboration"
+      ],
+      "uxChallenges": [
+        "Complex food customization workflows",
+        "Real-time delivery tracking clarity",
+        "Restaurant data consistency",
+        "High mobile interaction frequency",
+        "Checkout flow friction",
+        "Peak-time performance usability"
       ],
       "solutions": [
-        "Simplified customization flow",
-        "Interactive map-based tracking",
-        "Standardized menu templates",
-        "Optimized loading states"
+        "Simplified multi-step ordering workflows",
+        "Designed interactive delivery tracking experiences",
+        "Improved restaurant browsing and filtering",
+        "Optimized mobile-first navigation patterns",
+        "Created standardized menu interaction systems",
+        "Enhanced loading and feedback states"
       ],
       "results": [
-        "40% faster order completion",
-        "85% user retention rate",
-        "4.8/5 app store rating",
-        "30% increase in repeat orders"
+        "40% faster order completion experience",
+        "Improved repeat user engagement",
+        "Enhanced mobile usability and ordering efficiency",
+        "Reduced friction during checkout workflows",
+        "Established scalable mobile interaction patterns"
+      ],
+      "futureEnhancements": [
+        "AI-powered food recommendations",
+        "Predictive delivery tracking",
+        "Voice-assisted ordering workflows",
+        "Personalized restaurant discovery",
+        "Advanced delivery analytics dashboards"
       ],
       "featured": false,
       "createdDate": "2023-02-10"
     },
     {
-      "id": "project4",
-      "title": "Financial Planning Web App",
-      "subtitle": "Personal Finance Management",
-      "description": "Comprehensive financial planning application helping users manage budgets, track expenses, and plan investments.",
-      "longDescription": "MoneyWise is a personal finance management application that helps users take control of their financial health. Features include budget tracking, expense categorization, investment planning, and financial goal setting with intuitive visualizations.",
-      "category": "web-design",
-      "tags": ["FinTech", "Data Visualization", "Web App", "Personal Finance"],
+      "id": "financial-management-platform",
+      "title": "Digital Financial Management Platform",
+      "subtitle": "Simplifying Personal Finance & Investment Experiences",
+      "description": "Designed a modern financial management platform focused on budgeting, expense tracking, investment planning, and data-driven financial decision experiences.",
+      "longDescription": "Led UX design initiatives for a digital financial management platform aimed at helping users better manage budgeting, expense tracking, savings, and financial planning workflows. The project focused on simplifying complex financial information, improving trust and usability, and creating scalable dashboard experiences with intuitive data visualization patterns for web and mobile users.",
+      "category": "enterprise-platform",
+      "tags": [
+        "FinTech",
+        "Financial UX",
+        "Dashboard Design",
+        "Data Visualization",
+        "UX Strategy",
+        "Personal Finance",
+        "Enterprise UX",
+        "Web Application"
+      ],
       "images": [
         {
           "url": "/assets/images/projects/finance-app/main.jpg",
-          "alt": "Financial Planning Dashboard",
-          "caption": "Main dashboard with financial overview",
+          "alt": "Financial Management Dashboard",
+          "caption": "Financial overview dashboard with budgeting and analytics insights",
           "type": "main"
+        },
+        {
+          "url": "/assets/images/projects/finance-app/analytics.jpg",
+          "alt": "Financial Analytics Experience",
+          "caption": "Interactive expense tracking and financial planning workflows",
+          "type": "analytics"
         }
       ],
       "thumbnail": "/assets/images/projects/finance-app/thumbnail.jpg",
-      "duration": "3.5 months",
-      "client": "MoneyWise Solutions",
-      "role": "Lead UI/UX Designer",
-      "tools": ["Figma", "Adobe XD", "Miro", "Zeplin"],
-      "challenges": [
+      "duration": "3.5 Months",
+      "client": "Confidential FinTech Platform",
+      "role": "Lead UX Designer",
+      "tools": [
+        "Figma",
+        "Adobe XD",
+        "Miro",
+        "Zeplin"
+      ],
+      "problemStatement": {
+        "title": "Problem Statement",
+        "content": "Users struggled to understand complex financial information, manage expenses efficiently, and maintain visibility into budgeting and investment goals through fragmented and difficult-to-navigate financial interfaces."
+      },
+      "businessImpact": {
+        "title": "Business Impact",
+        "content": "The redesign focused on improving financial clarity, increasing user engagement, strengthening trust through UX design, and creating scalable financial dashboard systems aligned with long-term platform growth."
+      },
+      "designProcess": [
+        "User Research",
+        "Financial Workflow Analysis",
+        "Information Architecture Planning",
+        "Dashboard UX Exploration",
+        "Wireframing",
+        "Data Visualization Design",
+        "Prototype Testing",
+        "Responsive UX Optimization",
+        "Developer Collaboration",
+        "UX Iteration"
+      ],
+      "keyResponsibilities": [
+        "UX Strategy",
+        "Financial Dashboard Design",
+        "Data Visualization",
+        "Interaction Design",
+        "Responsive Web Experience",
+        "Design System Contribution",
+        "Cross-functional Collaboration",
+        "Developer Handoff"
+      ],
+      "uxChallenges": [
         "Complex financial data presentation",
-        "Security and trust considerations",
-        "Multi-device synchronization",
-        "Regulatory compliance requirements"
+        "Building user trust through UX",
+        "Multi-device financial experiences",
+        "Regulatory and compliance considerations",
+        "Improving financial goal visibility",
+        "Simplifying analytics-heavy workflows"
       ],
       "solutions": [
-        "Clear data visualization hierarchy",
-        "Trust-building design elements",
-        "Responsive design system",
-        "Compliance-focused user flows"
+        "Created intuitive financial dashboard systems",
+        "Improved budgeting and expense tracking workflows",
+        "Designed clear data visualization hierarchies",
+        "Implemented trust-focused UX patterns",
+        "Optimized responsive financial experiences",
+        "Established scalable design consistency across modules"
       ],
       "results": [
-        "70% improvement in financial goal achievement",
-        "55% increase in user engagement",
-        "95% user trust rating",
-        "Successfully passed security audits"
+        "Improved financial planning engagement",
+        "Enhanced usability across financial workflows",
+        "Increased user confidence and trust",
+        "Simplified financial data interpretation",
+        "Established scalable FinTech UX foundations"
+      ],
+      "futureEnhancements": [
+        "AI-powered financial recommendations",
+        "Predictive expense analytics",
+        "Smart investment planning workflows",
+        "Personalized financial insights",
+        "Advanced financial reporting dashboards"
       ],
       "featured": true,
       "createdDate": "2022-11-30"
     },
     {
-      "id": "project5",
-      "title": "Learning Management System",
-      "subtitle": "Educational Platform Redesign",
-      "description": "Complete redesign of an educational platform focusing on student engagement and learning effectiveness.",
-      "longDescription": "EduFlow LMS redesign project aimed at improving student engagement and learning outcomes. The platform serves 50,000+ students and 2,000+ instructors with features like course management, interactive assessments, and progress tracking.",
-      "category": "web-design",
-      "tags": ["EdTech", "LMS", "User Experience", "Web Design"],
+      "id": "digital-learning-platform",
+      "title": "Digital Learning & Education Platform",
+      "subtitle": "Enhancing Student Engagement & Learning Experiences",
+      "description": "Designed a scalable digital learning platform focused on improving student engagement, course accessibility, learning workflows, and educational usability across multiple user roles.",
+      "longDescription": "Led UX design improvements for a large-scale learning management platform serving students, instructors, and administrators. The project focused on simplifying educational workflows, improving course navigation, enhancing progress visibility, and creating accessible learning experiences optimized for both desktop and mobile users. The platform included course management systems, assessments, progress tracking, and interactive educational experiences.",
+      "category": "enterprise-platform",
+      "tags": [
+        "EdTech",
+        "Learning Management System",
+        "UX Strategy",
+        "Educational Platforms",
+        "Accessibility",
+        "Dashboard Design",
+        "User Experience",
+        "Enterprise UX"
+      ],
       "images": [
         {
           "url": "/assets/images/projects/lms/main.jpg",
-          "alt": "Learning Management System Interface",
-          "caption": "Student dashboard with course progress",
+          "alt": "Digital Learning Platform Dashboard",
+          "caption": "Student learning dashboard with course progress and activity tracking",
           "type": "main"
+        },
+        {
+          "url": "/assets/images/projects/lms/mobile.jpg",
+          "alt": "Mobile Learning Experience",
+          "caption": "Responsive mobile-first educational experience design",
+          "type": "mobile"
         }
       ],
       "thumbnail": "/assets/images/projects/lms/thumbnail.jpg",
-      "duration": "4.5 months",
-      "client": "EduFlow Learning",
-      "role": "Senior UI/UX Designer",
-      "tools": ["Figma", "Adobe XD", "Sketch", "InVision"],
-      "challenges": [
-        "Diverse user groups (students, instructors, admins)",
+      "duration": "4.5 Months",
+      "client": "Confidential EdTech Platform",
+      "role": "Senior UX Designer",
+      "tools": [
+        "Figma",
+        "Adobe XD",
+        "Sketch",
+        "InVision"
+      ],
+      "problemStatement": {
+        "title": "Problem Statement",
+        "content": "Students and instructors faced usability challenges caused by complex course structures, inconsistent learning workflows, poor mobile experiences, and limited visibility into educational progress and engagement."
+      },
+      "businessImpact": {
+        "title": "Business Impact",
+        "content": "The redesign focused on improving learning engagement, simplifying educational workflows, enhancing accessibility, and creating scalable UX systems to support long-term digital education growth."
+      },
+      "designProcess": [
+        "User Research",
+        "Learning Workflow Analysis",
+        "Information Architecture Planning",
+        "User Journey Mapping",
+        "Wireframing",
+        "Interaction Design",
+        "Accessibility Review",
+        "Prototype Testing",
+        "Responsive UX Optimization",
+        "Developer Collaboration"
+      ],
+      "keyResponsibilities": [
+        "Educational UX Strategy",
+        "Dashboard Experience Design",
+        "Learning Workflow Optimization",
+        "Accessibility Design",
+        "Interaction Design",
+        "Responsive UX",
+        "Cross-functional Collaboration",
+        "Developer Handoff"
+      ],
+      "uxChallenges": [
+        "Managing diverse user roles",
         "Complex course structure navigation",
-        "Mobile learning optimization",
-        "Accessibility compliance"
+        "Mobile learning usability",
+        "Accessibility compliance requirements",
+        "Improving learning engagement",
+        "Simplifying educational workflows"
       ],
       "solutions": [
-        "Role-based interface customization",
-        "Intuitive course navigation system",
-        "Mobile-first design approach",
-        "WCAG 2.1 compliant design"
+        "Created role-based educational experiences",
+        "Improved course navigation architecture",
+        "Designed mobile-first learning workflows",
+        "Implemented accessibility-focused UI patterns",
+        "Enhanced student progress visibility",
+        "Established scalable educational design consistency"
       ],
       "results": [
-        "50% increase in course completion rates",
-        "65% improvement in user satisfaction",
-        "40% reduction in support tickets",
-        "100% accessibility compliance achieved"
+        "Improved learning engagement and usability",
+        "Enhanced educational workflow clarity",
+        "Reduced friction across student and instructor experiences",
+        "Improved accessibility compliance support",
+        "Established scalable learning platform UX foundations"
+      ],
+      "futureEnhancements": [
+        "Personalized learning recommendations",
+        "Adaptive learning experiences",
+        "Advanced student analytics dashboards",
+        "Smart assessment and progress insights",
+        "Integrated collaborative learning experiences"
       ],
       "featured": false,
       "createdDate": "2022-08-15"
     },
     {
-      "id": "project6",
-      "title": "Travel Booking Platform",
-      "subtitle": "Seamless Travel Experience",
-      "description": "Modern travel booking platform with focus on personalization and seamless booking experience.",
-      "longDescription": "WanderLust is a comprehensive travel booking platform that combines flights, hotels, and activities in one seamless experience. The design focuses on personalized recommendations and simplified booking processes.",
-      "category": "web-design",
-      "tags": ["Travel Tech", "Booking Platform", "Personalization", "Web Design"],
+      "id": "travel-experience-platform",
+      "title": "Digital Travel & Booking Experience Platform",
+      "subtitle": "Simplifying Multi-Service Travel Planning",
+      "description": "Designed a modern travel booking platform focused on personalized trip planning, seamless booking workflows, and optimized multi-device travel experiences.",
+      "longDescription": "Led UX design initiatives for a digital travel booking platform integrating flights, hotels, and travel experiences into a unified booking ecosystem. The project focused on simplifying travel discovery, improving booking workflows, enhancing mobile usability, and creating scalable personalization experiences tailored for modern travelers.",
+      "category": "enterprise-platform",
+      "tags": [
+        "TravelTech",
+        "Booking Experience",
+        "UX Strategy",
+        "Personalization",
+        "Mobile UX",
+        "Search Experience",
+        "Web Application",
+        "Enterprise UX"
+      ],
       "images": [
         {
           "url": "/assets/images/projects/travel-booking/main.jpg",
-          "alt": "Travel Booking Platform",
-          "caption": "Homepage with search functionality",
+          "alt": "Travel Booking Platform Dashboard",
+          "caption": "Travel discovery and booking experience with personalized recommendations",
           "type": "main"
+        },
+        {
+          "url": "/assets/images/projects/travel-booking/mobile.jpg",
+          "alt": "Mobile Travel Booking Experience",
+          "caption": "Mobile-first travel booking and itinerary workflows",
+          "type": "mobile"
         }
       ],
       "thumbnail": "/assets/images/projects/travel-booking/thumbnail.jpg",
-      "duration": "3 months",
-      "client": "WanderLust Travel",
+      "duration": "3 Months",
+      "client": "Confidential Travel Technology Platform",
       "role": "UI/UX Designer",
-      "tools": ["Figma", "Adobe XD", "Principle"],
-      "challenges": [
-        "Complex search and filtering",
-        "Multiple booking flows",
-        "Price comparison clarity",
-        "Mobile booking optimization"
+      "tools": [
+        "Figma",
+        "Adobe XD",
+        "Principle",
+        "Miro"
+      ],
+      "problemStatement": {
+        "title": "Problem Statement",
+        "content": "Users experienced friction while searching, comparing, and booking travel services across fragmented workflows. The platform required a simplified booking experience capable of handling flights, accommodations, and activity planning within a unified interface."
+      },
+      "businessImpact": {
+        "title": "Business Impact",
+        "content": "The redesign focused on improving booking conversions, simplifying travel planning workflows, enhancing personalization experiences, and creating scalable UX systems for long-term platform growth."
+      },
+      "designProcess": [
+        "User Research",
+        "Travel Journey Mapping",
+        "Competitor Analysis",
+        "Search Experience Planning",
+        "Wireframing",
+        "Interaction Design",
+        "Prototype Validation",
+        "Responsive UX Optimization",
+        "Developer Collaboration",
+        "UX Iteration"
+      ],
+      "keyResponsibilities": [
+        "Travel Experience UX",
+        "Booking Workflow Optimization",
+        "Search & Discovery UX",
+        "Interaction Design",
+        "Responsive Web Experience",
+        "Personalization Strategy",
+        "Cross-functional Collaboration",
+        "Developer Handoff"
+      ],
+      "uxChallenges": [
+        "Complex travel search and filtering",
+        "Managing multiple booking workflows",
+        "Improving price comparison clarity",
+        "Mobile booking usability",
+        "Travel planning complexity",
+        "Personalization experience consistency"
       ],
       "solutions": [
-        "Smart search with predictive suggestions",
-        "Unified booking experience",
-        "Clear price breakdown design",
-        "Touch-optimized mobile interface"
+        "Designed unified travel booking workflows",
+        "Created intuitive search and filtering systems",
+        "Improved pricing visibility and comparison experiences",
+        "Optimized mobile-first booking interactions",
+        "Enhanced personalized recommendation experiences",
+        "Established scalable UX consistency across booking modules"
       ],
       "results": [
-        "45% increase in booking conversions",
-        "60% improvement in mobile bookings",
-        "35% reduction in booking abandonment",
-        "4.7/5 user experience rating"
+        "Improved travel booking conversion experience",
+        "Enhanced mobile booking usability",
+        "Reduced booking workflow friction",
+        "Improved search discoverability and trip planning clarity",
+        "Established scalable travel platform UX foundations"
+      ],
+      "futureEnhancements": [
+        "AI-powered travel recommendations",
+        "Predictive trip planning assistance",
+        "Smart itinerary generation",
+        "Voice-assisted booking workflows",
+        "Advanced travel analytics dashboards"
       ],
       "featured": false,
       "createdDate": "2022-05-10"

@@ -54,7 +54,7 @@ export interface Project {
   subtitle: string;
   description: string;
   longDescription: string;
-  category: 'ui-ux' | 'web-design' | 'mobile-app' | 'branding' | 'graphic-design';
+  category: string; // allow custom categories like 'startup-platform', 'enterprise-platform', etc.
   tags: string[];
   images: ProjectImage[];
   thumbnail: string;
@@ -62,13 +62,56 @@ export interface Project {
   client?: string;
   role: string;
   tools: string[];
-  challenges: string[];
-  solutions: string[];
-  results: string[];
+  challenges?: string[];
+  solutions?: string[];
+  results?: string[];
   liveUrl?: string;
   caseStudyUrl?: string;
   featured: boolean;
   createdDate: string;
+
+  // Optional extended fields for detailed case studies
+  problemStatement?: {
+    title: string;
+    content: string;
+  };
+  marketOpportunity?: {
+    title: string;
+    content: string;
+  };
+  userTypes?: Array<{
+    type: string;
+    description: string;
+  }>;
+  uxChallenges?: string[];
+  productFlows?: string[];
+  wireframes?: {
+    title: string;
+    content: string;
+  };
+  uiSystem?: {
+    title: string;
+    content: string;
+  };
+  mvpArchitecture?: {
+    title: string;
+    content: string;
+  };
+  technicalStack?: {
+    frontend?: string[];
+    backend?: string[];
+    database?: string[];
+    infrastructure?: string[];
+    design?: string[];
+  };
+  businessThinking?: {
+    title: string;
+    content: string;
+  };
+  futureVision?: {
+    title: string;
+    content: string;
+  };
 }
 
 export interface ProjectImage {

@@ -39,7 +39,7 @@
       <!-- Bento Grid -->
       <div class="bento-grid" *ngIf="!isLoading()">
         <ng-container *ngFor="let project of filteredProjects(); let i = index">
-          <div class="bento-card" [class.large]="i % 3 === 0" [class.small]="i % 3 !== 0">
+          <a class="bento-card" [class.large]="i % 3 === 0" [class.small]="i % 3 !== 0" [routerLink]="['/project', project.id]">
             <div class="bento-image">
               <img [src]="project.thumbnail || project.images[0]?.url" [alt]="project.title" loading="lazy"
                 onerror="this.style.display='none'; this.parentElement.classList.add('no-img')" />
@@ -58,7 +58,7 @@
                 <span class="tech-tag" *ngFor="let tool of project.tools | slice:0:3">{{ tool }}</span>
               </div>
             </div>
-          </div>
+          </a>
         </ng-container>
 
         <!-- Empty state -->
