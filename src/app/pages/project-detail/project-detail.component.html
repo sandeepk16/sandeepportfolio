@@ -1,104 +1,170 @@
-<div class="project-detail-page" *ngIf="project; else notFoundTpl">
-  <div class="container">
-    <div class="project-header">
-      <h1 class="project-title">{{ project.title }}</h1>
-      <p class="project-subtitle">{{ project.subtitle }}</p>
-      <div class="project-meta">
-        <span>{{ project.duration }}</span>
-        <span>•</span>
-        <span>{{ project.client || 'Personal Project' }}</span>
-      </div>
-      <div class="project-tags">
-        <p-chip *ngFor="let tag of project.tags" [label]="tag" class="mr-2 mb-2"></p-chip>
-      </div>
-    </div>
-
-    <div class="project-images mb-4" *ngIf="project.images && project.images.length">
-      <img *ngFor="let img of project.images" [src]="img.url" [alt]="img.alt" class="project-image mb-2" />
-    </div>
-
-    <div class="project-description mb-4">
-      <h3>Description</h3>
-      <p>{{ project.longDescription }}</p>
-    </div>
-
-    <div *ngIf="project.problemStatement">
-      <h4>{{ project.problemStatement.title }}</h4>
-      <p>{{ project.problemStatement.content }}</p>
-    </div>
-    <div *ngIf="project.marketOpportunity">
-      <h4>{{ project.marketOpportunity.title }}</h4>
-      <p>{{ project.marketOpportunity.content }}</p>
-    </div>
-    <div *ngIf="project.userTypes">
-      <h4>User Types</h4>
-      <ul>
-        <li *ngFor="let user of project.userTypes">
-          <strong>{{ user.type }}:</strong> {{ user.description }}
-        </li>
-      </ul>
-    </div>
-    <div *ngIf="project.uxChallenges">
-      <h4>UX Challenges</h4>
-      <ul>
-        <li *ngFor="let c of project.uxChallenges">{{ c }}</li>
-      </ul>
-    </div>
-    <div *ngIf="project.productFlows">
-      <h4>Product Flows</h4>
-      <ul>
-        <li *ngFor="let f of project.productFlows">{{ f }}</li>
-      </ul>
-    </div>
-    <div *ngIf="project.wireframes">
-      <h4>{{ project.wireframes.title }}</h4>
-      <p>{{ project.wireframes.content }}</p>
-    </div>
-    <div *ngIf="project.uiSystem">
-      <h4>{{ project.uiSystem.title }}</h4>
-      <p>{{ project.uiSystem.content }}</p>
-    </div>
-    <div *ngIf="project.mvpArchitecture">
-      <h4>{{ project.mvpArchitecture.title }}</h4>
-      <p>{{ project.mvpArchitecture.content }}</p>
-    </div>
-    <div *ngIf="project.technicalStack">
-      <h4>Technical Stack</h4>
-      <ul>
-        <li *ngIf="project.technicalStack.frontend"><strong>Frontend:</strong> {{ project.technicalStack.frontend.join(', ') }}</li>
-        <li *ngIf="project.technicalStack.backend"><strong>Backend:</strong> {{ project.technicalStack.backend.join(', ') }}</li>
-        <li *ngIf="project.technicalStack.database"><strong>Database:</strong> {{ project.technicalStack.database.join(', ') }}</li>
-        <li *ngIf="project.technicalStack.infrastructure"><strong>Infrastructure:</strong> {{ project.technicalStack.infrastructure.join(', ') }}</li>
-        <li *ngIf="project.technicalStack.design"><strong>Design:</strong> {{ project.technicalStack.design.join(', ') }}</li>
-      </ul>
-    </div>
-    <div *ngIf="project.businessThinking">
-      <h4>{{ project.businessThinking.title }}</h4>
-      <p>{{ project.businessThinking.content }}</p>
-    </div>
-    <div *ngIf="project.futureVision">
-      <h4>{{ project.futureVision.title }}</h4>
-      <p>{{ project.futureVision.content }}</p>
-    </div>
-    <div *ngIf="project.solutions">
-      <h4>Solutions</h4>
-      <ul>
-        <li *ngFor="let s of project.solutions">{{ s }}</li>
-      </ul>
-    </div>
-    <div *ngIf="project.results">
-      <h4>Results</h4>
-      <ul>
-        <li *ngFor="let r of project.results">{{ r }}</li>
-      </ul>
-    </div>
-    <div class="mt-4">
-      <a routerLink="/portfolio" class="btn btn-secondary">Back to Portfolio</a>
-    </div>
-  </div>
+<div *ngIf="isLoading" class="container" style="padding:4rem 1rem;text-align:center;">
+  <p>Loading project...</p>
 </div>
-<ng-template #notFoundTpl>
-  <div class="container">
+<div class="project-detail-page" *ngIf="!isLoading && project; else notLoadingOrFoundTpl">
+  <section class="project-header">
+    <div class="container">
+      <div class="project-meta-top">
+        <span class="category-pill">{{ project.category | uppercase }}</span>
+        <span class="dot">•</span>
+        <span class="client-info">{{ project.client || 'Personal Project' }}</span>
+      </div>
+      <h1 class="project-title">{{ project.title }}</h1>
+      <p class="project-excerpt">{{ project.subtitle }}</p>
+    </div>
+  </section>
+
+  <section class="cover-section" *ngIf="project.images && project.images.length">
+    <div class="container">
+      <div class="cover-image">
+        <img [src]="project.images[0].url" [alt]="project.images[0].alt" loading="lazy"
+          onerror="this.style.display='none'; this.parentElement.classList.add('no-img')" />
+        <div class="image-placeholder"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="narrative-overview">
+    <div class="container narrative-overview-grid">
+      <article>
+        <h2 class="section-heading">Overview</h2>
+        <p class="paragraph">{{ project.longDescription }}</p>
+      </article>
+      <aside class="sidebar-widget">
+        <h3 class="sidebar-title">Project Snapshot</h3>
+        <div class="summary-items">
+          <div class="summary-item">
+            <span class="summary-label">Role</span>
+            <span class="summary-value">{{ project.role }}</span>
+          </div>
+          <div class="summary-item">
+            <span class="summary-label">Timeline</span>
+            <span class="summary-value">{{ project.duration }}</span>
+          </div>
+          <div class="summary-item" *ngIf="project.tags && project.tags.length">
+            <span class="summary-label">Tech</span>
+            <span class="summary-value">{{ project.tags.slice(0, 4).join(', ') }}</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="narrative-challenge" *ngIf="project.problemStatement || project.uxChallenges">
+    <div class="container narrative-challenge-grid">
+      <article>
+        <h2 class="section-heading">The Challenge</h2>
+        <p class="paragraph" *ngIf="project.problemStatement">{{ project.problemStatement.content }}</p>
+        <ul class="list-items" *ngIf="project.uxChallenges">
+          <li *ngFor="let c of project.uxChallenges" class="list-item">{{ c }}</li>
+        </ul>
+      </article>
+      <div class="challenge-image" *ngIf="project.images && project.images.length > 1">
+        <img [src]="project.images[1].url" [alt]="project.images[1].alt" loading="lazy"
+          onerror="this.style.display='none'; this.parentElement.classList.add('no-img')" />
+        <div class="image-placeholder"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="narrative-solution" *ngIf="project.solutions && project.solutions.length">
+    <div class="container">
+      <h2 class="section-heading centered">The Solution</h2>
+      <p class="paragraph centered" *ngIf="project.uiSystem">{{ project.uiSystem.content }}</p>
+      <div class="solution-cards">
+        <article class="solution-card" *ngFor="let s of project.solutions.slice(0, 3)">
+          <h3>{{ s }}</h3>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="narrative-process" *ngIf="project.productFlows && project.productFlows.length">
+    <div class="container">
+      <h2 class="section-heading">Process</h2>
+      <div class="process-grid">
+        <article class="process-card" *ngFor="let flow of project.productFlows.slice(0, 3); let i = index">
+          <span class="process-index">0{{ i + 1 }}</span>
+          <h3>{{ flow }}</h3>
+          <p *ngIf="project.uxChallenges && project.uxChallenges[i]">{{ project.uxChallenges[i] }}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="narrative-results" *ngIf="project.results && project.results.length">
+    <div class="container">
+      <h2 class="section-heading centered">Results & Impact</h2>
+      <div class="result-highlights" *ngIf="leadMetrics.length; else narrativeFallbackResults">
+        <article class="result-highlight metric" *ngFor="let metric of leadMetrics.slice(0, 2)">
+          <strong>{{ metric.value }}</strong>
+          <span>{{ metric.label }}</span>
+        </article>
+      </div>
+      <ng-template #narrativeFallbackResults>
+        <div class="result-highlights">
+          <article class="result-highlight" *ngFor="let r of project.results.slice(0, 2)">
+            <p>{{ r }}</p>
+          </article>
+        </div>
+      </ng-template>
+      <ul class="impact-list" *ngIf="project.results.length > 2">
+        <li *ngFor="let r of project.results.slice(2)">{{ r }}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="body-section" *ngIf="project.technicalStack || project.marketOpportunity || project.futureVision">
+    <div class="container body-grid">
+      <article class="project-body">
+        <div *ngIf="project.marketOpportunity" class="content-block">
+          <h2 class="section-heading">{{ project.marketOpportunity.title }}</h2>
+          <p class="paragraph">{{ project.marketOpportunity.content }}</p>
+        </div>
+        <div *ngIf="project.technicalStack" class="content-block">
+          <h2 class="section-heading">Technical Stack</h2>
+          <ul class="tech-list">
+            <li *ngIf="project.technicalStack.frontend"><strong>Frontend:</strong> {{ project.technicalStack.frontend.join(', ') }}</li>
+            <li *ngIf="project.technicalStack.backend"><strong>Backend:</strong> {{ project.technicalStack.backend.join(', ') }}</li>
+            <li *ngIf="project.technicalStack.database"><strong>Database:</strong> {{ project.technicalStack.database.join(', ') }}</li>
+            <li *ngIf="project.technicalStack.infrastructure"><strong>Infrastructure:</strong> {{ project.technicalStack.infrastructure.join(', ') }}</li>
+            <li *ngIf="project.technicalStack.design"><strong>Design:</strong> {{ project.technicalStack.design.join(', ') }}</li>
+          </ul>
+        </div>
+        <div *ngIf="project.futureVision" class="content-block">
+          <h2 class="section-heading">{{ project.futureVision.title }}</h2>
+          <p class="paragraph">{{ project.futureVision.content }}</p>
+        </div>
+      </article>
+
+      <aside class="sidebar">
+        <div class="cta-widget">
+          <h4>Have a similar project in mind?</h4>
+          <p>Let's discuss how we can collaborate to bring your vision to life.</p>
+          <a routerLink="/contact" class="cta-link">Get in Touch</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-text">
+          <h2>{{ ctaContent.heading }}</h2>
+          <p>{{ ctaContent.description }}</p>
+        </div>
+        <div class="cta-actions">
+          <a routerLink="/contact" class="cta-btn primary">{{ ctaContent.primaryLabel }}</a>
+          <a routerLink="/portfolio" class="cta-btn secondary">{{ ctaContent.secondaryLabel }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<ng-template #notLoadingOrFoundTpl>
+  <div class="container" *ngIf="!isLoading && notFound">
     <h2>Project Not Found</h2>
     <a routerLink="/portfolio" class="btn btn-secondary">Back to Portfolio</a>
   </div>

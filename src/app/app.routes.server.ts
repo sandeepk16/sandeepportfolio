@@ -35,6 +35,11 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender
   },
   {
+    // Project detail pages are rendered on demand (dynamic id)
+    path: 'project/:id',
+    renderMode: RenderMode.Server
+  },
+  {
     // Blog detail pages are rendered on demand (dynamic slug)
     path: 'blog/:slug',
     renderMode: RenderMode.Server
